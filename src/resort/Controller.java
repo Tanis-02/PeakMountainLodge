@@ -1,4 +1,4 @@
-package resort;
+ package resort;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
