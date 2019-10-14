@@ -17,6 +17,18 @@ public class Controller {
 
   @FXML private Label currentGuest;
 
+  @FXML private Button backButton;
+
+  @FXML
+  void backOnePage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Stage home = new Stage();
+    home.setTitle("Welcome");
+    home.setScene(new Scene(root, 1200, 800));
+    home.show();
+  }
+
   @FXML
   void checkDates(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
