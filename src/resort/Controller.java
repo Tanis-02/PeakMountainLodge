@@ -6,21 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class Controller {
 
-  @FXML private Button bookButton;
+  /** Text field on the current guest page for the user to enter their last name */
+  @FXML private TextField lastName;
 
-  @FXML private Label currentGuest;
+  /** Text field on the current guest page for the user to enter their phone number */
+  @FXML private TextField phoneNumber;
 
-  @FXML private Button backButton;
+  /** Function that the log in button calls on the current guest page */
+  @FXML
+  void logInButton() {}
 
   @FXML
-  void backOnePage(MouseEvent event) throws IOException {
+  void goToPreviousPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
     Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
     Stage home = new Stage();
@@ -30,7 +33,7 @@ public class Controller {
   }
 
   @FXML
-  void checkDates(MouseEvent event) throws IOException {
+  void goToNewGuestPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
     Parent root = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
     Stage newGuestStage = new Stage();
@@ -40,7 +43,7 @@ public class Controller {
   }
 
   @FXML
-  void logIn(MouseEvent event) throws IOException {
+  void goToCurrentGuestPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
     Parent root = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
     Stage logInStage = new Stage();
@@ -48,4 +51,7 @@ public class Controller {
     logInStage.setScene(new Scene(root, 1200, 800));
     logInStage.show();
   }
+
+  @FXML
+  void goToManagerLoginPage() {}
 }

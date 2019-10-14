@@ -19,8 +19,10 @@
       <Font name="Freestyle Script" size="48.0"/>
     </font>
   </Label>
-  <Button fx:id="bookButton" layoutX="768.0" layoutY="448.0" mnemonicParsing="false"
-    onMouseClicked="#checkDates" prefHeight="25.0" prefWidth="198.0" text="Book Your Stay"/>
-  <Label fx:id="currentGuest" layoutX="791.0" layoutY="501.0" onMouseClicked="#logIn"
+  <Button id="myButton" layoutX="768.0" layoutY="448.0" mnemonicParsing="false"
+    onMouseClicked="#goToNewGuestPage" prefHeight="25.0" prefWidth="198.0" text="Book Your Stay"/>
+  <Label layoutX="791.0" layoutY="501.0" onMouseClicked="#goToCurrentGuestPage"
     text="Currently a guest? Click here" underline="true"/>
+  <Label layoutX="827.0" layoutY="549.0" onMouseClicked="#goToManagerLoginPage" text="Manager Login"
+    underline="true"/>
 </AnchorPane>
