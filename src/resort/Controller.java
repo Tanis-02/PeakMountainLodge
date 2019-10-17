@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -21,6 +22,10 @@ public class Controller {
   /** Function that the log in button calls on the current guest page */
   @FXML
   void logInButton() {}
+
+  // Tab Pane for the manager overview screen
+  @FXML
+  private TabPane overviewTabs;
 
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
@@ -53,5 +58,23 @@ public class Controller {
   }
 
   @FXML
-  void goToManagerLoginPage() {}
-}
+  void goToManagerLoginPage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("manager_login.fxml"));
+    Stage logInStage = new Stage();
+    logInStage.setTitle("Please input manager credentials");
+    logInStage.setScene(new Scene(root, 1200, 800));
+    logInStage.show();
+  }
+
+  // links Manager login page to the Manager Overview page
+  @FXML
+  void goToManagerOverview(MouseEvent mouseEvent) throws IOException {
+    ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
+    Stage logInStage = new Stage();
+    logInStage.setTitle("Choose to View");
+    logInStage.setScene(new Scene(root, 1200, 800));
+    logInStage.show();
+  }
+}// end of controller
