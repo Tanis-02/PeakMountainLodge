@@ -8,21 +8,21 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.221"
+  prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
   xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.Controller">
-  <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
+  <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
     <Image url="@resort.jpg"/>
   </ImageView>
-  <Label layoutX="609.0" layoutY="69.0" prefHeight="96.0" prefWidth="515.0"
+  <Label layoutX="351.0" layoutY="49.0" prefHeight="96.0" prefWidth="515.0"
     text="Welcome to Twin Peaks Resort and Spa" textFill="#0a0a0a">
     <font>
-      <Font name="Freestyle Script" size="48.0"/>
+      <Font name="Freestyle Script" size="40.0"/>
     </font>
   </Label>
-  <Button id="myButton" layoutX="768.0" layoutY="448.0" mnemonicParsing="false"
+  <Button id="myButton" layoutX="510.0" layoutY="399.0" mnemonicParsing="false"
     onMouseClicked="#goToNewGuestPage" prefHeight="25.0" prefWidth="198.0" text="Book Your Stay"/>
-  <Label layoutX="791.0" layoutY="501.0" onMouseClicked="#goToCurrentGuestPage"
+  <Label layoutX="534.0" layoutY="452.0" onMouseClicked="#goToCurrentGuestPage"
     text="Currently a guest? Click here" underline="true"/>
-  <Label layoutX="827.0" layoutY="549.0" onMouseClicked="#goToManagerLoginPage" text="Manager Login"
+  <Label layoutX="569.0" layoutY="492.0" onMouseClicked="#goToManagerLoginPage" text="Manager Login"
     underline="true"/>
 </AnchorPane>

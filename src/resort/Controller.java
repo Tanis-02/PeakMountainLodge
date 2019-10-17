@@ -24,8 +24,7 @@ public class Controller {
   void logInButton() {}
 
   // Tab Pane for the manager overview screen
-  @FXML
-  private TabPane overviewTabs;
+  @FXML private TabPane overviewTabs;
 
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
@@ -33,7 +32,7 @@ public class Controller {
     Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
     Stage home = new Stage();
     home.setTitle("Welcome");
-    home.setScene(new Scene(root, 1200, 800));
+    home.setScene(new Scene(root, 800, 600));
     home.show();
   }
 
@@ -43,7 +42,7 @@ public class Controller {
     Parent root = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
     Stage newGuestStage = new Stage();
     newGuestStage.setTitle("Check Availability");
-    newGuestStage.setScene(new Scene(root, 1200, 800));
+    newGuestStage.setScene(new Scene(root, 800, 600));
     newGuestStage.show();
   }
 
@@ -53,7 +52,7 @@ public class Controller {
     Parent root = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
     Stage logInStage = new Stage();
     logInStage.setTitle("Please Log In");
-    logInStage.setScene(new Scene(root, 1200, 800));
+    logInStage.setScene(new Scene(root, 800, 600));
     logInStage.show();
   }
 
@@ -63,7 +62,7 @@ public class Controller {
     Parent root = FXMLLoader.load(getClass().getResource("manager_login.fxml"));
     Stage logInStage = new Stage();
     logInStage.setTitle("Please input manager credentials");
-    logInStage.setScene(new Scene(root, 1200, 800));
+    logInStage.setScene(new Scene(root, 800, 600));
     logInStage.show();
   }
 
@@ -74,7 +73,7 @@ public class Controller {
     Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
     Stage logInStage = new Stage();
     logInStage.setTitle("Choose to View");
-    logInStage.setScene(new Scene(root, 1200, 800));
+    logInStage.setScene(new Scene(root, 800, 600));
     logInStage.show();
   }
-}// end of controller
+} // end of controller
