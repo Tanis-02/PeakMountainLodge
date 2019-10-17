@@ -1,11 +1,17 @@
 package resort;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.lang.ref.SoftReference;
+
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +32,11 @@ public class Controller {
   // Tab Pane for the manager overview screen
   @FXML
   private TabPane overviewTabs;
+
+  // date picker for block out dates tab in the manager overview
+  @FXML
+  private JFXDatePicker jfoenixDateBlock;
+
 
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
@@ -76,5 +87,24 @@ public class Controller {
     logInStage.setTitle("Choose to View");
     logInStage.setScene(new Scene(root, 1200, 800));
     logInStage.show();
+  }
+
+  @FXML
+  void setBlockOutBtn(MouseEvent mouseEvent){
+    String date = jfoenixDateBlock.getValue().toString();
+
+    if (date != null) {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.setTitle("Setting Block Out Date");
+      alert.setHeaderText(null);
+      alert.setContentText("Block out date set for: " + date);
+      alert.showAndWait();
+    }else{
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error Setting Date");
+      alert.setHeaderText("Error");
+      alert.setContentText("No Date was Selected");
+      alert.showAndWait();
+    }
   }
 }// end of controller
