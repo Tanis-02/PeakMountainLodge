@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -82,12 +84,43 @@
          </Tab>
          <Tab text="Customer Information">
             <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                  <children>
+                     <ScrollPane layoutX="24.0" layoutY="215.0" prefHeight="199.0" prefWidth="812.0">
+                       <content>
+                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                              <children>
+                                 <TableView layoutX="7.0" prefHeight="200.0" prefWidth="777.0">
+                                   <columns>
+                                     <TableColumn prefWidth="123.0" text="Customer ID" />
+                                     <TableColumn prefWidth="164.0" text="Last Name" />
+                                       <TableColumn prefWidth="175.0" text="First Name" />
+                                       <TableColumn minWidth="0.0" prefWidth="79.0" text="Room #" />
+                                       <TableColumn prefWidth="110.0" text="KeyCard ID" />
+                                       <TableColumn prefWidth="125.0" text="Dates Booked" />
+                                   </columns>
+                                 </TableView>
+                              </children>
+                           </AnchorPane>
+                       </content>
+                     </ScrollPane>
+                     <Label layoutX="41.0" layoutY="27.0" text="Customer ID: " />
+                     <TextField layoutX="147.0" layoutY="22.0" />
+                     <TextField layoutX="561.0" layoutY="22.0" />
+                     <TextField layoutX="561.0" layoutY="94.0" />
+                     <Label layoutX="476.0" layoutY="27.0" text="Last Name: " />
+                     <Label layoutX="476.0" layoutY="99.0" text="First Name: " />
+                     <Button layoutX="351.0" layoutY="22.0" mnemonicParsing="false" text="Search" />
+                     <Button layoutX="561.0" layoutY="156.0" mnemonicParsing="false" text="Search" />
+                  </children></AnchorPane>
             </content>
          </Tab>
          <Tab text="Customer Feedback">
             <content>
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                  <children>
+                     <TextArea layoutX="32.0" layoutY="100.0" prefHeight="321.0" prefWidth="796.0" />
+                  </children></AnchorPane>
             </content>
          </Tab>
          <Tab text="Occupancy ">
