@@ -6,36 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class Controller {
+/** Everything in the HomeController corresponds to items in the home.fxml file */
+public class HomeController {
 
-  /** Text field on the current guest page for the user to enter their last name */
-  @FXML private TextField lastName;
-
-  /** Text field on the current guest page for the user to enter their phone number */
-  @FXML private TextField phoneNumber;
-
-  /** Function that the log in button calls on the current guest page */
-  @FXML
-  void logInButton() {}
-
-  // Tab Pane for the manager overview screen
-  @FXML private TabPane overviewTabs;
-
-  @FXML
-  void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Welcome");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
-  }
-
+  /**
+   * The goToNewGuestPage() function will bring the user to the new guest page.
+   *
+   * @param event MouseEvent upon clicking the book now button
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToNewGuestPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -46,6 +28,12 @@ public class Controller {
     newGuestStage.show();
   }
 
+  /**
+   * The goToCurrentGuestPage() function will bring the user to the current guest page.
+   *
+   * @param event MouseEvent upon clicking the current guest label
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToCurrentGuestPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -56,6 +44,12 @@ public class Controller {
     logInStage.show();
   }
 
+  /**
+   * The goToManagerLoginPage() function will bring the user to the manager login page.
+   *
+   * @param event MouseEvent upon clicking the manager label
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToManagerLoginPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -65,15 +59,4 @@ public class Controller {
     logInStage.setScene(new Scene(root, 800, 600));
     logInStage.show();
   }
-
-  // links Manager login page to the Manager Overview page
-  @FXML
-  void goToManagerOverview(MouseEvent mouseEvent) throws IOException {
-    ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
-    Stage logInStage = new Stage();
-    logInStage.setTitle("Choose to View");
-    logInStage.setScene(new Scene(root, 800, 600));
-    logInStage.show();
-  }
-} // end of controller
+}

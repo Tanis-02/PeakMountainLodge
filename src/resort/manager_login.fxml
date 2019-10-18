@@ -14,16 +14,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
   prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.Controller">
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ManagerLoginController">
   <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
     <Image url="@resort.jpg"/>
   </ImageView>
-  <Label layoutX="542.0" layoutY="67.0" prefHeight="96.0" prefWidth="515.0" text="Manager Login"
+  <Label layoutX="555.0" layoutY="47.0" prefHeight="96.0" prefWidth="193.0" text="Manager Login"
     textFill="#0a0a0a">
     <font>
       <Font name="Freestyle Script" size="40.0"/>
     </font>
   </Label>
+  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage"
+    text="Back"/>
   <GridPane layoutX="509.0" layoutY="387.0" prefHeight="90.0" prefWidth="240.0">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.60003662109375" minWidth="10.0"

@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
   prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.Controller">
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.HomeController">
   <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
     <Image url="@resort.jpg"/>
   </ImageView>
