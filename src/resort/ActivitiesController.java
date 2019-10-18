@@ -11,16 +11,33 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/** Everything in ActivitiesController corresponds to items in the activities.fxml file */
 public class ActivitiesController {
 
+  /**
+   * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental
+   */
   @FXML private ChoiceBox<?> numberOfGuestsRental;
 
+  /** DatePicker rentalDatePicker is used to select a date during their stay to use the rental */
   @FXML private DatePicker rentalDatePicker;
 
+  /** DatePicker snorkelingDatePicker is used to select a date during their stay to go snorkeling */
   @FXML private DatePicker snorkelingDatePicker;
 
+  /**
+   * ChoiceBox numberOfGuestsSnorkeling is used to to put how many people are registering for the
+   * snorkeling tour
+   */
   @FXML private ChoiceBox<?> numberOfGuestsSnorkeling;
 
+  /**
+   * The goToConfirmationPage() method will go to the confirmation page to confirm their activity.
+   * It must have both the date and number of guests selected and the date must be within their stay
+   * which is checked with the database.
+   *
+   * @param event will open the confirmation page
+   */
   @FXML
   void goToConfirmationPage(MouseEvent event) {}
 
