@@ -1,5 +1,3 @@
 package resort;
 
-public class DiningController {
-
-}
+public class DiningController {}

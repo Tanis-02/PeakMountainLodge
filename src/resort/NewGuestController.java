@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/** Everything in the NewGuestController corresponds to items on the new_guest.fxml file */
 public class NewGuestController {
 
   /**
@@ -32,7 +33,14 @@ public class NewGuestController {
   @FXML private ChoiceBox<?> numberOfGuests;
 
   @FXML
-  void goToAvailableRoomsPage(MouseEvent event) {}
+  void goToAvailableRoomsPage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+    Stage rooms = new Stage();
+    rooms.setTitle("Please choose a room");
+    rooms.setScene(new Scene(root, 800, 700));
+    rooms.show();
+  }
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were

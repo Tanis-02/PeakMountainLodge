@@ -60,8 +60,8 @@ public class CreateAccountController {
     ((Node) (event.getSource())).getScene().getWindow().hide();
     Parent root = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
     Stage home = new Stage();
-    home.setTitle("Select a room");
-    home.setScene(new Scene(root, 800, 600));
+    home.setTitle("Please choose a room");
+    home.setScene(new Scene(root, 800, 700));
     home.show();
   }
 }
