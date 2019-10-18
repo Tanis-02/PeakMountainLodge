@@ -15,6 +15,12 @@ import javafx.stage.Stage;
  */
 public class CurrentGuestOptionsController {
 
+  /**
+   * The goToActivitiesPage will open the activities page
+   *
+   * @param event goes to activities page
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToActivitiesPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -23,6 +29,19 @@ public class CurrentGuestOptionsController {
     activities.setTitle("Please choose an activity");
     activities.setScene(new Scene(root, 800, 700));
     activities.show();
+  }
+
+  @FXML
+  void goToDiningPage(MouseEvent event) {}
+
+  @FXML
+  void goToSpecialRequestsPage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("special_requests.fxml"));
+    Stage requests = new Stage();
+    requests.setTitle("Please choose one of the following");
+    requests.setScene(new Scene(root, 800, 700));
+    requests.show();
   }
 
   /**

@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-  xmlns:fx="http://javafx.com/fxml"
-  fx:controller="resort.SpecialRequestsController"
-  prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.SpecialRequestsController">
+  <ScrollPane prefHeight="700.0" prefWidth="800.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0"/>
+  </ScrollPane>
+  <ImageView fitHeight="700.0" fitWidth="800.0" pickOnBounds="true">
+    <Image url="@resort.jpg"/>
+  </ImageView>
+  <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="14.0" layoutY="100.0" pickOnBounds="true">
+    <Image url="@bedding.jpg"/>
+  </ImageView>
+  <Label layoutX="314.0" layoutY="14.0" text="Special Requests">
+    <font>
+      <Font name="Freestyle Script" size="40.0"/>
+    </font>
+  </Label>
+  <TextArea editable="false" layoutX="362.0" layoutY="152.0" prefHeight="96.0" prefWidth="200.0"
+    text="We provide feather and regular pillows, down comforters, and additional sheets. Please choose which you need and how many."
+    wrapText="true"/>
+  <ComboBox fx:id="typeOfBedding" layoutX="602.0" layoutY="152.0" prefWidth="150.0"/>
+  <ComboBox fx:id="quantityOfBedding" layoutX="602.0" layoutY="187.0" prefWidth="150.0"/>
+  <Button layoutX="648.0" layoutY="222.0" mnemonicParsing="false"
+    onMouseClicked="#goToConfirmationPage" text="Request"/>
+  <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="14.0" layoutY="327.0" pickOnBounds="true">
+    <Image url="@towels.jpg"/>
+  </ImageView>
+  <TextField layoutX="362.0" layoutY="597.0" prefHeight="25.0" prefWidth="242.0"
+    promptText="Send us a message for additional requests"/>
+  <Button layoutX="627.0" layoutY="597.0" mnemonicParsing="false" text="Send"/>
+  <TextArea editable="false" layoutX="362.0" layoutY="379.0" prefHeight="96.0" prefWidth="200.0"
+    text="We provide shampoo, conditioner, body wash, lotion, hand towels, and bath towels. Please choose which you need and how many."
+    wrapText="true"/>
+  <ComboBox fx:id="typeOfToiletry" layoutX="608.0" layoutY="379.0" prefWidth="150.0"/>
+  <ComboBox fx:id="quantityOfToiletry" layoutX="608.0" layoutY="414.0" prefWidth="150.0"/>
+  <Button layoutX="654.0" layoutY="449.0" mnemonicParsing="false"
+    onMouseClicked="#goToConfirmationPage" text="Request"/>
+  <Label layoutX="170.0" layoutY="658.0"
+    text="Disclaimer: Please allow a minimum of 60 minutes for all special requests to be fulfilled."
+    textFill="WHITE"/>
+  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage"
+    text="Back"/>
 </AnchorPane>

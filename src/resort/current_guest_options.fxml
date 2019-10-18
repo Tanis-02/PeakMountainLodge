@@ -38,10 +38,10 @@
     </rowConstraints>
     <Button mnemonicParsing="false" onMouseClicked="#goToActivitiesPage" prefWidth="150.0"
       text="Resort Activities" GridPane.columnIndex="1"/>
-    <Button mnemonicParsing="false" prefWidth="150.0" text="Special Requests"
-      GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <Button mnemonicParsing="false" prefWidth="150.0" text="Dining Reservations"
-      GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Button mnemonicParsing="false" onMouseClicked="#goToSpecialRequestsPage" prefWidth="150.0"
+      text="Special Requests" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Button mnemonicParsing="false" onMouseClicked="#goToDiningPage" prefWidth="150.0"
+      text="Dining Reservations" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
   </GridPane>
   <Label layoutX="552.0" layoutY="333.0" text="Choose one of the following:"/>
 </AnchorPane>
