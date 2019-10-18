@@ -15,6 +15,16 @@ import javafx.stage.Stage;
  */
 public class CurrentGuestOptionsController {
 
+  @FXML
+  void goToActivitiesPage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("activities.fxml"));
+    Stage activities = new Stage();
+    activities.setTitle("Please choose an activity");
+    activities.setScene(new Scene(root, 800, 700));
+    activities.show();
+  }
+
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were
    * on. It will be used across almost all screens.
