@@ -1,6 +1,10 @@
 package resort;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,6 +35,17 @@ public class NewGuestController {
    * appropriate rooms according to the value entered.
    */
   @FXML private ChoiceBox<?> numberOfGuests;
+
+  public void initialize() {
+    List<Integer> numbers = new ArrayList<>();
+    for (int i = 1; i <= 10; i++) {
+      numbers.add(i);
+    }
+    ObservableList numberList = FXCollections.observableList(numbers);
+    numberOfGuests.getItems().clear();
+    numberOfGuests.setItems(numberList);
+    numberOfGuests.getSelectionModel().selectFirst();
+  }
 
   @FXML
   void goToAvailableRoomsPage(MouseEvent event) throws IOException {

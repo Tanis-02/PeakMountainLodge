@@ -1,6 +1,11 @@
 package resort;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,6 +24,20 @@ public class SpecialRequestsController {
   @FXML private ComboBox<?> typeOfToiletry;
 
   @FXML private ComboBox<?> quantityOfToiletry;
+
+  public void initialize() {
+    List<Integer> numbers = new ArrayList<>();
+    for (int i = 1; i <= 5; i++) {
+      numbers.add(i);
+    }
+    ObservableList numberList = FXCollections.observableList(numbers);
+    quantityOfBedding.getItems().clear();
+    quantityOfBedding.setItems(numberList);
+    quantityOfBedding.getSelectionModel().selectFirst();
+    quantityOfToiletry.getItems().clear();
+    quantityOfToiletry.setItems(numberList);
+    quantityOfToiletry.getSelectionModel().selectFirst();
+  }
 
   @FXML
   void goToConfirmationPage(MouseEvent event) {}

@@ -1,6 +1,10 @@
 package resort;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -30,6 +34,20 @@ public class ActivitiesController {
    * snorkeling tour
    */
   @FXML private ChoiceBox<?> numberOfGuestsSnorkeling;
+
+  public void initialize() {
+    List<Integer> numbers = new ArrayList<>();
+    for (int i = 1; i <= 5; i++) {
+      numbers.add(i);
+    }
+    ObservableList numberList = FXCollections.observableList(numbers);
+    numberOfGuestsRental.getItems().clear();
+    numberOfGuestsRental.setItems(numberList);
+    numberOfGuestsRental.getSelectionModel().selectFirst();
+    numberOfGuestsSnorkeling.getItems().clear();
+    numberOfGuestsSnorkeling.setItems(numberList);
+    numberOfGuestsSnorkeling.getSelectionModel().selectFirst();
+  }
 
   /**
    * The goToConfirmationPage() method will go to the confirmation page to confirm their activity.
