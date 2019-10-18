@@ -32,7 +32,14 @@ public class CurrentGuestOptionsController {
   }
 
   @FXML
-  void goToDiningPage(MouseEvent event) {}
+  void goToDiningPage(MouseEvent event) throws IOException {
+    ((Node) (event.getSource())).getScene().getWindow().hide();
+    Parent root = FXMLLoader.load(getClass().getResource("dining.fxml"));
+    Stage dining = new Stage();
+    dining.setTitle("Choose a restaurant");
+    dining.setScene(new Scene(root, 800, 700));
+    dining.show();
+  }
 
   @FXML
   void goToSpecialRequestsPage(MouseEvent event) throws IOException {
