@@ -9,8 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml file.
+ */
 public class AvailableRoomsController {
 
+  /**
+   * Once a customer selects a room, they are then asked to create an account before checking out.
+   *
+   * @param event goes to the create account page
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();

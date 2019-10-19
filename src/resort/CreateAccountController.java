@@ -14,38 +14,38 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the CreateAccountController corresponds to items on the create_account.fxml file
+ * Everything in the CreateAccountController corresponds to items on the create_account.fxml file.
  */
 public class CreateAccountController {
 
-  /** Text field to insert the user's first name into the database */
+  /** Text field to insert the user's first name into the database. */
   @FXML private TextField firstName;
 
-  /** Text field to insert the user's last name into the database */
+  /** Text field to insert the user's last name into the database. */
   @FXML private TextField lastName;
 
-  /** Text field to insert the user's phone number into the database */
+  /** Text field to insert the user's phone number into the database. */
   @FXML private TextField phoneNumber;
 
-  /** Text field to insert the user's email into the database */
+  /** Text field to insert the user's email into the database. */
   @FXML private TextField email;
 
-  /** Combo box to allow the user to choose from which region they are from */
+  /** Combo box to allow the user to choose from which region they are from. */
   @FXML private ComboBox<?> region;
 
-  /** Text field to insert the user's address into the database */
+  /** Text field to insert the user's address into the database. */
   @FXML private TextField address;
 
-  /** Text field to insert the user's zip code into the database */
+  /** Text field to insert the user's zip code into the database. */
   @FXML private TextField zipCode;
 
-  /** Text field to insert the user's password into the database */
+  /** Text field to insert the user's password into the database. */
   @FXML private PasswordField password;
 
-  /** Check box to receive the user's permission to send a confirmation email to them */
+  /** Check box to receive the user's permission to send a confirmation email to them. */
   @FXML private CheckBox confirmation;
 
-  /** Check box to receive the user's permission to send promotional emails to them */
+  /** Check box to receive the user's permission to send promotional emails to them. */
   @FXML private CheckBox promotions;
 
   /**

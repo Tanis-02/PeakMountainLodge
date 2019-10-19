@@ -16,11 +16,19 @@ import javafx.stage.Stage;
  */
 public class CurrentGuestOptionsController {
 
-  private static String familyName = "Guest";
+  /**
+   * Field member familyName is used to display the family's name on the screen once they log in.
+   * Right now, it's initialized to "Guest".
+   */
+  private String familyName = "Guest";
 
+  /** Label that will be used for greeting the guest once they log in. */
   @FXML private Label greetGuest;
 
   /**
+   * The setFamilyName() function is used to display the family's name on the screen once they log
+   * in. Right now, it's initialized to "Guest".
+   *
    * @param lastName is assigned to familyName and is used to greet the user by name in this scene
    */
   void setFamilyName(String lastName) {
@@ -28,12 +36,14 @@ public class CurrentGuestOptionsController {
     greetGuest.setText("Hello, " + familyName + " Family");
   }
 
+  /** The initialize() method is used to initialize the name of the family on the screen. */
   @FXML
   private void initialize() {
     greetGuest.setText("Hello, " + familyName + " Family");
   }
+
   /**
-   * The goToActivitiesPage will open the activities page
+   * The goToActivitiesPage() will open the activities page.
    *
    * @param event goes to activities page
    * @throws IOException yes, it does
@@ -48,6 +58,12 @@ public class CurrentGuestOptionsController {
     activities.show();
   }
 
+  /**
+   * The goToDiningPage() will open the dining page.
+   *
+   * @param event goes to the dining page
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToDiningPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -58,6 +74,12 @@ public class CurrentGuestOptionsController {
     dining.show();
   }
 
+  /**
+   * The goToSpecialRequestsPage() will open the special requests page.
+   *
+   * @param event goes to the special requests page
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToSpecialRequestsPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();

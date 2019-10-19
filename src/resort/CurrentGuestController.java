@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 /** Everything in the CurrentGuestController corresponds to items on the current_guest.fxml file */
 public class CurrentGuestController {
 
-  /** Text field to get the user's last name to compare against the database records */
+  /** Text field to get the user's last name to compare against the database records. */
   @FXML private TextField lastName;
 
-  /** Text field to get the user's phone number to compare against the database records */
+  /** Text field to get the user's phone number to compare against the database records. */
   @FXML private TextField phoneNumber;
 
-  /** Label to prompt the user to try again in the event an invalid login attempt is made */
+  /** Label to prompt the user to try again in the event an invalid login attempt is made. */
   @FXML private Label badGuestInput;
 
   /**

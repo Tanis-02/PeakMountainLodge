@@ -17,7 +17,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in ActivitiesController corresponds to items in the activities.fxml file */
+/** Everything in ActivitiesController corresponds to items in the activities.fxml file. */
 public class ActivitiesController {
 
   /**
