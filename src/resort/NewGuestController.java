@@ -20,13 +20,13 @@ public class NewGuestController {
 
   /**
    * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
-   * database
+   * database.
    */
   @FXML private DatePicker checkIn;
 
   /**
    * DatePicker checkOut is used to obtain the check out date of the customer and store it to the
-   * database
+   * database.
    */
   @FXML private DatePicker checkOut;
 
@@ -36,6 +36,10 @@ public class NewGuestController {
    */
   @FXML private ChoiceBox<?> numberOfGuests;
 
+  /**
+   * The initialize() function is used to initialize the value in the combo box for the number of
+   * guests going on the trip.
+   */
   public void initialize() {
     List<Integer> numbers = new ArrayList<>();
     for (int i = 1; i <= 10; i++) {
@@ -47,6 +51,13 @@ public class NewGuestController {
     numberOfGuests.getSelectionModel().selectFirst();
   }
 
+  /**
+   * Once a customer chooses their dates and number of guests, they will be shown the available
+   * rooms that meet their criteria.
+   *
+   * @param event goes to the available rooms page
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToAvailableRoomsPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();

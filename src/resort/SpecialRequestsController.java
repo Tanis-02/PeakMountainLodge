@@ -16,16 +16,28 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Everything in the SpecialRequestsController corresponds to items in the special_request.fxml
+ * file.
+ */
 public class SpecialRequestsController {
 
+  /** ComboBox typeOfBedding is the type of bedding that the customer can request. */
   @FXML private ComboBox<?> typeOfBedding;
 
+  /** ComboBox quantityOfBedding is how much of the type of bedding the customer can request. */
   @FXML private ComboBox<?> quantityOfBedding;
 
+  /** ComboBox typeOfToiletry is the type of toiletry that the customer can request. */
   @FXML private ComboBox<?> typeOfToiletry;
 
+  /** ComboBox quantityOfToiletry is how much of the type of toiletry the customer can request. */
   @FXML private ComboBox<?> quantityOfToiletry;
 
+  /**
+   * The initialize() function initializes the combo boxes with the values for the quantities of
+   * items being requested. Will be added to later to include the actual items being requested.
+   */
   public void initialize() {
     List<Integer> numbers = new ArrayList<>();
     for (int i = 1; i <= 5; i++) {
@@ -40,6 +52,12 @@ public class SpecialRequestsController {
     quantityOfToiletry.getSelectionModel().selectFirst();
   }
 
+  /**
+   * The goToConfirmationPage() right now just displays an alert rather than an actual scene. Will
+   * be updated later with actual scene.
+   *
+   * @param event opens the confirmation alert to confirm to the customer the action they made
+   */
   @FXML
   void goToConfirmationPage(MouseEvent event) {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
@@ -47,6 +65,12 @@ public class SpecialRequestsController {
     confirmation.show();
   }
 
+  /**
+   * The sendMessage() function right now just displays an alert rather than an actual scene. Will
+   * be updated later with actual scene.
+   *
+   * @param event opens the confirmation alert to confirm to the customer the action they made
+   */
   @FXML
   void sendMessage(MouseEvent event) {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);

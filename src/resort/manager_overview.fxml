@@ -47,7 +47,7 @@
         <Label text="Sort By" GridPane.rowIndex="2"/>
         <ChoiceBox fx:id="sortBy" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         <DatePicker fx:id="startDate" prefWidth="193.0" GridPane.columnIndex="1"/>
-        <DatePicker fx:id="EndDate" prefWidth="193.0" GridPane.columnIndex="1"
+        <DatePicker fx:id="endDate" prefWidth="193.0" GridPane.columnIndex="1"
           GridPane.rowIndex="1"/>
       </GridPane>
       <Label layoutX="31.0" layoutY="80.0" text="Previous Reports"/>

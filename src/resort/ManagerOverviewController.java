@@ -20,43 +20,43 @@ public class ManagerOverviewController {
   /** Table view financialReportsTableView is used to see all of the financial reports. */
   @FXML private TableView<?> financialReportsTableView;
 
-  /** ChoiceBox sortBy allows the user to sort by a particular field in the financial reports */
+  /** ChoiceBox sortBy allows the user to sort by a particular field in the financial reports. */
   @FXML private ChoiceBox<?> sortBy;
 
-  /** DatePicker startDate is used to select a start date for the financial reports table view */
+  /** DatePicker startDate is used to select a start date for the financial reports table view. */
   @FXML private DatePicker startDate;
 
-  /** DatePicker endDate is used to select an end date for the financial reports table view */
-  @FXML private DatePicker EndDate;
+  /** DatePicker endDate is used to select an end date for the financial reports table view. */
+  @FXML private DatePicker endDate;
 
-  /** ChoiceBox previousReports allows the user to select a year to view those reports */
+  /** ChoiceBox previousReports allows the user to select a year to view those reports. */
   @FXML private ChoiceBox<?> previousReports;
 
-  /** Table view blackOutDatesTableView is used to view all of the rooms and to select a room */
+  /** Table view blackOutDatesTableView is used to view all of the rooms and to select a room. */
   @FXML private TableView<?> blackOutDatesTableView;
 
-  /** CheckBox confirmation is used to confirm black out date selection */
+  /** CheckBox confirmation is used to confirm black out date selection. */
   @FXML private CheckBox confirmation;
 
-  /** DatePicker datePicker is used to select the date for blacking out dates */
+  /** DatePicker datePicker is used to select the date for blacking out dates. */
   @FXML private DatePicker datePicker;
 
-  /** Table view promotionsTableView is used to view all of the rooms and to select a room */
+  /** Table view promotionsTableView is used to view all of the rooms and to select a room. */
   @FXML private TableView<?> promotionsTableView;
 
   /**
    * Table view customerInformationTableView is used to view all of the customers and their related
-   * information from the database
+   * information from the database.
    */
   @FXML private TableView<?> customerInformationTableView;
 
-  /** Text field to look up the customer by their name from the database */
+  /** Text field to look up the customer by their name from the database. */
   @FXML private TextField customerName;
 
-  /** Text field to look up the customer by their phone number from the database */
+  /** Text field to look up the customer by their phone number from the database. */
   @FXML private TextField customerPhone;
 
-  /** Text field to look up the customer by their credit card number from the database */
+  /** Text field to look up the customer by their credit card number from the database. */
   @FXML private TextField creditCardNumber;
 
   /**

@@ -15,15 +15,15 @@ import javafx.stage.Stage;
 /** Everything in the ManagerLoginController corresponds to items on the manager_login.fxml file */
 public class ManagerLoginController {
 
-  /** Text field managerID to get the user's ID to compare against the database records */
+  /** Text field managerID to get the user's ID to compare against the database records. */
   @FXML private TextField managerID;
 
   /**
-   * Text field managerPassword to get the user's password to compare against the database records
+   * Text field managerPassword to get the user's password to compare against the database records.
    */
   @FXML private PasswordField managerPassword;
 
-  /** Label to prompt the user to try again in the event an invalid login attempt is made */
+  /** Label to prompt the user to try again in the event an invalid login attempt is made. */
   @FXML private Label badManagerInput;
 
   /**

@@ -11,8 +11,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/** Everything in the DiningController corresponds to items on the dining.fxml file. */
 public class DiningController {
 
+  /**
+   * The goToConfirmationPage() right now just displays an alert rather than an actual scene. Will
+   * be updated later with actual scene.
+   *
+   * @param event opens the confirmation alert to confirm to the customer the action they made
+   */
   @FXML
   void goToConfirmationPage(MouseEvent event) {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
