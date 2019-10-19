@@ -45,5 +45,5 @@
   </GridPane>
   <Button layoutX="686.0" layoutY="477.0" mnemonicParsing="false"
     onMouseClicked="#goToManagerOverview" text="Log In"/>
-  <Label fx:id="badManagerInput" text="" layoutX="506.0" layoutY="480.0" style="-fx-font-weight: bold"/>
+  <Label fx:id="badManagerInput" layoutX="506.0" layoutY="480.0" style="-fx-font-weight: bold"/>
 </AnchorPane>

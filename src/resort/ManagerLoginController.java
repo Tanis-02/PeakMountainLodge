@@ -23,9 +23,7 @@ public class ManagerLoginController {
    */
   @FXML private PasswordField managerPassword;
 
-  /**
-   * Label to prompt the user to try again in the event an invalid login attempt is made
-   */
+  /** Label to prompt the user to try again in the event an invalid login attempt is made */
   @FXML private Label badManagerInput;
 
   /**
@@ -49,20 +47,20 @@ public class ManagerLoginController {
    * The goToManagerOverview() function is used to check the conditions of the managerID and
    * managerPassword text fields to the values stored in the database. If either the ID or password
    * don't match a record in the database, it will display an error message. If both the ID and
-   * password are successful, it will open to the manager overview page.
+   * password are successful, it will open to the manager overview page. Admin and password are
+   * placeholders for valid manager ID and password combinations pulled from a database.
    */
   @FXML
   void goToManagerOverview(MouseEvent mouseEvent) throws IOException {
-    // admin and password are placeholders for valid manager ID + password combinations pulled from a database
-    if (managerID.getText().equals("admin") && managerPassword.getText().equals("password")) {
+    if (managerID.getText().equalsIgnoreCase("Admin")
+        && managerPassword.getText().equalsIgnoreCase("password")) {
       ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
       Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
       Stage logInStage = new Stage();
       logInStage.setTitle("Choose to View");
       logInStage.setScene(new Scene(root, 800, 600));
       logInStage.show();
-    }
-    else {
+    } else {
       badManagerInput.setText("Bad Login Attempt - Try Again");
     }
   }

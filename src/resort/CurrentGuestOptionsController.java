@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  */
 public class CurrentGuestOptionsController {
 
-  private static String familyName;
+  private static String familyName = "Guest";
 
   @FXML private Label greetGuest;
 

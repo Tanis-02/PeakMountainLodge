@@ -30,7 +30,7 @@
       </Label>
       <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="19.0" layoutY="143.0"
         pickOnBounds="true">
-        <Image url="@jetskii.jpg"/>
+        <Image url="@jet_ski.jpg"/>
       </ImageView>
       <Label layoutX="319.0" layoutY="101.0" text="Water Sport Rentals">
         <font>
@@ -39,7 +39,7 @@
       </Label>
       <TextArea editable="false" layoutX="377.0" layoutY="163.0" prefHeight="169.0"
         prefWidth="200.0"
-        text="Spend the day on the water having FUN!! We have available jet skiis, kayaks, scooters, surfboards, sailboats,  and banana rides. Come hang out by the water and play with our toys or sit on the deck and watch the kids! Rentals all begin at 10:00 AM on your scheduled date."
+        text="Spend the day on the water having FUN!! We have available jet skis, kayaks, scooters, surfboards, sailboats,  and banana rides. Come hang out by the water and play with our toys or sit on the deck and watch the kids! Rentals all begin at 10:00 AM on your scheduled date."
         wrapText="true"/>
       <Button layoutX="644.0" layoutY="306.0" mnemonicParsing="false"
         onMouseClicked="#goToConfirmationPage" text="Book Now"/>
@@ -47,7 +47,7 @@
         onMouseClicked="#goToConfirmationPage" text="Book Now"/>
       <TextArea editable="false" layoutX="377.0" layoutY="441.0" prefHeight="171.0"
         prefWidth="200.0"
-        text="Go on a relaxing guided tour of our beautiful resort area while being guided by a local guidesman. Search for shells, see wildlife up close, and explore the underwater like never before! All snorkeling adventures begin at 8:00 AM, 12:00 PM, or 2:00 PM on your scheduled date."
+        text="Go on a relaxing guided tour of our beautiful resort area while being guided by a local guides man. Search for shells, see wildlife up close, and explore the underwater like never before! All snorkeling adventures begin at 8:00 AM, 12:00 PM, or 2:00 PM on your scheduled date."
         wrapText="true"/>
       <Label layoutX="356.0" layoutY="372.0" text="Snorkeling">
         <font>

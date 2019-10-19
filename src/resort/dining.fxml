@@ -43,7 +43,7 @@
         headerText="Waterside" layoutX="535.0" layoutY="125.0" prefHeight="190.0"
         prefWidth="234.0"/>
       <DialogPane
-        contentText="Dine amongst the sea life! Friends and family will never forget this amazing opportunity to see wildlife from a rare view. UnderWater offers fresh sushi, catch of the day, and regulars such as Mahi-Mahi and Grouper. Ask the server for the daily special. You won't be disappointed!"
+        contentText="Dine amongst the sea life! Friends and family will never forget this amazing opportunity to see wildlife from a rare view. UnderWater offers fresh sushi, catch of the day, and regulars such as Swordfish and Grouper. Ask the server for the daily special. You won't be disappointed!"
         headerText="UnderWater" layoutX="535.0" layoutY="401.0" prefHeight="190.0"
         prefWidth="234.0"/>
     </AnchorPane>
