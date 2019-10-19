@@ -16,7 +16,7 @@
   <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
     <Image url="@resort.jpg"/>
   </ImageView>
-  <Label layoutX="512.0" layoutY="39.0" prefHeight="96.0" prefWidth="274.0" text="Hello, Name Here"
+  <Label fx:id="greetGuest" layoutX="512.0" layoutY="39.0" prefHeight="96.0" prefWidth="274.0"
     textFill="#0a0a0a">
     <font>
       <Font name="Freestyle Script" size="40.0"/>

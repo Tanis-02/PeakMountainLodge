@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -21,6 +22,11 @@ public class ManagerLoginController {
    * Text field managerPassword to get the user's password to compare against the database records
    */
   @FXML private PasswordField managerPassword;
+
+  /**
+   * Label to prompt the user to try again in the event an invalid login attempt is made
+   */
+  @FXML private Label badManagerInput;
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were
@@ -47,11 +53,17 @@ public class ManagerLoginController {
    */
   @FXML
   void goToManagerOverview(MouseEvent mouseEvent) throws IOException {
-    ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
-    Stage logInStage = new Stage();
-    logInStage.setTitle("Choose to View");
-    logInStage.setScene(new Scene(root, 800, 600));
-    logInStage.show();
+    // admin and password are placeholders for valid manager ID + password combinations pulled from a database
+    if (managerID.getText().equals("admin") && managerPassword.getText().equals("password")) {
+      ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+      Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
+      Stage logInStage = new Stage();
+      logInStage.setTitle("Choose to View");
+      logInStage.setScene(new Scene(root, 800, 600));
+      logInStage.show();
+    }
+    else {
+      badManagerInput.setText("Bad Login Attempt - Try Again");
+    }
   }
 }

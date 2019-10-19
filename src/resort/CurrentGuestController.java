@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -19,6 +20,9 @@ public class CurrentGuestController {
   /** Text field to get the user's phone number to compare against the database records */
   @FXML private TextField phoneNumber;
 
+  /** Label to prompt the user to try again in the event an invalid login attempt is made */
+  @FXML private Label badGuestInput;
+
   /**
    * The goToCurrentGuestOptionsPage() function is used to check the conditions of the lastName and
    * phoneNumber text fields to the values stored in the database. If either the phone number or
@@ -27,12 +31,21 @@ public class CurrentGuestController {
    */
   @FXML
   void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
-    Stage options = new Stage();
-    options.setTitle("Please choose an option");
-    options.setScene(new Scene(root, 800, 600));
-    options.show();
+    // lastname and phonenumber are placeholders for valid name + number combinations pulled from a database
+    if (lastName.getText().equals("lastname") && phoneNumber.getText().equals("phonenumber")) {
+      ((Node) (event.getSource())).getScene().getWindow().hide();
+      FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
+      Parent root = greetLoader.load();
+      CurrentGuestOptionsController controller = greetLoader.getController();
+      controller.setFamilyName(lastName.getText());
+      Stage options = new Stage();
+      options.setTitle("Please choose an option");
+      options.setScene(new Scene(root, 800, 600));
+      options.show();
+    }
+    else {
+      badGuestInput.setText("Bad Login Attempt - Try Again");
+    }
   }
 
   /**
