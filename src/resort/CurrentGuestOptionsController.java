@@ -3,7 +3,6 @@ package resort;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,17 +19,18 @@ public class CurrentGuestOptionsController {
   private static String familyName;
 
   @FXML private Label greetGuest;
+
   /**
-   *
    * @param lastName is assigned to familyName and is used to greet the user by name in this scene
    */
-  public void setFamilyName(String lastName) {
-    familyName = lastName;
-    greetGuest.setText("Hello, "+familyName+" Family");
+  void setFamilyName(String lastName) {
+    familyName = "Guest";
+    greetGuest.setText("Hello, " + familyName + " Family");
   }
+
   @FXML
   private void initialize() {
-    greetGuest.setText("Hello, "+familyName+" Family");
+    greetGuest.setText("Hello, " + familyName + " Family");
   }
   /**
    * The goToActivitiesPage will open the activities page

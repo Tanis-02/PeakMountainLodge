@@ -2,7 +2,6 @@ package resort;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -40,7 +41,18 @@ public class SpecialRequestsController {
   }
 
   @FXML
-  void goToConfirmationPage(MouseEvent event) {}
+  void goToConfirmationPage(MouseEvent event) {
+    Alert confirmation = new Alert(AlertType.CONFIRMATION);
+    confirmation.setContentText("Your special request has been submitted!");
+    confirmation.show();
+  }
+
+  @FXML
+  void sendMessage(MouseEvent event) {
+    Alert confirmation = new Alert(AlertType.CONFIRMATION);
+    confirmation.setContentText("Your message has been sent! We will contact you shortly.");
+    confirmation.show();
+  }
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were

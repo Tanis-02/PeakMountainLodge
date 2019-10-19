@@ -39,7 +39,8 @@
   </ImageView>
   <TextField layoutX="362.0" layoutY="597.0" prefHeight="25.0" prefWidth="242.0"
     promptText="Send us a message for additional requests"/>
-  <Button layoutX="627.0" layoutY="597.0" mnemonicParsing="false" text="Send"/>
+  <Button layoutX="627.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#sendMessage"
+    text="Send"/>
   <TextArea editable="false" layoutX="362.0" layoutY="379.0" prefHeight="96.0" prefWidth="200.0"
     text="We provide shampoo, conditioner, body wash, lotion, hand towels, and bath towels. Please choose which you need and how many."
     wrapText="true"/>

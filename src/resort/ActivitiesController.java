@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
@@ -19,22 +21,28 @@ import javafx.stage.Stage;
 public class ActivitiesController {
 
   /**
-   * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental
+   * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental.
    */
   @FXML private ChoiceBox<?> numberOfGuestsRental;
 
-  /** DatePicker rentalDatePicker is used to select a date during their stay to use the rental */
+  /** DatePicker rentalDatePicker is used to select a date during their stay to use the rental. */
   @FXML private DatePicker rentalDatePicker;
 
-  /** DatePicker snorkelingDatePicker is used to select a date during their stay to go snorkeling */
+  /**
+   * DatePicker snorkelingDatePicker is used to select a date during their stay to go snorkeling.
+   */
   @FXML private DatePicker snorkelingDatePicker;
 
   /**
    * ChoiceBox numberOfGuestsSnorkeling is used to to put how many people are registering for the
-   * snorkeling tour
+   * snorkeling tour.
    */
   @FXML private ChoiceBox<?> numberOfGuestsSnorkeling;
 
+  /**
+   * The initialize() function is used to initialize the number of guests in the rental and
+   * snorkeling combo boxes.
+   */
   public void initialize() {
     List<Integer> numbers = new ArrayList<>();
     for (int i = 1; i <= 5; i++) {
@@ -57,7 +65,11 @@ public class ActivitiesController {
    * @param event will open the confirmation page
    */
   @FXML
-  void goToConfirmationPage(MouseEvent event) {}
+  void goToConfirmationPage(MouseEvent event) {
+    Alert confirmation = new Alert(AlertType.CONFIRMATION);
+    confirmation.setContentText("Your activity has been confirmed!");
+    confirmation.show();
+  }
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were

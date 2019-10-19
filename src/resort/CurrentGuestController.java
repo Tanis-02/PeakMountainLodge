@@ -27,12 +27,13 @@ public class CurrentGuestController {
    * The goToCurrentGuestOptionsPage() function is used to check the conditions of the lastName and
    * phoneNumber text fields to the values stored in the database. If either the phone number or
    * last name don't match a record in the database, it will display an error message. If both the
-   * last name and phone are successful, it will open to the current_guest_options page.
+   * last name and phone are successful, it will open to the current_guest_options page. Guest and
+   * 1234567890 are placeholders for valid name and number combinations pulled from a database.
    */
   @FXML
   void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException {
-    // lastname and phonenumber are placeholders for valid name + number combinations pulled from a database
-    if (lastName.getText().equals("lastname") && phoneNumber.getText().equals("phonenumber")) {
+    if (lastName.getText().equalsIgnoreCase("Guest")
+        && phoneNumber.getText().equals("1234567890")) {
       ((Node) (event.getSource())).getScene().getWindow().hide();
       FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
       Parent root = greetLoader.load();
@@ -42,8 +43,7 @@ public class CurrentGuestController {
       options.setTitle("Please choose an option");
       options.setScene(new Scene(root, 800, 600));
       options.show();
-    }
-    else {
+    } else {
       badGuestInput.setText("Bad Login Attempt - Try Again");
     }
   }
