@@ -1,6 +1,8 @@
 package resort;
 
 import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,7 +33,7 @@ public class CreateAccountController {
   @FXML private TextField email;
 
   /** Combo box to allow the user to choose from which region they are from. */
-  @FXML private ComboBox<?> region;
+  @FXML private ComboBox<String> region;
 
   /** Text field to insert the user's address into the database. */
   @FXML private TextField address;
@@ -52,9 +54,15 @@ public class CreateAccountController {
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were
    * on. It will be used across almost all screens.
    *
-   * @param event MouseEvent upon clicking the back button
    * @throws IOException yes, it does
    */
+  public void initialize() {
+    ObservableList<String> option =
+        FXCollections.observableArrayList( "United States", "Canada", "France", "Germany", "United Kingdom");
+    region.setItems(option);
+    region.getSelectionModel();
+  }
+
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
