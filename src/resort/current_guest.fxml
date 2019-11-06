@@ -15,7 +15,7 @@
   prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
   xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.CurrentGuestController">
   <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
-    <Image url="@resort.jpg"/>
+    <Image url="@images/resort.jpg"/>
   </ImageView>
   <Label layoutX="350.0" layoutY="46.0" prefHeight="96.0" prefWidth="441.0"
     text="Welcome to Twin Peaks Resort and Spa" textFill="#0a0a0a">

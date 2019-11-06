@@ -51,7 +51,8 @@ public class CurrentGuestOptionsController {
   @FXML
   void goToActivitiesPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("activities.fxml"));
+    Parent root =
+        FXMLLoader.load(getClass().getResource("activities.fxml"));
     Stage activities = new Stage();
     activities.setTitle("Please choose an activity");
     activities.setScene(new Scene(root, 800, 700));

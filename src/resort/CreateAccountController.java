@@ -50,23 +50,25 @@ public class CreateAccountController {
   /** Check box to receive the user's permission to send promotional emails to them. */
   @FXML private CheckBox promotions;
 
+  public void initialize() {
+    ObservableList<String> option =
+        FXCollections.observableArrayList(
+            "United States", "Canada", "France", "Germany", "United Kingdom");
+    region.setItems(option);
+    region.getSelectionModel();
+  }
+
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were
    * on. It will be used across almost all screens.
    *
    * @throws IOException yes, it does
    */
-  public void initialize() {
-    ObservableList<String> option =
-        FXCollections.observableArrayList( "United States", "Canada", "France", "Germany", "United Kingdom");
-    region.setItems(option);
-    region.getSelectionModel();
-  }
-
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+    Parent root =
+        FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
     Stage home = new Stage();
     home.setTitle("Please choose a room");
     home.setScene(new Scene(root, 800, 700));

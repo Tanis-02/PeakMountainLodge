@@ -56,10 +56,9 @@ public class SpecialRequestsController {
    * The goToConfirmationPage() right now just displays an alert rather than an actual scene. Will
    * be updated later with actual scene.
    *
-   * @param event opens the confirmation alert to confirm to the customer the action they made
    */
   @FXML
-  void goToConfirmationPage(MouseEvent event) {
+  void goToConfirmationPage() {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
     confirmation.setContentText("Your special request has been submitted!");
     confirmation.show();
@@ -69,10 +68,9 @@ public class SpecialRequestsController {
    * The sendMessage() function right now just displays an alert rather than an actual scene. Will
    * be updated later with actual scene.
    *
-   * @param event opens the confirmation alert to confirm to the customer the action they made
    */
   @FXML
-  void sendMessage(MouseEvent event) {
+  void sendMessage() {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
     confirmation.setContentText("Your message has been sent! We will contact you shortly.");
     confirmation.show();
@@ -88,7 +86,8 @@ public class SpecialRequestsController {
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+    Parent root =
+        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
     Stage home = new Stage();
     home.setTitle("Please choose an option");
     home.setScene(new Scene(root, 800, 600));

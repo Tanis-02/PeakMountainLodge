@@ -61,11 +61,9 @@ public class ActivitiesController {
    * The goToConfirmationPage() method will go to the confirmation page to confirm their activity.
    * It must have both the date and number of guests selected and the date must be within their stay
    * which is checked with the database.
-   *
-   * @param event will open the confirmation page
    */
   @FXML
-  void goToConfirmationPage(MouseEvent event) {
+  void goToConfirmationPage() {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
     confirmation.setContentText("Your activity has been confirmed!");
     confirmation.show();

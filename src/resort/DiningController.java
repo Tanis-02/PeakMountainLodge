@@ -17,11 +17,9 @@ public class DiningController {
   /**
    * The goToConfirmationPage() right now just displays an alert rather than an actual scene. Will
    * be updated later with actual scene.
-   *
-   * @param event opens the confirmation alert to confirm to the customer the action they made
    */
   @FXML
-  void goToConfirmationPage(MouseEvent event) {
+  void goToConfirmationPage() {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
     confirmation.setContentText("Your dinner reservation has been submitted!");
     confirmation.show();

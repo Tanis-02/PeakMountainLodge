@@ -17,10 +17,10 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0"/>
   </ScrollPane>
   <ImageView fitHeight="700.0" fitWidth="800.0" pickOnBounds="true">
-    <Image url="@resort.jpg"/>
+    <Image url="@images/resort.jpg"/>
   </ImageView>
   <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="14.0" layoutY="100.0" pickOnBounds="true">
-    <Image url="@bedding.jpg"/>
+    <Image url="@images/bedding.jpg"/>
   </ImageView>
   <Label layoutX="314.0" layoutY="14.0" text="Special Requests">
     <font>
@@ -35,7 +35,7 @@
   <Button layoutX="648.0" layoutY="222.0" mnemonicParsing="false"
     onMouseClicked="#goToConfirmationPage" text="Request"/>
   <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="14.0" layoutY="327.0" pickOnBounds="true">
-    <Image url="@towels.jpg"/>
+    <Image url="@images/towels.jpg"/>
   </ImageView>
   <TextField layoutX="362.0" layoutY="597.0" prefHeight="25.0" prefWidth="242.0"
     promptText="Send us a message for additional requests"/>
