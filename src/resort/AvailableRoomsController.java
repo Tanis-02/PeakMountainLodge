@@ -1,5 +1,11 @@
 package resort;
 
+/* Need to be done:
+1. Update pricing based on dates selected.
+2. Show different available rooms based on number of guests.
+3. Show no rooms available for black out dates and no availability (booked up).
+ */
+
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

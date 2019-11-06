@@ -1,5 +1,9 @@
 package resort;
 
+/* Need to be done:
+1. Pull from and compare database names and phone numbers rather than being hard coded.
+ */
+
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -33,11 +33,11 @@
   <ComboBox fx:id="typeOfBedding" layoutX="602.0" layoutY="152.0" prefWidth="150.0"/>
   <ComboBox fx:id="quantityOfBedding" layoutX="602.0" layoutY="187.0" prefWidth="150.0"/>
   <Button layoutX="648.0" layoutY="222.0" mnemonicParsing="false"
-    onMouseClicked="#goToConfirmationPage" text="Request"/>
+    onMouseClicked="#goToBeddingConfirmationPage" text="Request"/>
   <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="14.0" layoutY="327.0" pickOnBounds="true">
     <Image url="@images/towels.jpg"/>
   </ImageView>
-  <TextField layoutX="362.0" layoutY="597.0" prefHeight="25.0" prefWidth="242.0"
+  <TextField fx:id="message" layoutX="362.0" layoutY="597.0" prefHeight="25.0" prefWidth="242.0"
     promptText="Send us a message for additional requests"/>
   <Button layoutX="627.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#sendMessage"
     text="Send"/>
@@ -47,7 +47,7 @@
   <ComboBox fx:id="typeOfToiletry" layoutX="608.0" layoutY="379.0" prefWidth="150.0"/>
   <ComboBox fx:id="quantityOfToiletry" layoutX="608.0" layoutY="414.0" prefWidth="150.0"/>
   <Button layoutX="654.0" layoutY="449.0" mnemonicParsing="false"
-    onMouseClicked="#goToConfirmationPage" text="Request"/>
+    onMouseClicked="#goToToiletryConfirmationPage" text="Request"/>
   <Label layoutX="170.0" layoutY="658.0"
     text="Disclaimer: Please allow a minimum of 60 minutes for all special requests to be fulfilled."
     textFill="WHITE"/>

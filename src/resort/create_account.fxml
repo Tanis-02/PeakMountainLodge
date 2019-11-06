@@ -30,7 +30,8 @@
   </Label>
   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage"
     text="Back"/>
-  <Button layoutX="579.0" layoutY="542.0" mnemonicParsing="false" text="Create Account"/>
+  <Button layoutX="579.0" layoutY="542.0" mnemonicParsing="false" onMouseClicked="#goToCheckoutPage"
+    text="Create Account"/>
   <GridPane layoutX="416.0" layoutY="259.0" prefHeight="216.0" prefWidth="370.0">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>

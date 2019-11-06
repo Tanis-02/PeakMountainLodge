@@ -22,7 +22,7 @@ public class ConnManager {
   }
 
   // Creates a new customer
-  public void insertCustomer(String[] insertValues) throws SQLException {
+  void insertCustomer(String[] insertValues) throws SQLException {
     String insertCustomer =
         "INSERT INTO customers ("
             + "    email,"
@@ -115,7 +115,8 @@ public class ConnManager {
 
       // Put back the one we took away as SQL is not index based
       int currentMonth = day1.get(Calendar.MONTH) + 1;
-      String dateToAdd = day1.get(Calendar.YEAR) + "-" + currentMonth + "-" + day1.get(Calendar.DATE);
+      String dateToAdd =
+          day1.get(Calendar.YEAR) + "-" + currentMonth + "-" + day1.get(Calendar.DATE);
       System.out.println(dateToAdd);
       String insertReservation =
           "INSERT INTO RESERVATIONS ("

@@ -1,6 +1,8 @@
 package resort;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -56,6 +60,36 @@ public class CreateAccountController {
             "United States", "Canada", "France", "Germany", "United Kingdom");
     region.setItems(option);
     region.getSelectionModel();
+  }
+
+  @FXML
+  void goToCheckoutPage(MouseEvent event) throws IOException, SQLException {
+    if (firstName.getText().equalsIgnoreCase("")
+        || lastName.getText().equalsIgnoreCase("")
+        || phoneNumber.getText().equalsIgnoreCase("")
+        || email.getText().equalsIgnoreCase("")
+        || address.getText().equalsIgnoreCase("")
+        || zipCode.getText().equalsIgnoreCase("")
+        || password.getText().equalsIgnoreCase("")
+        || region.getSelectionModel().getSelectedItem().equalsIgnoreCase("Country/Region")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please fill out all fields and choose an appropriate region.");
+      error.show();
+    } else {
+      Parent checkoutParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+      Scene checkoutScene = new Scene(checkoutParent);
+      Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      checkoutStage.setScene(checkoutScene);
+      checkoutStage.show();
+      String[] details = new String[5];
+      ConnManager connManager = new ConnManager();
+      details[0] = email.getText();
+      details[1] = firstName.getText();
+      details[2] = lastName.getText();
+      details[3] = phoneNumber.getText();
+      details[4] = "1234";
+      connManager.insertCustomer(details);
+    }
   }
 
   /**

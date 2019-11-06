@@ -42,9 +42,9 @@
         text="Spend the day on the water having FUN!! We have available jet skis, kayaks, scooters, surfboards, sailboats,  and banana rides. Come hang out by the water and play with our toys or sit on the deck and watch the kids! Rentals all begin at 10:00 AM on your scheduled date."
         wrapText="true"/>
       <Button layoutX="644.0" layoutY="306.0" mnemonicParsing="false"
-        onMouseClicked="#goToConfirmationPage" text="Book Now"/>
+        onMouseClicked="#goToRentalConfirmationPage" text="Book Now"/>
       <Button layoutX="644.0" layoutY="586.0" mnemonicParsing="false"
-        onMouseClicked="#goToConfirmationPage" text="Book Now"/>
+        onMouseClicked="#goToSnorkelingConfirmationPage" text="Book Now"/>
       <TextArea editable="false" layoutX="377.0" layoutY="441.0" prefHeight="171.0"
         prefWidth="200.0"
         text="Go on a relaxing guided tour of our beautiful resort area while being guided by a local guides man. Search for shells, see wildlife up close, and explore the underwater like never before! All snorkeling adventures begin at 8:00 AM, 12:00 PM, or 2:00 PM on your scheduled date."
