@@ -25,11 +25,11 @@
       <TableView fx:id="financialReportsTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0"
         prefWidth="780.0">
         <columns>
-          <TableColumn prefWidth="156.0" text="Room Rates"/>
-          <TableColumn prefWidth="156.0" text="Dining"/>
-          <TableColumn prefWidth="156.0" text="Activities"/>
-          <TableColumn prefWidth="156.0" text="Expenses"/>
-          <TableColumn prefWidth="156.0" text="Total Revenue"/>
+          <TableColumn fx:id="ratesColumn" prefWidth="156.0" text="Room Rates"/>
+          <TableColumn fx:id="diningColumn" prefWidth="156.0" text="Dining"/>
+          <TableColumn fx:id="activitiesColumn" prefWidth="156.0" text="Activities"/>
+          <TableColumn fx:id="expensesColumn" prefWidth="156.0" text="Expenses"/>
+          <TableColumn fx:id="revenueColumn" prefWidth="156.0" text="Total Revenue"/>
         </columns>
       </TableView>
       <GridPane layoutX="380.0" layoutY="10.0" prefHeight="131.0" prefWidth="405.0">
@@ -60,9 +60,9 @@
       <TableView fx:id="blackOutDatesTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0"
         prefWidth="780.0">
         <columns>
-          <TableColumn prefWidth="156.0" text="Date"/>
-          <TableColumn prefWidth="156.0" text="Cost"/>
-          <TableColumn prefWidth="156.0" text="Room Number"/>
+          <TableColumn fx:id="dateColumn" prefWidth="156.0" text="Date"/>
+          <TableColumn fx:id="costColumn" prefWidth="156.0" text="Cost"/>
+          <TableColumn fx:id="roomNumberColumn" prefWidth="156.0" text="Room Number"/>
         </columns>
       </TableView>
       <CheckBox fx:id="confirmation" layoutX="272.0" layoutY="130.0" mnemonicParsing="false"
@@ -70,8 +70,7 @@
       <TextArea editable="false" layoutX="36.0" layoutY="39.0" prefHeight="100.0" prefWidth="200.0"
         text="Warning: Blacking out an available date will remove the selected room from being available for booking. Please use this function with proper approval."
         wrapText="true"/>
-      <Button layoutX="494.0" layoutY="101.0" mnemonicParsing="false"
-        text="Black Out Date"/>
+      <Button layoutX="494.0" layoutY="101.0" mnemonicParsing="false" text="Black Out Date"/>
       <DatePicker fx:id="datePicker" layoutX="272.0" layoutY="76.0"/>
       <Label layoutX="319.0" layoutY="58.0" text="Choose a Date:"/>
     </AnchorPane>
@@ -81,9 +80,9 @@
       <TableView fx:id="promotionsTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0"
         prefWidth="780.0">
         <columns>
-          <TableColumn prefWidth="156.0" text="Date"/>
-          <TableColumn prefWidth="156.0" text="Cost"/>
-          <TableColumn prefWidth="156.0" text="Room Type"/>
+          <TableColumn fx:id="blackOutDateColumn" prefWidth="156.0" text="Date"/>
+          <TableColumn fx:id="blackOutCostColumn" prefWidth="156.0" text="Cost"/>
+          <TableColumn fx:id="blackOutRoomTypeColumn" prefWidth="156.0" text="Room Type"/>
         </columns>
       </TableView>
       <GridPane layoutX="400.0" layoutY="51.0">
@@ -104,11 +103,11 @@
       <TableView fx:id="customerInformationTableView" layoutX="10.0" layoutY="181.0"
         prefHeight="375.0" prefWidth="780.0">
         <columns>
-          <TableColumn prefWidth="156.0" text="Name"/>
-          <TableColumn prefWidth="156.0" text="Phone Number"/>
-          <TableColumn prefWidth="156.0" text="Room Type"/>
-          <TableColumn prefWidth="156.0" text="Last 4 CCN"/>
-          <TableColumn prefWidth="156.0" text="Check In/Out Dates"/>
+          <TableColumn fx:id="nameColumn" prefWidth="156.0" text="Name"/>
+          <TableColumn fx:id="phoneNumberColumn" prefWidth="156.0" text="Phone Number"/>
+          <TableColumn fx:id="roomTypeColumn" prefWidth="156.0" text="Room Type"/>
+          <TableColumn fx:id="last4CCNColumn" prefWidth="156.0" text="Last 4 CCN"/>
+          <TableColumn fx:id="checkInColumn" prefWidth="156.0" text="Check In/Out Dates"/>
         </columns>
       </TableView>
       <GridPane layoutX="47.0" layoutY="49.0" prefHeight="90.0" prefWidth="326.0">
@@ -142,8 +141,8 @@
   </Tab>
   <Tab text="Exit Management">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-      <Button layoutX="376.0" layoutY="272.0" mnemonicParsing="false"
-        onMouseClicked="#goToHomePage" text="Exit"/>
+      <Button layoutX="376.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#goToHomePage"
+        text="Exit"/>
       <TextArea layoutX="293.0" layoutY="203.0" prefHeight="70.0" prefWidth="200.0"
         text="This button will exit from the management screen and return you to the home customer screen."
         wrapText="true"/>
