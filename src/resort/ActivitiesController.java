@@ -78,11 +78,11 @@ public class ActivitiesController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Please choose an option");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent currentGuestOptionsParent =
+        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+    Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
+    Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    currentGuestOptionsStage.setScene(currentGuestOptionsScene);
+    currentGuestOptionsStage.show();
   }
 }

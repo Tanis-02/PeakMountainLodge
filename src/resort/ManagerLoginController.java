@@ -35,12 +35,11 @@ public class ManagerLoginController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Welcome");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Scene homeScene = new Scene(homeParent);
+    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    homeStage.setScene(homeScene);
+    homeStage.show();
   }
 
   /**
@@ -51,15 +50,15 @@ public class ManagerLoginController {
    * placeholders for valid manager ID and password combinations pulled from a database.
    */
   @FXML
-  void goToManagerOverview(MouseEvent mouseEvent) throws IOException {
+  void goToManagerOverview(MouseEvent event) throws IOException {
     if (managerID.getText().equalsIgnoreCase("Admin")
         && managerPassword.getText().equalsIgnoreCase("password")) {
-      ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-      Parent root = FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
-      Stage logInStage = new Stage();
-      logInStage.setTitle("Choose to View");
-      logInStage.setScene(new Scene(root, 800, 600));
-      logInStage.show();
+      Parent managerOverviewParent =
+          FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
+      Scene managerOverviewScene = new Scene(managerOverviewParent);
+      Stage managerOverviewStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      managerOverviewStage.setScene(managerOverviewScene);
+      managerOverviewStage.show();
     } else {
       badManagerInput.setText("Bad Login Attempt - Try Again");
     }

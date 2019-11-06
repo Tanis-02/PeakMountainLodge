@@ -68,11 +68,10 @@ public class ManagerOverviewController {
    */
   @FXML
   void goToHomePage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Welcome");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Scene homeScene = new Scene(homeParent);
+    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    homeStage.setScene(homeScene);
+    homeStage.show();
   }
 }

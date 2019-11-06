@@ -114,8 +114,8 @@ public class ConnManager {
       day1.set(Calendar.DATE, newDay);
 
       // Put back the one we took away as SQL is not index based
-      int currMonth = day1.get(Calendar.MONTH) + 1;
-      String dateToAdd = day1.get(Calendar.YEAR) + "-" + currMonth + "-" + day1.get(Calendar.DATE);
+      int currentMonth = day1.get(Calendar.MONTH) + 1;
+      String dateToAdd = day1.get(Calendar.YEAR) + "-" + currentMonth + "-" + day1.get(Calendar.DATE);
       System.out.println(dateToAdd);
       String insertReservation =
           "INSERT INTO RESERVATIONS ("
@@ -141,7 +141,7 @@ public class ConnManager {
   // Creating a table not really useful for this
   public void createTable(String SQL_CREATE) throws SQLException {
     System.out.println(SQL_CREATE);
-    PreparedStatement preparedStatement = conn.prepareStatement(SQL_CREATE);
+    preparedStatement = conn.prepareStatement(SQL_CREATE);
     try {
       preparedStatement.execute();
     } catch (SQLException e) {
@@ -152,11 +152,10 @@ public class ConnManager {
   }
 
   // Selecting all Customers
-  void selectAllCustomer() {
+  void selectAllCustomers() {
     try {
-      Statement stmt = conn.createStatement();
-      resultSet = stmt.executeQuery("SELECT * FROM customers;");
-
+      statement = conn.createStatement();
+      resultSet = statement.executeQuery("SELECT * FROM customers;");
       while (resultSet.next()) {
         System.out.printf("email = %s%n", resultSet.getString("email"));
         System.out.printf("FirstName = %s%n", resultSet.getString("firstName"));
@@ -165,7 +164,6 @@ public class ConnManager {
         System.out.printf("Last 4 = %s%n", resultSet.getString("lastFourCC"));
         System.out.println("\n");
       }
-
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
@@ -175,7 +173,6 @@ public class ConnManager {
     try {
       statement = conn.createStatement();
       resultSet = statement.executeQuery("SELECT * FROM EMPLOYEES");
-
       while (resultSet.next()) {
         System.out.printf("employeeID = %s%n", resultSet.getString("employeeID"));
         System.out.printf("FirstName = %s%n", resultSet.getString("firstName"));
@@ -183,18 +180,16 @@ public class ConnManager {
         System.out.printf("accessID = %s%n", resultSet.getInt("accessID"));
         System.out.println("\n");
       }
-
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
   }
 
   // Selecting all Reservations
-  public void selectAllReservations(String resDate) {
+  public void selectAllReservations(String reservationDate) {
     try {
       statement = conn.createStatement();
       resultSet = statement.executeQuery("SELECT * FROM RESERVATIONS;");
-
       while (resultSet.next()) {
         System.out.printf("resDate = %s%n", resultSet.getDate("resDate"));
         System.out.printf("payCollected = %s%n", resultSet.getInt("payCollected"));
@@ -204,15 +199,6 @@ public class ConnManager {
         System.out.printf("customerEmail = %s%n", resultSet.getString("customerEmail"));
         System.out.println("\n");
       }
-
-    } catch (SQLException e) {
-      sqlExceptionHandler(e);
-    }
-  }
-
-  public void closeConn() {
-    try {
-      conn.close();
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }

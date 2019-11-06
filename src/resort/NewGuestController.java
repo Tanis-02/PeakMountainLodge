@@ -60,12 +60,11 @@ public class NewGuestController {
    */
   @FXML
   void goToAvailableRoomsPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
-    Stage rooms = new Stage();
-    rooms.setTitle("Please choose a room");
-    rooms.setScene(new Scene(root, 800, 700));
-    rooms.show();
+    Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+    Scene availableRoomsScene = new Scene(availableRoomsParent);
+    Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    availableRoomsStage.setScene(availableRoomsScene);
+    availableRoomsStage.show();
   }
 
   /**
@@ -77,11 +76,10 @@ public class NewGuestController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Welcome");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Scene homeScene = new Scene(homeParent);
+    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    homeStage.setScene(homeScene);
+    homeStage.show();
   }
 }

@@ -20,11 +20,10 @@ public class HomeController {
    */
   @FXML
   void goToNewGuestPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
-    Stage newGuestStage = new Stage();
-    newGuestStage.setTitle("Check Availability");
-    newGuestStage.setScene(new Scene(root, 800, 600));
+    Parent newGuestParent = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
+    Scene newGuestScene = new Scene(newGuestParent);
+    Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    newGuestStage.setScene(newGuestScene);
     newGuestStage.show();
   }
 
@@ -36,27 +35,25 @@ public class HomeController {
    */
   @FXML
   void goToCurrentGuestPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
-    Stage logInStage = new Stage();
-    logInStage.setTitle("Please Log In");
-    logInStage.setScene(new Scene(root, 800, 600));
-    logInStage.show();
+    Parent currentGuestParent = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
+    Scene currentGuestScene = new Scene(currentGuestParent);
+    Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    newGuestStage.setScene(currentGuestScene);
+    newGuestStage.show();
   }
 
   /**
    * The goToManagerLoginPage() function will bring the user to the manager login page.
    *
-   * @param event MouseEvent upon clicking the manager label
+   * @param event ActionEvent upon clicking the manager label
    * @throws IOException yes, it does
    */
   @FXML
   void goToManagerLoginPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("manager_login.fxml"));
-    Stage logInStage = new Stage();
-    logInStage.setTitle("Please input manager credentials");
-    logInStage.setScene(new Scene(root, 800, 600));
-    logInStage.show();
+    Parent managerLoginParent = FXMLLoader.load(getClass().getResource("manager_login.fxml"));
+    Scene managerLoginScene = new Scene(managerLoginParent);
+    Stage managerLoginStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    managerLoginStage.setScene(managerLoginScene);
+    managerLoginStage.show();
   }
 }

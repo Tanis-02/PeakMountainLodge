@@ -55,7 +55,6 @@ public class SpecialRequestsController {
   /**
    * The goToConfirmationPage() right now just displays an alert rather than an actual scene. Will
    * be updated later with actual scene.
-   *
    */
   @FXML
   void goToConfirmationPage() {
@@ -67,7 +66,6 @@ public class SpecialRequestsController {
   /**
    * The sendMessage() function right now just displays an alert rather than an actual scene. Will
    * be updated later with actual scene.
-   *
    */
   @FXML
   void sendMessage() {
@@ -85,12 +83,11 @@ public class SpecialRequestsController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root =
+    Parent currentGuestOptionsParent =
         FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Please choose an option");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
+    Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    currentGuestOptionsStage.setScene(currentGuestOptionsScene);
+    currentGuestOptionsStage.show();
   }
 }

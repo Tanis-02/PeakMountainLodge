@@ -50,13 +50,11 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToActivitiesPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root =
-        FXMLLoader.load(getClass().getResource("activities.fxml"));
-    Stage activities = new Stage();
-    activities.setTitle("Please choose an activity");
-    activities.setScene(new Scene(root, 800, 700));
-    activities.show();
+    Parent activitiesParent = FXMLLoader.load(getClass().getResource("activities.fxml"));
+    Scene activitiesScene = new Scene(activitiesParent);
+    Stage activitiesStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    activitiesStage.setScene(activitiesScene);
+    activitiesStage.show();
   }
 
   /**
@@ -67,12 +65,11 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToDiningPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("dining.fxml"));
-    Stage dining = new Stage();
-    dining.setTitle("Choose a restaurant");
-    dining.setScene(new Scene(root, 800, 700));
-    dining.show();
+    Parent diningParent = FXMLLoader.load(getClass().getResource("dining.fxml"));
+    Scene diningScene = new Scene(diningParent);
+    Stage diningStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    diningStage.setScene(diningScene);
+    diningStage.show();
   }
 
   /**
@@ -83,12 +80,11 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToSpecialRequestsPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("special_requests.fxml"));
-    Stage requests = new Stage();
-    requests.setTitle("Please choose one of the following");
-    requests.setScene(new Scene(root, 800, 700));
-    requests.show();
+    Parent specialRequestsParent = FXMLLoader.load(getClass().getResource("special_requests.fxml"));
+    Scene specialRequestsScene = new Scene(specialRequestsParent);
+    Stage specialRequestsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    specialRequestsStage.setScene(specialRequestsScene);
+    specialRequestsStage.show();
   }
 
   /**
@@ -100,11 +96,10 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Please Log In");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent currentGuestParent = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
+    Scene currentGuestScene = new Scene(currentGuestParent);
+    Stage currentGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    currentGuestStage.setScene(currentGuestScene);
+    currentGuestStage.show();
   }
 }

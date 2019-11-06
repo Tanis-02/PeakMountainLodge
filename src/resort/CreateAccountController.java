@@ -66,12 +66,10 @@ public class CreateAccountController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root =
-        FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Please choose a room");
-    home.setScene(new Scene(root, 800, 700));
-    home.show();
+    Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+    Scene availableRoomsScene = new Scene(availableRoomsParent);
+    Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    availableRoomsStage.setScene(availableRoomsScene);
+    availableRoomsStage.show();
   }
 }

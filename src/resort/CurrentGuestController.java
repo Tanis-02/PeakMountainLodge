@@ -34,15 +34,14 @@ public class CurrentGuestController {
   void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException {
     if (lastName.getText().equalsIgnoreCase("Guest")
         && phoneNumber.getText().equals("1234567890")) {
-      ((Node) (event.getSource())).getScene().getWindow().hide();
       FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
-      Parent root = greetLoader.load();
+      Parent currentGuestOptionsParent = greetLoader.load();
       CurrentGuestOptionsController controller = greetLoader.getController();
       controller.setFamilyName(lastName.getText());
-      Stage options = new Stage();
-      options.setTitle("Please choose an option");
-      options.setScene(new Scene(root, 800, 600));
-      options.show();
+      Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
+      Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      currentGuestOptionsStage.setScene(currentGuestOptionsScene);
+      currentGuestOptionsStage.show();
     } else {
       badGuestInput.setText("Bad Login Attempt - Try Again");
     }
@@ -57,11 +56,10 @@ public class CurrentGuestController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    ((Node) (event.getSource())).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-    Stage home = new Stage();
-    home.setTitle("Welcome");
-    home.setScene(new Scene(root, 800, 600));
-    home.show();
+    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Scene homeScene = new Scene(homeParent);
+    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    homeStage.setScene(homeScene);
+    homeStage.show();
   }
 }
