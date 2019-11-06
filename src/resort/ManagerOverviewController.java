@@ -1,5 +1,11 @@
 package resort;
 
+/* Needs to be done:
+1. Initialize all table views, combo boxes, etc.
+2. Logic for error messages and confirmation messages for certain things
+3. Make it possible to create new managers/employee log-ins.
+ */
+
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

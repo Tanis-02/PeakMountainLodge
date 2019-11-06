@@ -1,6 +1,6 @@
 package resort;
 
-/* Need to be done:
+/* Needs to be done:
 1. Compare dates chosen to dates guests are staying at the resort.
 2. Compare number of guests signing up for activity to number of guests in party.
  */

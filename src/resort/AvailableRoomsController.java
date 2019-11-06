@@ -1,8 +1,8 @@
 package resort;
 
-/* Need to be done:
-1. Update pricing based on dates selected.
-2. Show different available rooms based on number of guests.
+/* Needs to be done:
+1. Update pricing based on the dates selected.
+2. Show different available rooms based on the number of guests.
 3. Show no rooms available for black out dates and no availability (booked up).
  */
 

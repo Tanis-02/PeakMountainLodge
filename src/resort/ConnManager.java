@@ -1,5 +1,9 @@
 package resort;
 
+/* Needs to be done:
+1. Method written to update last 4 of CCN from CheckoutController
+ */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -68,7 +72,7 @@ public class ConnManager {
   }
 
   // Creating a new reservation
-  public void setReservation(String start, String end, String[] insertValues) throws SQLException {
+  void setReservation(String start, String end, String[] insertValues) throws SQLException {
     Calendar day1 = Calendar.getInstance();
     Calendar day2 = Calendar.getInstance();
 

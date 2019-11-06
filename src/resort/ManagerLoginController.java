@@ -1,5 +1,9 @@
 package resort;
 
+/* Needs to be done:
+1. Compare values in the database for username and password rather than being hard coded.
+ */
+
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
