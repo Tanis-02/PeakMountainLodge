@@ -109,7 +109,7 @@ public class ManagerOverviewController {
     ObservableList<String> sort =
         FXCollections.observableArrayList(
             "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
-    ratesColumn.setCellValueFactory(new PropertyValueFactory<>("rates"));
+    ratesColumn.setCellValueFactory(new PropertyValueFactory<>("roomRates"));
     diningColumn.setCellValueFactory(new PropertyValueFactory<>("dining"));
     activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
     expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));

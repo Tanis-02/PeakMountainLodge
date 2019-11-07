@@ -7,7 +7,7 @@ public class ManagerDriver {
   private int expenses;
   private int revenue;
 
-  public ManagerDriver(int roomRates, int dining, int activities, int expenses, int revenue) {
+  ManagerDriver(int roomRates, int dining, int activities, int expenses, int revenue) {
     this.roomRates = roomRates;
     this.dining = dining;
     this.activities = activities;
