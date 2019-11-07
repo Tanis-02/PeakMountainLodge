@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
-    ConnManager conn = new ConnManager();
-    conn.selectAllCustomers();
+//    ConnManager conn = new ConnManager();
+//    conn.selectAllCustomers();
     Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
     primaryStage.setScene(new Scene(root, 800, 600));
     primaryStage.show();

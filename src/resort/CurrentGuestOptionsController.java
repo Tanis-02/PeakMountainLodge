@@ -17,10 +17,10 @@ import javafx.stage.Stage;
 public class CurrentGuestOptionsController {
 
   /**
-   * Field member familyName is used to display the family's name on the screen once they log in.
-   * Right now, it's initialized to "Guest".
+   * familyName is the name that the user entered in the last name field, and will be greeted by on the scene. It must
+   * be static so that it retains its value when the user backs out of further scenes, until a new user logs in.
    */
-  private String familyName = "Guest";
+  private static String familyName;
 
   /** Label that will be used for greeting the guest once they log in. */
   @FXML private Label greetGuest;
@@ -31,12 +31,19 @@ public class CurrentGuestOptionsController {
    *
    * @param lastName is assigned to familyName and is used to greet the user by name in this scene
    */
-  void setFamilyName(String lastName) {
-    familyName = "Guest";
+  void setFamilyName(String lastName) throws IOException {
+    familyName = lastName;
     greetGuest.setText("Hello, " + familyName + " Family");
+    FXMLLoader passFamilyLoader = new FXMLLoader(getClass().getResource("guest_feedback.fxml"));
+    Parent passFamilyParent = passFamilyLoader.load();
+    GuestFeedbackController passFamilyController = passFamilyLoader.getController();
+    passFamilyController.passFamilyName(familyName);
   }
 
-  /** The initialize() method is used to initialize the name of the family on the screen. */
+  /**
+   * The initialize() method is used to initialize the name of the family on the screen when the
+   * user opens this scene from anywhere other than CurrentGuest.
+   */
   @FXML
   private void initialize() {
     greetGuest.setText("Hello, " + familyName + " Family");
@@ -85,6 +92,21 @@ public class CurrentGuestOptionsController {
     Stage specialRequestsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     specialRequestsStage.setScene(specialRequestsScene);
     specialRequestsStage.show();
+  }
+
+  /**
+   * The goToFeedbackPage() will open the page where current guests can submit feedback.
+   *
+   * @param event goes to the guest feedback page
+   * @throws IOException because it accepts input, which in this case is in the form of an event
+   */
+  @FXML
+  void goToFeedbackPage(MouseEvent event) throws IOException {
+    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("guest_feedback.fxml"));
+    Scene guestFeedbackScene = new Scene(guestFeedbackParent);
+    Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    guestFeedbackStage.setScene(guestFeedbackScene);
+    guestFeedbackStage.show();
   }
 
   /**

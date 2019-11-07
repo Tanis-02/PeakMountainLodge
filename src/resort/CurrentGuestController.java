@@ -36,7 +36,7 @@ public class CurrentGuestController {
    */
   @FXML
   void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException {
-    if (lastName.getText().equalsIgnoreCase("Guest")
+    if (!lastName.getText().equalsIgnoreCase("")
         && phoneNumber.getText().equals("1234567890")) {
       FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
       Parent currentGuestOptionsParent = greetLoader.load();
