@@ -6,11 +6,16 @@ package resort;
 3. Make it possible to create new managers/employee log-ins.
  */
 
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,17 +25,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.util.Date;
+import java.util.ArrayList;
 
 /** The ManagerOverviewController corresponds to all items on the manager_overview.fxml file */
 public class ManagerOverviewController {
 
   /** Table view financialReportsTableView is used to see all of the financial reports. */
-  @FXML private TableView<?> financialReportsTableView;
+  @FXML private TableView<ManagerDriver> financialReportsTableView;
 
   /** ChoiceBox sortBy allows the user to sort by a particular field in the financial reports. */
-  @FXML private ChoiceBox<?> sortBy;
+  @FXML private ChoiceBox<String> sortBy;
 
   /** DatePicker startDate is used to select a start date for the financial reports table view. */
   @FXML private DatePicker startDate;
@@ -101,58 +109,74 @@ public class ManagerOverviewController {
     @FXML private TableColumn<?, ?> checkInColumn;
 
     /** Text area to append customer feedback to for managers to view. */
-    @FXML private TextArea feedbackLog;
+  @FXML private TextArea feedbackLog;
 
-    /**
-     * Temp string to gather new feedback from GuestFeedbackController, and an ArrayList to store
-     * these strings. At the very least, feedbackList must be static so as to preserve the list of
-     * feedback that is added to it across multiple instances of ManagerOverviewController.
-     */
-    private static String newFeedback;
+  /**
+   * Temp string to gather new feedback from GuestFeedbackController, and an ArrayList to store
+   * these strings. At the very least, feedbackList must be static so as to preserve the list of
+   * feedback that is added to it across multiple instances of ManagerOverviewController.
+   */
+  private static String newFeedback;
 
-    private static ArrayList<String> feedbackList = new ArrayList<>();
+  private static ArrayList<String> feedbackList = new ArrayList<>();
 
-    public void initialize() {
-        for (int loadFeedback = 0; loadFeedback < feedbackList.size(); loadFeedback++) {
-            feedbackLog.appendText(feedbackList.get(loadFeedback) + "\n");
-        }
-        if (feedbackList.size() == 0) {
-            feedbackLog.appendText("No customer feedback to display");
-        }
-        ObservableList<ManagerDriver> manager = FXCollections.observableArrayList();
-        ObservableList<String> sort =
-                FXCollections.observableArrayList(
-                        "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
-        ratesColumn.setCellValueFactory(new PropertyValueFactory<>("roomRates"));
-        diningColumn.setCellValueFactory(new PropertyValueFactory<>("dining"));
-        activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
-        expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
-        revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
-        Random random = new Random();
-        for (int i = 0; i <= 20; i++) {
-            manager.add(
-                    new ManagerDriver(
-                            random.nextInt(500000),
-                            random.nextInt(500000),
-                            random.nextInt(500000),
-                            random.nextInt(500000),
-                            random.nextInt(500000)));
-            financialReportsTableView.setItems(manager);
-        }
-        sortBy.getItems().clear();
-        sortBy.setItems(sort);
-        sortBy.getSelectionModel().selectFirst();
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 2018; i >= 2005; i--) {
-            numbers.add(i);
-        }
-        ObservableList numberList = FXCollections.observableList(numbers);
-        previousReports.getItems().clear();
-        previousReports.setItems(numberList);
-        previousReports.getSelectionModel().selectFirst();
-    }
+  /**
+   * Currently, the initialize method serves the purpose of populating the textarea in the customer
+   * feedback tab each time the user (which in this case will be a manager) logs into the manager
+   * overview screen.
+   */
+  public void initialize() {
+      for (int loadFeedback = 0; loadFeedback < feedbackList.size(); loadFeedback++) {
+          feedbackLog.appendText(feedbackList.get(loadFeedback) + "\n");
+      }
+      if (feedbackList.size() == 0) {
+          feedbackLog.appendText("No customer feedback to display");
+      }
+      ObservableList<ManagerDriver> manager = FXCollections.observableArrayList();
+      ObservableList<String> sort =
+              FXCollections.observableArrayList(
+                      "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
+      ratesColumn.setCellValueFactory(new PropertyValueFactory<>("roomRates"));
+      diningColumn.setCellValueFactory(new PropertyValueFactory<>("dining"));
+      activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
+      expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
+      revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+      Random random = new Random();
+      for (int i = 0; i <= 20; i++) {
+          manager.add(
+                  new ManagerDriver(
+                          random.nextInt(500000),
+                          random.nextInt(500000),
+                          random.nextInt(500000),
+                          random.nextInt(500000),
+                          random.nextInt(500000)));
+          financialReportsTableView.setItems(manager);
+      }
+      sortBy.getItems().clear();
+      sortBy.setItems(sort);
+      sortBy.getSelectionModel().selectFirst();
+      List<Integer> numbers = new ArrayList<>();
+      for (int i = 2018; i >= 2005; i--) {
+          numbers.add(i);
+      }
+      ObservableList numberList = FXCollections.observableList(numbers);
+      previousReports.getItems().clear();
+      previousReports.setItems(numberList);
+      previousReports.getSelectionModel().selectFirst();
+  }
 
-    /**
+  /**
+   * fillFeedbackLog gets called from GuestFeedbackController whenever a guest submits their
+   * feedback.
+   */
+  void fillFeedbackLog(String guestFeedback, String feedbackFamily) {
+    Date feedbackDate = new Date();
+    newFeedback =
+        "On " + feedbackDate + " the " + feedbackFamily + " family said:\n\"" + guestFeedback + "\"\n";
+    feedbackList.add(newFeedback);
+  }
+
+  /**
    * The goToHomePage() function is used to bring the user to the home page and logs the manager out
    * of the system.
    *

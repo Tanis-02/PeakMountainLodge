@@ -147,7 +147,7 @@
     </Tab>
     <Tab text="Exit Management">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-            <Button layoutX="376.0" layoutY="272.0" mnemonicParsing="false"
+            <Button layoutX="376.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#goToHomePage"
                     text="Exit"/>
             <TextArea layoutX="293.0" layoutY="203.0" prefHeight="70.0" prefWidth="200.0"
                       text="This button will exit from the management screen and return you to the home customer screen."
