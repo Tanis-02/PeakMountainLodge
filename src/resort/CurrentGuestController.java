@@ -5,6 +5,8 @@ package resort;
  */
 
 import java.io.IOException;
+import java.sql.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,6 +29,12 @@ public class CurrentGuestController {
   /** Label to prompt the user to try again in the event an invalid login attempt is made. */
   @FXML private Label badGuestInput;
 
+  /** Database variables to verify that login information is correct before proceeding. */
+  private PreparedStatement preparedStatement;
+  private Connection conn;
+  private String sqlPhoneFromName;
+  private ResultSet gotLastName;
+
   /**
    * The goToCurrentGuestOptionsPage() function is used to check the conditions of the lastName and
    * phoneNumber text fields to the values stored in the database. If either the phone number or
@@ -35,9 +43,10 @@ public class CurrentGuestController {
    * 1234567890 are placeholders for valid name and number combinations pulled from a database.
    */
   @FXML
-  void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException {
-    if (!lastName.getText().equalsIgnoreCase("")
-        && phoneNumber.getText().equals("1234567890")) {
+  void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException, SQLException {
+    ConnManager connManager = new ConnManager();
+    if (lastName.getText()!=""&&phoneNumber.getText()!=""&&
+            connManager.verifyGuestLogin(lastName.getText(), phoneNumber.getText())) {
       FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
       Parent currentGuestOptionsParent = greetLoader.load();
       CurrentGuestOptionsController controller = greetLoader.getController();

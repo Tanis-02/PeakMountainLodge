@@ -21,8 +21,7 @@ public class ConnManager {
 
   ConnManager() throws SQLException {
     conn =
-        DriverManager.getConnection(
-            "jdbc:h2:C:\\Users\\acava\\OneDrive - Florida Gulf Coast University\\COP 3003\\PeakMountainLodge\\src\\resort\\Database\\productDB");
+        DriverManager.getConnection("jdbc:h2:C:\\Users\\acava\\OneDrive - Florida Gulf Coast University\\COP 3003\\PeakMountainLodge\\src\\resort\\Database\\productDB");
   }
 
   // Creates a new customer
@@ -207,6 +206,18 @@ public class ConnManager {
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
+  }
+
+  public boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
+    String getPhoneNumber = "SELECT phonenumber FROM customers WHERE lastname='"+lastName+"'";
+    preparedStatement = conn.prepareStatement(getPhoneNumber);
+    resultSet = preparedStatement.executeQuery();
+    while(resultSet.next()){
+      if (resultSet.getString(1)!=null && resultSet.getString(1).equals(phoneNumber)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private void sqlExceptionHandler(SQLException error) {
