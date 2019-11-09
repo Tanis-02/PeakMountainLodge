@@ -5,6 +5,8 @@ package resort;
  */
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -54,9 +56,10 @@ public class ManagerLoginController {
    * placeholders for valid manager ID and password combinations pulled from a database.
    */
   @FXML
-  void goToManagerOverview(MouseEvent event) throws IOException {
-    if (managerID.getText().equalsIgnoreCase("Admin")
-        && managerPassword.getText().equalsIgnoreCase("password")) {
+  void goToManagerOverview(MouseEvent event) throws IOException, SQLException {
+    ConnManager connManager = new ConnManager();
+    if (managerID.getText()!=""&&managerPassword.getText()!=""&&
+            connManager.verifyManagerLogin(managerID.getText(), managerPassword.getText())) {
       Parent managerOverviewParent =
           FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
       Scene managerOverviewScene = new Scene(managerOverviewParent);
