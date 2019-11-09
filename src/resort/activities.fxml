@@ -11,58 +11,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.221"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ActivitiesController">
-  <ScrollPane prefHeight="700.0" prefWidth="800.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ActivitiesController">
+  <ScrollPane prefHeight="700.0" prefWidth="1000.0">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="800.0">
-      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true">
-        <Image url="@images/resort.jpg"/>
+      <ImageView fitHeight="800.0" fitWidth="1000.0" pickOnBounds="true">
+        <Image url="@images/resort.jpg" />
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="19.0" layoutY="420.0"
-        pickOnBounds="true">
-        <Image url="@images/snorkel.jpg"/>
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="77.0" layoutY="427.0" pickOnBounds="true">
+        <Image url="@images/snorkel.jpg" />
       </ImageView>
-      <Label layoutX="298.0" layoutY="38.0" text="Available Activities">
+      <Label layoutX="356.0" layoutY="43.0" text="Available Activities">
         <font>
-          <Font name="Freestyle Script" size="40.0"/>
+          <Font name="Freestyle Script" size="40.0" />
         </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="19.0" layoutY="143.0"
-        pickOnBounds="true">
-        <Image url="@images/jet_ski.jpg"/>
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="77.0" layoutY="150.0" pickOnBounds="true">
+        <Image url="@images/jet_ski.jpg" />
       </ImageView>
-      <Label layoutX="319.0" layoutY="101.0" text="Water Sport Rentals">
+      <Label layoutX="441.0" layoutY="101.0" text="Water Sport Rentals">
         <font>
-          <Font size="18.0"/>
+          <Font size="18.0" />
         </font>
       </Label>
-      <TextArea editable="false" layoutX="377.0" layoutY="163.0" prefHeight="169.0"
-        prefWidth="200.0"
-        text="Spend the day on the water having FUN!! We have available jet skis, kayaks, scooters, surfboards, sailboats,  and banana rides. Come hang out by the water and play with our toys or sit on the deck and watch the kids! Rentals all begin at 10:00 AM on your scheduled date."
-        wrapText="true"/>
-      <Button layoutX="644.0" layoutY="306.0" mnemonicParsing="false"
-        onMouseClicked="#goToRentalConfirmationPage" text="Book Now"/>
-      <Button layoutX="644.0" layoutY="586.0" mnemonicParsing="false"
-        onMouseClicked="#goToSnorkelingConfirmationPage" text="Book Now"/>
-      <TextArea editable="false" layoutX="377.0" layoutY="441.0" prefHeight="171.0"
-        prefWidth="200.0"
-        text="Go on a relaxing guided tour of our beautiful resort area while being guided by a local guides man. Search for shells, see wildlife up close, and explore the underwater like never before! All snorkeling adventures begin at 8:00 AM, 12:00 PM, or 2:00 PM on your scheduled date."
-        wrapText="true"/>
-      <Label layoutX="356.0" layoutY="372.0" text="Snorkeling">
+      <TextArea editable="false" layoutX="420.0" layoutY="159.0" prefHeight="169.0" prefWidth="200.0" text="Spend the day on the water having FUN!! We have available jet skis, kayaks, scooters, surfboards, sailboats,  and banana rides. Come hang out by the water and play with our toys or sit on the deck and watch the kids! Rentals all begin at 10:00 AM on your scheduled date." wrapText="true" />
+      <Button layoutX="691.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#goToRentalConfirmationPage" text="Book Now" />
+      <Button layoutX="691.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#goToSnorkelingConfirmationPage" text="Book Now" />
+      <TextArea editable="false" layoutX="421.0" layoutY="441.0" prefHeight="171.0" prefWidth="200.0" text="Go on a relaxing guided tour of our beautiful resort area while being guided by a local guides man. Search for shells, see wildlife up close, and explore the underwater like never before! All snorkeling adventures begin at 8:00 AM, 12:00 PM, or 2:00 PM on your scheduled date." wrapText="true" />
+      <Label layoutX="478.0" layoutY="373.0" text="Snorkeling">
         <font>
-          <Font size="18.0"/>
+          <Font size="18.0" />
         </font>
       </Label>
-      <Label layoutX="400.0" layoutY="649.0"
-        text="Disclaimer: All activities are included in resort fees" textFill="#ffffff"/>
-      <ChoiceBox fx:id="numberOfGuestsRental" layoutX="614.0" layoutY="248.0" prefWidth="150.0"/>
-      <DatePicker fx:id="rentalDatePicker" layoutX="602.0" layoutY="196.0"/>
-      <DatePicker fx:id="snorkelingDatePicker" layoutX="602.0" layoutY="474.0"/>
-      <ChoiceBox fx:id="numberOfGuestsSnorkeling" layoutX="614.0" layoutY="527.0"
-        prefWidth="150.0"/>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
-        onMouseClicked="#goToPreviousPage" text="Back"/>
+      <Label layoutX="355.0" layoutY="676.0" text="Disclaimer: All activities are included in resort fees" textFill="#ffffff" />
+      <ChoiceBox fx:id="numberOfGuestsRental" layoutX="691.0" layoutY="243.0" prefWidth="150.0" />
+      <DatePicker fx:id="rentalDatePicker" layoutX="691.0" layoutY="196.0" />
+      <DatePicker fx:id="snorkelingDatePicker" layoutX="691.0" layoutY="473.0" />
+      <ChoiceBox fx:id="numberOfGuestsSnorkeling" layoutX="691.0" layoutY="520.0" prefWidth="150.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage" text="Back" />
     </AnchorPane>
   </ScrollPane>
 </AnchorPane>

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-         prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE"
+         prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE"
          xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="resort.ManagerOverviewController">
     <Tab text="Financial Reports">
