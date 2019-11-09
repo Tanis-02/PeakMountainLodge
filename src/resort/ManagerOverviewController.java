@@ -102,8 +102,6 @@ public class ManagerOverviewController {
 
   @FXML private TableColumn<?, ?> roomTypeColumn;
 
-  @FXML private TableColumn<?, ?> last4CCNColumn;
-
   @FXML private TableColumn<?, ?> checkInColumn;
 
   /** Text area to append customer feedback to for managers to view. */

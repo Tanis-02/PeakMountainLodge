@@ -1,7 +1,7 @@
 package resort;
 
 /* Needs to be done:
-1. Create logic to compare value of reservations vs today. Date must be in future or today, not in the past.
+1. Create logic to compare value of reservations vs today.
 2. Push dates to database for the reservation (save for future screens)
  */
 

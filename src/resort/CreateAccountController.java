@@ -46,6 +46,7 @@ public class CreateAccountController {
   /** Text field to insert the user's password into the database. */
   @FXML private PasswordField password;
 
+  /** Initialize the combo box with values. */
   public void initialize() {
     ObservableList<String> option =
         FXCollections.observableArrayList(
@@ -95,12 +96,12 @@ public class CreateAccountController {
       checkoutStage.setScene(checkoutScene);
       checkoutStage.show();
       String[] details = new String[5];
-      ConnManager connManager = new ConnManager();
       details[0] = email.getText();
       details[1] = firstName.getText();
       details[2] = lastName.getText();
       details[3] = phoneNumber.getText();
       details[4] = "1234";
+      ConnManager connManager = new ConnManager();
       connManager.insertCustomer(details);
     }
   }

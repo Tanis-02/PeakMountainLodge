@@ -22,7 +22,7 @@ class ConnManager {
   ConnManager() throws SQLException {
     conn =
         DriverManager.getConnection(
-            "jdbc:h2:C:\\Users\\acava\\OneDrive - Florida Gulf Coast University\\COP 3003\\PeakMountainLodge\\src\\resort\\Database\\productDB");
+            "jdbc:h2:./src/resort/Database/productDB");
   }
 
   // Creates a new customer

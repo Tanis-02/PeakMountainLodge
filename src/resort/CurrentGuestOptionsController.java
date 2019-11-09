@@ -21,7 +21,7 @@ public class CurrentGuestOptionsController {
    * the scene. It must be static so that it retains its value when the user backs out of further
    * scenes, until a new user logs in.
    */
-  private static String familyName;
+  private String familyName;
 
   /** Label that will be used for greeting the guest once they log in. */
   @FXML private Label greetGuest;
@@ -36,7 +36,7 @@ public class CurrentGuestOptionsController {
     familyName = lastName;
     greetGuest.setText("Hello, " + familyName + " Family");
     FXMLLoader passFamilyLoader = new FXMLLoader(getClass().getResource("guest_feedback.fxml"));
-    Parent passFamilyParent = passFamilyLoader.load();
+    passFamilyLoader.load();
     GuestFeedbackController passFamilyController = passFamilyLoader.getController();
     passFamilyController.passFamilyName(familyName);
   }
