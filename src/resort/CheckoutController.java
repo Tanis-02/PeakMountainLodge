@@ -53,7 +53,7 @@ public class CheckoutController {
   public void initialize() {
     ObservableList<String> option =
         FXCollections.observableArrayList(
-            "Visa", "MasterCard", "American Express", "Capital One");
+            "Visa", "MasterCard", "American Express", "Capital One", "Chase");
     comboboxCardType.setItems(option);
     comboboxCardType.getSelectionModel();
   }
