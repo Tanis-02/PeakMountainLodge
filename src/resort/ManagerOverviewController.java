@@ -6,14 +6,9 @@ package resort;
 3. Make it possible to create new managers/employee log-ins.
  */
 
-import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javafx.collections.FXCollections;
@@ -23,13 +18,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import java.util.Date;
-import java.util.ArrayList;
 
 /** The ManagerOverviewController corresponds to all items on the manager_overview.fxml file */
 public class ManagerOverviewController {
@@ -76,47 +74,40 @@ public class ManagerOverviewController {
   /** Text field to look up the customer by their credit card number from the database. */
   @FXML private TextField creditCardNumber;
 
-    @FXML private TableColumn<Integer, ManagerDriver> ratesColumn;
+  @FXML private TableColumn<Integer, ManagerDriver> ratesColumn;
 
-    @FXML private TableColumn<Integer, ManagerDriver> diningColumn;
+  @FXML private TableColumn<Integer, ManagerDriver> diningColumn;
 
-    @FXML private TableColumn<Integer, ManagerDriver> activitiesColumn;
+  @FXML private TableColumn<Integer, ManagerDriver> activitiesColumn;
 
-    @FXML private TableColumn<Integer, ManagerDriver> expensesColumn;
+  @FXML private TableColumn<Integer, ManagerDriver> expensesColumn;
 
-    @FXML private TableColumn<Integer, ManagerDriver> revenueColumn;
+  @FXML private TableColumn<Integer, ManagerDriver> revenueColumn;
 
-    @FXML private TableColumn<?, ?> dateColumn;
+  @FXML private TableColumn<?, ?> dateColumn;
 
-    @FXML private TableColumn<?, ?> costColumn;
+  @FXML private TableColumn<?, ?> costColumn;
 
-    @FXML private TableColumn<?, ?> roomNumberColumn;
+  @FXML private TableColumn<?, ?> roomNumberColumn;
 
-    @FXML private TableColumn<?, ?> blackOutDateColumn;
+  @FXML private TableColumn<?, ?> blackOutDateColumn;
 
-    @FXML private TableColumn<?, ?> blackOutCostColumn;
+  @FXML private TableColumn<?, ?> blackOutCostColumn;
 
-    @FXML private TableColumn<?, ?> blackOutRoomTypeColumn;
+  @FXML private TableColumn<?, ?> blackOutRoomTypeColumn;
 
-    @FXML private TableColumn<?, ?> nameColumn;
+  @FXML private TableColumn<?, ?> nameColumn;
 
-    @FXML private TableColumn<?, ?> phoneNumberColumn;
+  @FXML private TableColumn<?, ?> phoneNumberColumn;
 
-    @FXML private TableColumn<?, ?> roomTypeColumn;
+  @FXML private TableColumn<?, ?> roomTypeColumn;
 
-    @FXML private TableColumn<?, ?> last4CCNColumn;
+  @FXML private TableColumn<?, ?> last4CCNColumn;
 
-    @FXML private TableColumn<?, ?> checkInColumn;
+  @FXML private TableColumn<?, ?> checkInColumn;
 
-    /** Text area to append customer feedback to for managers to view. */
+  /** Text area to append customer feedback to for managers to view. */
   @FXML private TextArea feedbackLog;
-
-  /**
-   * Temp string to gather new feedback from GuestFeedbackController, and an ArrayList to store
-   * these strings. At the very least, feedbackList must be static so as to preserve the list of
-   * feedback that is added to it across multiple instances of ManagerOverviewController.
-   */
-  private static String newFeedback;
 
   private static ArrayList<String> feedbackList = new ArrayList<>();
 
@@ -126,53 +117,55 @@ public class ManagerOverviewController {
    * overview screen.
    */
   public void initialize() {
-      for (int loadFeedback = 0; loadFeedback < feedbackList.size(); loadFeedback++) {
-          feedbackLog.appendText(feedbackList.get(loadFeedback) + "\n");
-      }
-      if (feedbackList.size() == 0) {
-          feedbackLog.appendText("No customer feedback to display");
-      }
-      ObservableList<ManagerDriver> manager = FXCollections.observableArrayList();
-      ObservableList<String> sort =
-              FXCollections.observableArrayList(
-                      "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
-      ratesColumn.setCellValueFactory(new PropertyValueFactory<>("roomRates"));
-      diningColumn.setCellValueFactory(new PropertyValueFactory<>("dining"));
-      activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
-      expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
-      revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
-      Random random = new Random();
-      for (int i = 0; i <= 20; i++) {
-          manager.add(
-                  new ManagerDriver(
-                          random.nextInt(500000),
-                          random.nextInt(500000),
-                          random.nextInt(500000),
-                          random.nextInt(500000),
-                          random.nextInt(500000)));
-          financialReportsTableView.setItems(manager);
-      }
-      sortBy.getItems().clear();
-      sortBy.setItems(sort);
-      sortBy.getSelectionModel().selectFirst();
-      List<Integer> numbers = new ArrayList<>();
-      for (int i = 2018; i >= 2005; i--) {
-          numbers.add(i);
-      }
-      ObservableList numberList = FXCollections.observableList(numbers);
-      previousReports.getItems().clear();
-      previousReports.setItems(numberList);
-      previousReports.getSelectionModel().selectFirst();
+    for (String s : feedbackList) {
+      feedbackLog.appendText(s + "\n");
+    }
+    if (feedbackList.size() == 0) {
+      feedbackLog.appendText("No customer feedback to display");
+    }
+    ObservableList<ManagerDriver> manager = FXCollections.observableArrayList();
+    ObservableList<String> sort =
+        FXCollections.observableArrayList(
+            "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
+    ratesColumn.setCellValueFactory(new PropertyValueFactory<>("roomRates"));
+    diningColumn.setCellValueFactory(new PropertyValueFactory<>("dining"));
+    activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
+    expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
+    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+    Random random = new Random();
+    for (int i = 0; i <= 20; i++) {
+      manager.add(
+          new ManagerDriver(
+              random.nextInt(500000),
+              random.nextInt(500000),
+              random.nextInt(500000),
+              random.nextInt(500000),
+              random.nextInt(500000)));
+      financialReportsTableView.setItems(manager);
+    }
+    sortBy.getItems().clear();
+    sortBy.setItems(sort);
+    sortBy.getSelectionModel().selectFirst();
+    List<Integer> numbers = new ArrayList<>();
+    for (int i = 2018; i >= 2005; i--) {
+      numbers.add(i);
+    }
+    ObservableList numberList = FXCollections.observableList(numbers);
+    previousReports.getItems().clear();
+    previousReports.setItems(numberList);
+    previousReports.getSelectionModel().selectFirst();
   }
 
-  /**
-   * fillFeedbackLog gets called from GuestFeedbackController whenever a guest submits their
-   * feedback.
-   */
   void fillFeedbackLog(String guestFeedback, String feedbackFamily) {
     Date feedbackDate = new Date();
-    newFeedback =
-        "On " + feedbackDate + " the " + feedbackFamily + " family said:\n\"" + guestFeedback + "\"\n";
+    String newFeedback =
+        "On "
+            + feedbackDate
+            + " the "
+            + feedbackFamily
+            + " family said:\n\""
+            + guestFeedback
+            + "\"\n";
     feedbackList.add(newFeedback);
   }
 

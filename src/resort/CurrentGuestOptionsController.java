@@ -17,8 +17,9 @@ import javafx.stage.Stage;
 public class CurrentGuestOptionsController {
 
   /**
-   * familyName is the name that the user entered in the last name field, and will be greeted by on the scene. It must
-   * be static so that it retains its value when the user backs out of further scenes, until a new user logs in.
+   * familyName is the name that the user entered in the last name field, and will be greeted by on
+   * the scene. It must be static so that it retains its value when the user backs out of further
+   * scenes, until a new user logs in.
    */
   private static String familyName;
 
@@ -101,8 +102,8 @@ public class CurrentGuestOptionsController {
    * @throws IOException because it accepts input, which in this case is in the form of an event
    */
   @FXML
-  void goToFeedbackPage(MouseEvent event) throws IOException {
-    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("guest_feedback.fxml"));
+  void goToCheckoutPage(MouseEvent event) throws IOException {
+    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
     Scene guestFeedbackScene = new Scene(guestFeedbackParent);
     Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     guestFeedbackStage.setScene(guestFeedbackScene);

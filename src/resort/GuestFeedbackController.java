@@ -43,8 +43,8 @@ public class GuestFeedbackController {
    *
    * @param familyName is the last name that the guest used to log in with.
    */
-  public void passFamilyName(String familyName) {
-    this.familyName = familyName;
+  void passFamilyName(String familyName) {
+    GuestFeedbackController.familyName = familyName;
   }
 
   /**
@@ -52,14 +52,13 @@ public class GuestFeedbackController {
    * text from the corresponding textbox, in addition to the name of the family currently logged in,
    * to ManagerOverviewController.
    *
-   * @param event is the "Submit Feedback" button being clicked
    * @throws IOException is potentially thrown when loading the manager_overview.fxml file
    */
   @FXML
-  void submitFeedback(MouseEvent event) throws IOException {
+  void submitFeedback() throws IOException {
     btnSubmitFeedback.setDisable(true);
     FXMLLoader feedbackLoader = new FXMLLoader(getClass().getResource("manager_overview.fxml"));
-    Parent feedbackParent = feedbackLoader.load();
+    feedbackLoader.load();
     ManagerOverviewController controller = feedbackLoader.getController();
     controller.fillFeedbackLog(inputFeedback.getText(), familyName);
     inputFeedback.clear();
@@ -76,8 +75,7 @@ public class GuestFeedbackController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent currentGuestOptionsParent =
-        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+    Parent currentGuestOptionsParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
     Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
     Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestOptionsStage.setScene(currentGuestOptionsScene);

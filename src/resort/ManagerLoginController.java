@@ -30,7 +30,7 @@ public class ManagerLoginController {
   @FXML private PasswordField managerPassword;
 
   /** Label to prompt the user to try again in the event an invalid login attempt is made. */
-  @FXML private Label badManagerInput;
+  @FXML private Label badManagerInput2;
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were
@@ -67,7 +67,7 @@ public class ManagerLoginController {
       managerOverviewStage.setScene(managerOverviewScene);
       managerOverviewStage.show();
     } else {
-      badManagerInput.setText("Bad Login Attempt - Try Again");
+      badManagerInput2.setText("Bad Login Attempt - Try Again");
     }
   }
 }
