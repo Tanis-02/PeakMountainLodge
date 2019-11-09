@@ -14,6 +14,12 @@ import javafx.stage.Stage;
 /** Everything in the CheckoutController corresponds to items in the checkout.fxml file. */
 public class CheckoutController {
 
+  /**
+   * Directs the customer to the feedback page.
+   *
+   * @param event upon clicking the feedback button
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToGuestFeedbackPage(MouseEvent event) throws IOException {
     Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("guest_feedback.fxml"));
@@ -23,6 +29,12 @@ public class CheckoutController {
     guestFeedbackStage.show();
   }
 
+  /**
+   * Directs the customer to the home page.
+   *
+   * @param event upon clicking the checkout button
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToHomePage(MouseEvent event) throws IOException {
     Alert confirmation = new Alert(AlertType.CONFIRMATION);
@@ -36,6 +48,12 @@ public class CheckoutController {
     homeStage.show();
   }
 
+  /**
+   * Directs the customer to the previous page.
+   *
+   * @param event upon clicking the back button
+   * @throws IOException yes, it does
+   */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     Parent currentGuestOptionsParent =

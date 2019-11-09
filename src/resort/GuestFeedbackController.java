@@ -1,5 +1,6 @@
 package resort;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 public class GuestFeedbackController {
 
@@ -49,7 +49,7 @@ public class GuestFeedbackController {
 
   /**
    * submitFeedback is called whenever a guest clicks the "Submit Feedback" button. It sends the
-   * text from the corresponding textbox, in addition to the name of the family currently logged in,
+   * text from the corresponding textBox, in addition to the name of the family currently logged in,
    * to ManagerOverviewController.
    *
    * @throws IOException is potentially thrown when loading the manager_overview.fxml file

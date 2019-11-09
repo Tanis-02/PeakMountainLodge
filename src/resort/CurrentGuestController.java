@@ -1,7 +1,7 @@
 package resort;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

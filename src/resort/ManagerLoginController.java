@@ -58,8 +58,9 @@ public class ManagerLoginController {
   @FXML
   void goToManagerOverview(MouseEvent event) throws IOException, SQLException {
     ConnManager connManager = new ConnManager();
-    if (managerID.getText()!=""&&managerPassword.getText()!=""&&
-            connManager.verifyManagerLogin(managerID.getText(), managerPassword.getText())) {
+    if (!managerID.getText().equals("")
+        && !managerPassword.getText().equals("")
+        && connManager.verifyManagerLogin(managerID.getText(), managerPassword.getText())) {
       Parent managerOverviewParent =
           FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
       Scene managerOverviewScene = new Scene(managerOverviewParent);
