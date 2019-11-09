@@ -51,21 +51,42 @@ public class CreateAccountController {
         FXCollections.observableArrayList(
             "United States", "Canada", "France", "Germany", "United Kingdom");
     region.setItems(option);
-    region.getSelectionModel();
+    region.getSelectionModel().selectFirst();
   }
 
   @FXML
   void goToCheckoutPage(MouseEvent event) throws IOException, SQLException {
-    if (firstName.getText().equalsIgnoreCase("")
-        || lastName.getText().equalsIgnoreCase("")
-        || phoneNumber.getText().equalsIgnoreCase("")
-        || email.getText().equalsIgnoreCase("")
-        || address.getText().equalsIgnoreCase("")
-        || zipCode.getText().equalsIgnoreCase("")
-        || password.getText().equalsIgnoreCase("")
-        || region.getSelectionModel().getSelectedItem().equalsIgnoreCase("Country/Region")) {
+    if (firstName.getText().equalsIgnoreCase("")) {
       Alert error = new Alert(AlertType.ERROR);
-      error.setContentText("Please fill out all fields and choose an appropriate region.");
+      error.setContentText("Please provide a first name.");
+      error.show();
+    } else if (lastName.getText().equalsIgnoreCase("")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please provide a last name.");
+      error.show();
+    } else if (phoneNumber.getText().equalsIgnoreCase("")
+        || phoneNumber.getLength() < 7
+        || phoneNumber.getLength() > 7) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Phone numbers must in the form of 1234567. No dashes, please.");
+      error.show();
+    } else if (email.getText().equalsIgnoreCase("")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please provide an email.");
+      error.show();
+    } else if (address.getText().equalsIgnoreCase("")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please provide an address.");
+      error.show();
+    } else if (zipCode.getText().equalsIgnoreCase("")
+        || zipCode.getLength() > 5
+        || zipCode.getLength() < 5) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please provide a zip code with 5 numbers.");
+      error.show();
+    } else if (password.getText().equalsIgnoreCase("")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please enter a password.");
       error.show();
     } else {
       Parent checkoutParent = FXMLLoader.load(getClass().getResource("payment.fxml"));

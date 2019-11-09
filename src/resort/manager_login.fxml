@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1"
+  prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.221"
   xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ManagerLoginController">
   <ImageView fitHeight="700.0" fitWidth="1000.0" pickOnBounds="true">
     <Image url="@images/resort.jpg"/>
@@ -45,6 +45,5 @@
     <Button mnemonicParsing="false" onMouseClicked="#goToManagerOverview" text="Log In"
       GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
   </GridPane>
-  <Label fx:id="badManagerInput" layoutX="506.0" layoutY="480.0" style="-fx-font-weight: bold"/>
   <Label fx:id="badManagerInput2" layoutX="650.0" layoutY="415.0" style="-fx-font-weight: bold"/>
 </AnchorPane>

@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -25,66 +24,58 @@ import javafx.stage.Stage;
 /** Everything in the PaymentController corresponds to items in the payment.fxml file. */
 public class PaymentController {
 
-  @FXML
-  private Label labelPayment;
+  @FXML private ComboBox<String> cardType;
 
-  @FXML
-  private Label labelPaymentDetails;
+  @FXML private TextField CCN;
 
-  @FXML
-  private ComboBox<String> comboboxCardType;
+  @FXML private TextField expirationDate;
 
-  @FXML
-  private Label labelCreditCardNumber;
+  @FXML private TextField CVCode;
 
-  @FXML
-  private TextField txtfieldCardNumber;
+  @FXML private TextField nameOnCard;
 
-  @FXML
-  private Label labelExpirationDate;
-
-  @FXML
-  private TextField txtfieldExpirationDate;
-
-  @FXML
-  private Label labelCVCode;
-
-  @FXML
-  private TextField txtfieldCVCode;
-
-  @FXML
-  private Label labelNameOnCard;
-
-  @FXML
-  private TextField txtfieldNameOnCard;
+  public PaymentController() {}
 
   public void initialize() {
-    ObservableList<String> option =
+    ObservableList<String> creditCards =
         FXCollections.observableArrayList(
             "Visa", "MasterCard", "American Express", "Capital One", "Chase");
-    comboboxCardType.setItems(option);
-    comboboxCardType.getSelectionModel();
+    cardType.setItems(creditCards);
+    cardType.getSelectionModel().selectFirst();
   }
 
   @FXML
-  void goToCheckoutPage(MouseEvent event) throws IOException, SQLException {
-    if (txtfieldCardNumber.getText().equalsIgnoreCase("")
-        || txtfieldExpirationDate.getText().equalsIgnoreCase("")
-        || txtfieldCVCode.getText().equalsIgnoreCase("")
-        || txtfieldNameOnCard.getText().equalsIgnoreCase("")
-        || comboboxCardType.getSelectionModel().getSelectedItem().equalsIgnoreCase("Card Type")) {
+  void goToHomePage(MouseEvent event) throws IOException, SQLException {
+    if (CCN.getText().equalsIgnoreCase("") || CCN.getLength() < 16 || CCN.getLength() > 16) {
       Alert error = new Alert(AlertType.ERROR);
-      error.setContentText("Please fill out all fields and choose an appropriate region.");
+      error.setContentText("Credit card number must have 16 numbers.");
+      error.show();
+    } else if (expirationDate.getText().equalsIgnoreCase("")
+        || expirationDate.getLength() < 5
+        || expirationDate.getLength() > 5) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Expiration date must be in the form of xx/xx");
+      error.show();
+    } else if (CVCode.getText().equalsIgnoreCase("")
+        || CVCode.getLength() < 3
+        || CVCode.getLength() > 3) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("CVC must contain 3 digits");
+      error.show();
+    } else if (nameOnCard.getText().equalsIgnoreCase("")) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please provide a name.");
       error.show();
     } else {
-      Parent checkoutParent = FXMLLoader.load(getClass().getResource("special_requests.fxml"));
-      Scene checkoutScene = new Scene(checkoutParent);
-      Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      checkoutStage.setScene(checkoutScene);
-      checkoutStage.show();
-      String[] details = new String[5];
-      ConnManager connManager = new ConnManager();
-      connManager.insertCustomer(details);
+      Alert confirmation = new Alert(AlertType.CONFIRMATION);
+      confirmation.setContentText(
+          "Welcome to your exclusive vacation! Thank you " + nameOnCard.getText() + ".");
+      confirmation.show();
+      Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+      Scene homeScene = new Scene(homeParent);
+      Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      homeStage.setScene(homeScene);
+      homeStage.show();
     }
   }
 
@@ -102,5 +93,4 @@ public class PaymentController {
     createAccountStage.setScene(createAccountScene);
     createAccountStage.show();
   }
-
 }
