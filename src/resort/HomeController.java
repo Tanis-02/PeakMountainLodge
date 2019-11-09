@@ -56,4 +56,13 @@ public class HomeController {
     managerLoginStage.setScene(managerLoginScene);
     managerLoginStage.show();
   }
+
+  @FXML
+  void goToCheckoutPage(MouseEvent event) throws IOException {
+    Parent checkoutParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+    Scene checkoutScene = new Scene(checkoutParent);
+    Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    checkoutStage.setScene(checkoutScene);
+    checkoutStage.show();
+  }
 }

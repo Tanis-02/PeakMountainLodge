@@ -18,5 +18,6 @@
   </Label>
   <Button id="myButton" layoutX="629.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#goToNewGuestPage" prefHeight="25.0" prefWidth="198.0" text="Book Your Stay" />
   <Label layoutX="634.0" layoutY="426.0" onMouseClicked="#goToCurrentGuestPage" text="Currently a guest? Click here" underline="true" />
-  <Label layoutX="678.0" layoutY="457.0" onMouseClicked="#goToManagerLoginPage" text="Manager Login" underline="true" />
+  <Label layoutX="678.0" layoutY="481.0" onMouseClicked="#goToManagerLoginPage" text="Manager Login" underline="true" />
+  <Label fx:id="labelCheckout" layoutX="697.0" layoutY="454.0" onMouseClicked="#goToCheckoutPage" text="Checkout" underline="true" />
 </AnchorPane>
