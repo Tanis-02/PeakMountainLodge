@@ -75,7 +75,7 @@ public class CreateAccountController {
       error.setContentText("Please fill out all fields and choose an appropriate region.");
       error.show();
     } else {
-      Parent checkoutParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+      Parent checkoutParent = FXMLLoader.load(getClass().getResource("payment.fxml"));
       Scene checkoutScene = new Scene(checkoutParent);
       Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       checkoutStage.setScene(checkoutScene);
