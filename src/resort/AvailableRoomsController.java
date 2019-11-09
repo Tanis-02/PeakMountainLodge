@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -19,6 +20,10 @@ import javafx.stage.Stage;
  * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml file.
  */
 public class AvailableRoomsController {
+
+  @FXML private Label price;
+
+  @FXML private Label price2;
 
   /**
    * Once a customer selects a room, they are then asked to create an account before checking out.

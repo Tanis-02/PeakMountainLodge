@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ConnManager {
+class ConnManager {
   private Connection conn;
   private PreparedStatement preparedStatement;
   private ResultSet resultSet;
@@ -21,7 +21,8 @@ public class ConnManager {
 
   ConnManager() throws SQLException {
     conn =
-        DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+        DriverManager.getConnection(
+            "jdbc:h2:C:\\Users\\acava\\OneDrive - Florida Gulf Coast University\\COP 3003\\PeakMountainLodge\\src\\resort\\Database\\productDB");
   }
 
   // Creates a new customer
@@ -45,7 +46,7 @@ public class ConnManager {
   }
 
   // Creating a new employee
-  public void insertEmployee(String[] insertValues) throws SQLException {
+  void insertEmployee(String[] insertValues) throws SQLException {
     String insertEmployee =
         "INSERT INTO employees ("
             + "    employeeID,"
@@ -63,7 +64,7 @@ public class ConnManager {
   }
 
   // Creating access levels
-  public void insertAccessID(String[] insertValues) throws SQLException {
+  void insertAccessID(String[] insertValues) throws SQLException {
     String insertAccessID = "INSERT INTO accessID (" + "    employeeID" + ")" + "VALUES(?)";
     preparedStatement = conn.prepareStatement(insertAccessID);
     preparedStatement.setInt(1, Integer.parseInt(insertValues[0]));
@@ -113,7 +114,7 @@ public class ConnManager {
       if (i != 0) {
         newDay = day1.get(Calendar.DATE) + 1;
       }
-      // System.out.println(newDay);
+      System.out.println(newDay);
       day1.set(Calendar.DATE, newDay);
 
       // Put back the one we took away as SQL is not index based
@@ -139,19 +140,6 @@ public class ConnManager {
       preparedStatement.setInt(5, Integer.parseInt(String.valueOf(nextID)));
       preparedStatement.setString(6, insertValues[3]);
       preparedStatement.executeUpdate();
-    }
-  }
-
-  // Creating a table not really useful for this
-  public void createTable(String SQL_CREATE) throws SQLException {
-    System.out.println(SQL_CREATE);
-    preparedStatement = conn.prepareStatement(SQL_CREATE);
-    try {
-      preparedStatement.execute();
-    } catch (SQLException e) {
-      System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-    } catch (Exception e) {
-      e.printStackTrace();
     }
   }
 
@@ -208,24 +196,24 @@ public class ConnManager {
     }
   }
 
-  public boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
-    String getPhoneNumber = "SELECT PHONENUMBER FROM CUSTOMERS WHERE LASTNAME='"+lastName+"'";
+  boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
+    String getPhoneNumber = "SELECT PHONENUMBER FROM CUSTOMERS WHERE LASTNAME='" + lastName + "'";
     preparedStatement = conn.prepareStatement(getPhoneNumber);
     resultSet = preparedStatement.executeQuery();
-    while(resultSet.next()){
-      if (resultSet.getString(1)!=null && resultSet.getString(1).equals(phoneNumber)) {
+    while (resultSet.next()) {
+      if (resultSet.getString(1) != null && resultSet.getString(1).equals(phoneNumber)) {
         return true;
       }
     }
     return false;
   }
 
-  public boolean verifyManagerLogin(String userName, String accessID) throws SQLException {
-    String getPhoneNumber = "SELECT ACCESSID FROM EMPLOYEES WHERE LASTNAME='"+userName+"'";
+  boolean verifyManagerLogin(String userName, String accessID) throws SQLException {
+    String getPhoneNumber = "SELECT ACCESSID FROM EMPLOYEES WHERE LASTNAME = '" + userName + "'";
     preparedStatement = conn.prepareStatement(getPhoneNumber);
     resultSet = preparedStatement.executeQuery();
-    while(resultSet.next()){
-      if (resultSet.getString(1)!=null && resultSet.getString(1).equals(accessID)) {
+    while (resultSet.next()) {
+      if (resultSet.getString(1) != null && resultSet.getString(1).equals(accessID)) {
         return true;
       }
     }

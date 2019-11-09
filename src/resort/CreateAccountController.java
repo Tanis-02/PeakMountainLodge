@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -46,12 +45,6 @@ public class CreateAccountController {
 
   /** Text field to insert the user's password into the database. */
   @FXML private PasswordField password;
-
-  /** Check box to receive the user's permission to send a confirmation email to them. */
-  @FXML private CheckBox confirmation;
-
-  /** Check box to receive the user's permission to send promotional emails to them. */
-  @FXML private CheckBox promotions;
 
   public void initialize() {
     ObservableList<String> option =
