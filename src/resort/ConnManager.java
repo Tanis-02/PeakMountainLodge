@@ -209,11 +209,23 @@ public class ConnManager {
   }
 
   public boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
-    String getPhoneNumber = "SELECT phonenumber FROM customers WHERE lastname='"+lastName+"'";
+    String getPhoneNumber = "SELECT PHONENUMBER FROM CUSTOMERS WHERE LASTNAME='"+lastName+"'";
     preparedStatement = conn.prepareStatement(getPhoneNumber);
     resultSet = preparedStatement.executeQuery();
     while(resultSet.next()){
       if (resultSet.getString(1)!=null && resultSet.getString(1).equals(phoneNumber)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean verifyManagerLogin(String userName, String accessID) throws SQLException {
+    String getPhoneNumber = "SELECT ACCESSID FROM EMPLOYEES WHERE LASTNAME='"+userName+"'";
+    preparedStatement = conn.prepareStatement(getPhoneNumber);
+    resultSet = preparedStatement.executeQuery();
+    while(resultSet.next()){
+      if (resultSet.getString(1)!=null && resultSet.getString(1).equals(accessID)) {
         return true;
       }
     }
