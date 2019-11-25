@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -19,6 +20,10 @@ import javafx.stage.Stage;
  * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml file.
  */
 public class AvailableRoomsController {
+
+  @FXML private Label largeRoom;
+
+  @FXML private Label smallRoom;
 
   /**
    * Once a customer selects a room, they are then asked to create an account before checking out.
@@ -28,8 +33,8 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
-    Parent createAccountParent = FXMLLoader.load(getClass().getResource(
-        "fxml_files/create_account.fxml"));
+    Parent createAccountParent =
+        FXMLLoader.load(getClass().getResource("fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);

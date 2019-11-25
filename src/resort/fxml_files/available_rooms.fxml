@@ -46,14 +46,12 @@
         contentText="Amenities: 2 queen beds in room, 55 inch Smart TV in living area, 46 inch TV in room, ocean view, full kitchen, toiletries,  and blow dryer"
         headerText="Suite: 1 Bed, 1 Bath" layoutX="652.0" layoutY="418.0" prefHeight="190.0"
         prefWidth="234.0"/>
-      <Label layoutX="736.0" layoutY="79.0" prefHeight="42.0" prefWidth="66.0"
-        text="\$499">
+      <Label fx:id="largeRoom" layoutX="736.0" layoutY="79.0" prefHeight="42.0" prefWidth="66.0">
         <font>
           <Font size="24.0"/>
         </font>
       </Label>
-      <Label layoutX="736.0" layoutY="375.0" prefHeight="42.0" prefWidth="66.0"
-        text="\$419">
+      <Label fx:id="smallRoom" layoutX="736.0" layoutY="375.0" prefHeight="42.0" prefWidth="66.0">
         <font>
           <Font size="24.0"/>
         </font>

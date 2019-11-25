@@ -22,8 +22,8 @@ public class CheckoutController {
    */
   @FXML
   void goToGuestFeedbackPage(MouseEvent event) throws IOException {
-    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource(
-        "fxml_files/guest_feedback.fxml"));
+    Parent guestFeedbackParent =
+        FXMLLoader.load(getClass().getResource("fxml_files/guest_feedback.fxml"));
     Scene guestFeedbackScene = new Scene(guestFeedbackParent);
     Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     guestFeedbackStage.setScene(guestFeedbackScene);

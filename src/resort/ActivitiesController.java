@@ -6,6 +6,7 @@ package resort;
  */
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -68,7 +69,7 @@ public class ActivitiesController {
    * their stay which is checked with the database.
    */
   @FXML
-  void goToRentalConfirmationPage() {
+  void goToRentalConfirmationPage() throws SQLException {
     if (rentalDatePicker.getValue() == null) {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Please choose an appropriate date.");
@@ -82,6 +83,9 @@ public class ActivitiesController {
               + rentalDatePicker.getValue().toString()
               + ".");
       confirmation.show();
+      ConnManager connManager = new ConnManager();
+      connManager.insertActivities(
+          rentalDatePicker.getValue().toString(), numberOfGuestsRental.getValue());
     }
   }
 

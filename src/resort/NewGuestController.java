@@ -25,6 +25,30 @@ import javafx.stage.Stage;
 /** Everything in the NewGuestController corresponds to items on the new_guest.fxml file */
 public class NewGuestController {
 
+  DatePicker getCheckIn() {
+    return checkIn;
+  }
+
+  public void setCheckIn(DatePicker checkIn) {
+    this.checkIn = checkIn;
+  }
+
+  public void setCheckOut(DatePicker checkOut) {
+    this.checkOut = checkOut;
+  }
+
+  public void setNumberOfGuests(ChoiceBox<?> numberOfGuests) {
+    this.numberOfGuests = numberOfGuests;
+  }
+
+  public DatePicker getCheckOut() {
+    return checkOut;
+  }
+
+  public ChoiceBox<?> getNumberOfGuests() {
+    return numberOfGuests;
+  }
+
   /**
    * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
    * database.
@@ -76,8 +100,8 @@ public class NewGuestController {
       error2.setContentText("Check in date must be before check out date.");
       error2.show();
     } else {
-      Parent availableRoomsParent = FXMLLoader.load(getClass().getResource(
-          "fxml_files/available_rooms.fxml"));
+      Parent availableRoomsParent =
+          FXMLLoader.load(getClass().getResource("fxml_files/available_rooms.fxml"));
       Scene availableRoomsScene = new Scene(availableRoomsParent);
       Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       availableRoomsStage.setScene(availableRoomsScene);
