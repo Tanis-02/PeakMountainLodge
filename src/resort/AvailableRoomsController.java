@@ -28,7 +28,8 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
-    Parent createAccountParent = FXMLLoader.load(getClass().getResource("create_account.fxml"));
+    Parent createAccountParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);
@@ -44,7 +45,7 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent newGuestParent = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
+    Parent newGuestParent = FXMLLoader.load(getClass().getResource("fxml_files/new_guest.fxml"));
     Scene newGuestScene = new Scene(newGuestParent);
     Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     newGuestStage.setScene(newGuestScene);

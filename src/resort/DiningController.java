@@ -110,7 +110,7 @@ public class DiningController {
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     Parent currentGuestOptionsParent =
-        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+        FXMLLoader.load(getClass().getResource("fxml_files/current_guest_options.fxml"));
     Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
     Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestOptionsStage.setScene(currentGuestOptionsScene);

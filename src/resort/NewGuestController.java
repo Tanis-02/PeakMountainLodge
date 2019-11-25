@@ -6,7 +6,6 @@ package resort;
  */
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -67,7 +66,7 @@ public class NewGuestController {
    * @throws IOException yes, it does
    */
   @FXML
-  void goToAvailableRoomsPage(MouseEvent event) throws IOException, SQLException {
+  void goToAvailableRoomsPage(MouseEvent event) throws IOException {
     if (checkIn.getValue() == null || checkOut.getValue() == null) {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Both dates must be selected. Please try again.");
@@ -77,7 +76,8 @@ public class NewGuestController {
       error2.setContentText("Check in date must be before check out date.");
       error2.show();
     } else {
-      Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+      Parent availableRoomsParent = FXMLLoader.load(getClass().getResource(
+          "fxml_files/available_rooms.fxml"));
       Scene availableRoomsScene = new Scene(availableRoomsParent);
       Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       availableRoomsStage.setScene(availableRoomsScene);
@@ -94,7 +94,7 @@ public class NewGuestController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     homeStage.setScene(homeScene);

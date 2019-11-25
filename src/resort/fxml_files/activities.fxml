@@ -17,11 +17,11 @@
   <ScrollPane prefHeight="700.0" prefWidth="1000.0">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1000.0">
       <ImageView fitHeight="700.0" fitWidth="1000.0" pickOnBounds="true">
-        <Image url="@images/resort.jpg"/>
+        <Image url="@../images/resort.jpg"/>
       </ImageView>
       <ImageView fitHeight="225.0" fitWidth="325.0" layoutX="65.0" layoutY="420.0"
         pickOnBounds="true">
-        <Image url="@images/snorkel.jpg"/>
+        <Image url="@../images/snorkel.jpg"/>
       </ImageView>
       <Label layoutX="356.0" layoutY="43.0" text="Available Activities">
         <font>
@@ -30,7 +30,7 @@
       </Label>
       <ImageView fitHeight="225.0" fitWidth="325.0" layoutX="65.0" layoutY="156.0"
         pickOnBounds="true">
-        <Image url="@images/jet_ski.jpg"/>
+        <Image url="@../images/jet_ski.jpg"/>
       </ImageView>
       <Label layoutX="462.0" layoutY="122.0" text="Water Sport Rentals">
         <font>

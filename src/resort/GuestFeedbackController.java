@@ -57,7 +57,8 @@ public class GuestFeedbackController {
   @FXML
   void submitFeedback() throws IOException {
     btnSubmitFeedback.setDisable(true);
-    FXMLLoader feedbackLoader = new FXMLLoader(getClass().getResource("manager_overview.fxml"));
+    FXMLLoader feedbackLoader = new FXMLLoader(getClass().getResource(
+        "fxml_files/manager_overview.fxml"));
     feedbackLoader.load();
     ManagerOverviewController controller = feedbackLoader.getController();
     controller.fillFeedbackLog(inputFeedback.getText(), familyName);
@@ -75,7 +76,8 @@ public class GuestFeedbackController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent currentGuestOptionsParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+    Parent currentGuestOptionsParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/checkout.fxml"));
     Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
     Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestOptionsStage.setScene(currentGuestOptionsScene);

@@ -22,7 +22,8 @@ public class CheckoutController {
    */
   @FXML
   void goToGuestFeedbackPage(MouseEvent event) throws IOException {
-    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("guest_feedback.fxml"));
+    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/guest_feedback.fxml"));
     Scene guestFeedbackScene = new Scene(guestFeedbackParent);
     Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     guestFeedbackStage.setScene(guestFeedbackScene);
@@ -41,7 +42,7 @@ public class CheckoutController {
     confirmation.setContentText(
         "You have been successfully checked out. We hope you enjoyed your stay!");
     confirmation.show();
-    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     homeStage.setScene(homeScene);
@@ -57,7 +58,7 @@ public class CheckoutController {
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     Parent currentGuestOptionsParent =
-        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+        FXMLLoader.load(getClass().getResource("fxml_files/current_guest_options.fxml"));
     Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
     Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestOptionsStage.setScene(currentGuestOptionsScene);

@@ -20,7 +20,7 @@ public class HomeController {
    */
   @FXML
   void goToNewGuestPage(MouseEvent event) throws IOException {
-    Parent newGuestParent = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
+    Parent newGuestParent = FXMLLoader.load(getClass().getResource("fxml_files/new_guest.fxml"));
     Scene newGuestScene = new Scene(newGuestParent);
     Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     newGuestStage.setScene(newGuestScene);
@@ -35,7 +35,8 @@ public class HomeController {
    */
   @FXML
   void goToCurrentGuestPage(MouseEvent event) throws IOException {
-    Parent currentGuestParent = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
+    Parent currentGuestParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/current_guest.fxml"));
     Scene currentGuestScene = new Scene(currentGuestParent);
     Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     newGuestStage.setScene(currentGuestScene);
@@ -50,7 +51,8 @@ public class HomeController {
    */
   @FXML
   void goToManagerLoginPage(MouseEvent event) throws IOException {
-    Parent managerLoginParent = FXMLLoader.load(getClass().getResource("manager_login.fxml"));
+    Parent managerLoginParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/manager_login.fxml"));
     Scene managerLoginScene = new Scene(managerLoginParent);
     Stage managerLoginStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     managerLoginStage.setScene(managerLoginScene);
@@ -59,7 +61,7 @@ public class HomeController {
 
   @FXML
   void goToCheckoutPage(MouseEvent event) throws IOException {
-    Parent checkoutParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+    Parent checkoutParent = FXMLLoader.load(getClass().getResource("fxml_files/checkout.fxml"));
     Scene checkoutScene = new Scene(checkoutParent);
     Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     checkoutStage.setScene(checkoutScene);

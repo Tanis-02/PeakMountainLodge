@@ -41,7 +41,7 @@ public class ManagerLoginController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     homeStage.setScene(homeScene);
@@ -62,7 +62,7 @@ public class ManagerLoginController {
         && !managerPassword.getText().equals("")
         && connManager.verifyManagerLogin(managerID.getText(), managerPassword.getText())) {
       Parent managerOverviewParent =
-          FXMLLoader.load(getClass().getResource("manager_overview.fxml"));
+          FXMLLoader.load(getClass().getResource("fxml_files/manager_overview.fxml"));
       Scene managerOverviewScene = new Scene(managerOverviewParent);
       Stage managerOverviewStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       managerOverviewStage.setScene(managerOverviewScene);

@@ -90,7 +90,7 @@ public class CreateAccountController {
       error.setContentText("Please enter a password.");
       error.show();
     } else {
-      Parent checkoutParent = FXMLLoader.load(getClass().getResource("payment.fxml"));
+      Parent checkoutParent = FXMLLoader.load(getClass().getResource("fxml_files/payment.fxml"));
       Scene checkoutScene = new Scene(checkoutParent);
       Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       checkoutStage.setScene(checkoutScene);
@@ -114,7 +114,8 @@ public class CreateAccountController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+    Parent availableRoomsParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/available_rooms.fxml"));
     Scene availableRoomsScene = new Scene(availableRoomsParent);
     Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     availableRoomsStage.setScene(availableRoomsScene);

@@ -71,7 +71,7 @@ public class PaymentController {
       confirmation.setContentText(
           "Welcome to your exclusive vacation! Thank you " + nameOnCard.getText() + ".");
       confirmation.show();
-      Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+      Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
       Scene homeScene = new Scene(homeParent);
       Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       homeStage.setScene(homeScene);
@@ -87,7 +87,8 @@ public class PaymentController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent createAccountParent = FXMLLoader.load(getClass().getResource("create_account.fxml"));
+    Parent createAccountParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);
