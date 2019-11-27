@@ -7,6 +7,7 @@ package resort;
  */
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,7 +64,7 @@ public class ManagerOverviewController {
    * Table view customerInformationTableView is used to view all of the customers and their related
    * information from the database.
    */
-  @FXML private TableView<?> customerInformationTableView;
+  @FXML private TableView<ConnManager> customerInformationTableView;
 
   /** Text field to look up the customer by their name from the database. */
   @FXML private TextField customerName;
@@ -102,6 +103,8 @@ public class ManagerOverviewController {
 
   @FXML private TableColumn<?, ?> roomTypeColumn;
 
+  @FXML private TableColumn<?, ?> last4Column;
+
   @FXML private TableColumn<?, ?> checkInColumn;
 
   /** Text area to append customer feedback to for managers to view. */
@@ -114,14 +117,15 @@ public class ManagerOverviewController {
    * feedback tab each time the user (which in this case will be a manager) logs into the manager
    * overview screen.
    */
-  public void initialize() {
+  public void initialize() throws SQLException {
     for (String s : feedbackList) {
       feedbackLog.appendText(s + "\n");
     }
     if (feedbackList.size() == 0) {
       feedbackLog.appendText("No customer feedback to display");
     }
-    ObservableList<ManagerDriver> manager = FXCollections.observableArrayList();
+    ObservableList<ManagerDriver> financial = FXCollections.observableArrayList();
+    ObservableList<ConnManager> customer = FXCollections.observableArrayList();
     ObservableList<String> sort =
         FXCollections.observableArrayList(
             "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
@@ -130,16 +134,21 @@ public class ManagerOverviewController {
     activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
     expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
     revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+    nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone number"));
+    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("room type"));
+    last4Column.setCellValueFactory(new PropertyValueFactory<>("last 4 ccn"));
+    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("check in/out dates"));
     Random random = new Random();
     for (int i = 0; i <= 20; i++) {
-      manager.add(
+      financial.add(
           new ManagerDriver(
               random.nextInt(500000),
               random.nextInt(500000),
               random.nextInt(500000),
               random.nextInt(500000),
               random.nextInt(500000)));
-      financialReportsTableView.setItems(manager);
+      financialReportsTableView.setItems(financial);
     }
     sortBy.getItems().clear();
     sortBy.setItems(sort);
@@ -176,7 +185,7 @@ public class ManagerOverviewController {
    */
   @FXML
   void goToHomePage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     homeStage.setScene(homeScene);

@@ -6,6 +6,7 @@ package resort;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -78,7 +79,52 @@ public class DiningController {
     }
   }
 
+ /* Date a, b;   // assume these are set to something
+  Date d;      // the date in question
+
+return a.compareTo(d) * d.compareTo(b) > 0;
+  If you want the range to be inclusive
+
+return a.compareTo(d) * d.compareTo(b) >= 0;*/
+
+ /* SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  Date date1 = sdf.parse("2009-12-31");
+  Date date2 = sdf.parse("2010-01-31");
+
+        System.out.println("date1 : " + sdf.format(date1));
+        System.out.println("date2 : " + sdf.format(date2));
+
+        if (date1.compareTo(date2) > 0) {
+    System.out.println("Date1 is after Date2");
+  } else if (date1.compareTo(date2) < 0) {
+    System.out.println("Date1 is before Date2");
+  } else if (date1.compareTo(date2) == 0) {
+    System.out.println("Date1 is equal to Date2");
+  } else {
+    System.out.println("How to get here?");
+  }
+
+}*/
+
+
+
   /**
+   public class DisplayDate {
+   public static void main(String args[]) {
+   // Instantiate a objects
+   Date date1 = new Date();
+   Date date2 = new Date();
+
+   if(date1.compareTo(date2)>0){
+   System.out.println("Date1 is after Date2");
+   }else if(date1.compareTo(date2)<0){
+   System.out.println("Date1 is before Date2");
+   }else{
+   System.out.println("Date1 is equal to Date2");
+   }
+
+   }
+   }
    * The goToUnderWaterConfirmationPage() shows a confirmation message with the date and number of
    * guests going to the UnderWater restaurant.
    */
@@ -110,7 +156,7 @@ public class DiningController {
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
     Parent currentGuestOptionsParent =
-        FXMLLoader.load(getClass().getResource("current_guest_options.fxml"));
+        FXMLLoader.load(getClass().getResource("fxml_files/current_guest_options.fxml"));
     Scene currentGuestOptionsScene = new Scene(currentGuestOptionsParent);
     Stage currentGuestOptionsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestOptionsStage.setScene(currentGuestOptionsScene);

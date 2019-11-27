@@ -106,7 +106,7 @@
           <TableColumn fx:id="nameColumn" prefWidth="156.0" text="Name"/>
           <TableColumn fx:id="phoneNumberColumn" prefWidth="156.0" text="Phone Number"/>
           <TableColumn fx:id="roomTypeColumn" prefWidth="156.0" text="Room Type"/>
-          <TableColumn fx:id="last4CCNColumn" prefWidth="156.0" text="Last 4 CCN"/>
+          <TableColumn fx:id="last4Column" prefWidth="156.0" text="Last 4 CCN"/>
           <TableColumn fx:id="checkInColumn" prefWidth="156.0" text="Check In/Out Dates"/>
         </columns>
       </TableView>

@@ -37,7 +37,8 @@ public class CurrentGuestController {
     if (!lastName.getText().equals("")
         && !phoneNumber.getText().equals("")
         && connManager.verifyGuestLogin(lastName.getText(), phoneNumber.getText())) {
-      FXMLLoader greetLoader = new FXMLLoader(getClass().getResource("current_guest_options.fxml"));
+      FXMLLoader greetLoader = new FXMLLoader(getClass().getResource(
+          "fxml_files/current_guest_options.fxml"));
       Parent currentGuestOptionsParent = greetLoader.load();
       CurrentGuestOptionsController controller = greetLoader.getController();
       controller.setFamilyName(lastName.getText());
@@ -59,7 +60,7 @@ public class CurrentGuestController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     homeStage.setScene(homeScene);

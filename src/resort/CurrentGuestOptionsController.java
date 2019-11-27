@@ -35,7 +35,8 @@ public class CurrentGuestOptionsController {
   void setFamilyName(String lastName) throws IOException {
     setNameStatic(lastName);
     greetGuest.setText("Hello, " + familyName + " Family");
-    FXMLLoader passFamilyLoader = new FXMLLoader(getClass().getResource("guest_feedback.fxml"));
+    FXMLLoader passFamilyLoader = new FXMLLoader(getClass().getResource(
+        "fxml_files/guest_feedback.fxml"));
     passFamilyLoader.load();
     GuestFeedbackController passFamilyController = passFamilyLoader.getController();
     passFamilyController.passFamilyName(familyName);
@@ -61,7 +62,7 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToActivitiesPage(MouseEvent event) throws IOException {
-    Parent activitiesParent = FXMLLoader.load(getClass().getResource("activities.fxml"));
+    Parent activitiesParent = FXMLLoader.load(getClass().getResource("fxml_files/activities.fxml"));
     Scene activitiesScene = new Scene(activitiesParent);
     Stage activitiesStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     activitiesStage.setScene(activitiesScene);
@@ -76,7 +77,7 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToDiningPage(MouseEvent event) throws IOException {
-    Parent diningParent = FXMLLoader.load(getClass().getResource("dining.fxml"));
+    Parent diningParent = FXMLLoader.load(getClass().getResource("fxml_files/dining.fxml"));
     Scene diningScene = new Scene(diningParent);
     Stage diningStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     diningStage.setScene(diningScene);
@@ -91,7 +92,8 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToSpecialRequestsPage(MouseEvent event) throws IOException {
-    Parent specialRequestsParent = FXMLLoader.load(getClass().getResource("special_requests.fxml"));
+    Parent specialRequestsParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/special_requests.fxml"));
     Scene specialRequestsScene = new Scene(specialRequestsParent);
     Stage specialRequestsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     specialRequestsStage.setScene(specialRequestsScene);
@@ -106,7 +108,7 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToCheckoutPage(MouseEvent event) throws IOException {
-    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("fxml_files/checkout.fxml"));
     Scene guestFeedbackScene = new Scene(guestFeedbackParent);
     Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     guestFeedbackStage.setScene(guestFeedbackScene);
@@ -122,7 +124,8 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent currentGuestParent = FXMLLoader.load(getClass().getResource("current_guest.fxml"));
+    Parent currentGuestParent = FXMLLoader.load(getClass().getResource(
+        "fxml_files/current_guest.fxml"));
     Scene currentGuestScene = new Scene(currentGuestParent);
     Stage currentGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentGuestStage.setScene(currentGuestScene);

@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,9 +22,7 @@ class ConnManager {
   private Statement statement;
 
   ConnManager() throws SQLException {
-    conn =
-        DriverManager.getConnection(
-            "jdbc:h2:./src/resort/Database/productDB");
+    conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
   }
 
   // Creates a new customer
@@ -194,6 +194,13 @@ class ConnManager {
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
+  }
+
+  void insertActivities(String date, int numberOfGuests) throws SQLException {
+    String setActivities = "INSERT INTO RESERVATIONS (ACTIVITIES, ACTIVITIES_DATE) VALUES (?, ?)";
+    preparedStatement = conn.prepareStatement(setActivities);
+    preparedStatement.setDate(1, java.sql.Date.valueOf(date));
+    preparedStatement.setInt(2, numberOfGuests);
   }
 
   boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
