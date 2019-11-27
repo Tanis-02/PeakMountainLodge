@@ -21,8 +21,8 @@ import javafx.stage.Stage;
  */
 public class AvailableRoomsController {
 
-  @FXML private Label price1;
-  @FXML private Label price2;
+  @FXML private Label largeRoom;
+  @FXML private Label smallRoom;
 
   private static boolean holiday;
 
@@ -37,11 +37,11 @@ public class AvailableRoomsController {
   @FXML
   private void initialize() {
     if (holiday) {
-      price1.setText("$599");
-      price2.setText("$519");
+      largeRoom.setText("$599");
+      smallRoom.setText("$519");
     } else {
-      price1.setText("$499");
-      price2.setText("$419");
+      largeRoom.setText("$499");
+      smallRoom.setText("$419");
     }
   }
 
@@ -53,7 +53,7 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
-    Parent createAccountParent = FXMLLoader.load(getClass().getResource("create_account.fxml"));
+    Parent createAccountParent = FXMLLoader.load(getClass().getResource("fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);
@@ -69,7 +69,7 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent newGuestParent = FXMLLoader.load(getClass().getResource("new_guest.fxml"));
+    Parent newGuestParent = FXMLLoader.load(getClass().getResource("fxml_files/new_guest.fxml"));
     Scene newGuestScene = new Scene(newGuestParent);
     Stage newGuestStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     newGuestStage.setScene(newGuestScene);

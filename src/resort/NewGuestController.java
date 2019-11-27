@@ -38,6 +38,32 @@ public class NewGuestController {
     LocalDate novYearSelected;
     LocalDate thanksgiving;
     LocalDate midHolidays;
+    LocalDate newYears;
+
+    DatePicker getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(DatePicker checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(DatePicker checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setNumberOfGuests(ChoiceBox<?> numberOfGuests) {
+        this.numberOfGuests = numberOfGuests;
+    }
+
+    public DatePicker getCheckOut() {
+        return checkOut;
+    }
+
+    public ChoiceBox<?> getNumberOfGuests() {
+        return numberOfGuests;
+    }
+
     /**
      * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
      * database.
@@ -96,25 +122,32 @@ public class NewGuestController {
             novYearSelected = LocalDate.of(yearSelected, 11, 15);
             thanksgiving = novYearSelected.with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
             midHolidays = LocalDate.of(yearSelected, 12, 27);
+            newYears = LocalDate.of(yearSelected, 1, 1);
             if (thanksgiving.minusDays(2).isBefore(checkOut.getValue()) &&
                     thanksgiving.plusDays(2).isAfter(checkIn.getValue())) {
-                FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("available_rooms.fxml"));
+                FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("fxml_files/available_rooms.fxml"));
                 Parent roomsParent = roomsLoader.load();
                 AvailableRoomsController roomsController = roomsLoader.getController();
                 roomsController.holidayPrices();
             } else if (midHolidays.minusDays(6).isBefore(checkOut.getValue()) &&
                     midHolidays.plusDays(6).isAfter(checkIn.getValue())) {
-              FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("available_rooms.fxml"));
+              FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("fxml_files/available_rooms.fxml"));
               Parent roomsParent = roomsLoader.load();
               AvailableRoomsController roomsController = roomsLoader.getController();
               roomsController.holidayPrices();
+            } else if (newYears.minusDays(2).isBefore(checkOut.getValue()) &&
+                    newYears.plusDays(2).isAfter(checkIn.getValue())) {
+                FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("fxml_files/available_rooms.fxml"));
+                Parent roomsParent = roomsLoader.load();
+                AvailableRoomsController roomsController = roomsLoader.getController();
+                roomsController.holidayPrices();
             } else {
-                FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("available_rooms.fxml"));
+                FXMLLoader roomsLoader = new FXMLLoader(getClass().getResource("fxml_files/available_rooms.fxml"));
                 Parent roomsParent = roomsLoader.load();
                 AvailableRoomsController roomsController = roomsLoader.getController();
                 roomsController.normalPrices();
             }
-            Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("available_rooms.fxml"));
+            Parent availableRoomsParent = FXMLLoader.load(getClass().getResource("fxml_files/available_rooms.fxml"));
             Scene availableRoomsScene = new Scene(availableRoomsParent);
             Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             availableRoomsStage.setScene(availableRoomsScene);
@@ -131,7 +164,7 @@ public class NewGuestController {
      */
     @FXML
     void goToPreviousPage(MouseEvent event) throws IOException {
-        Parent homeParent = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
         Scene homeScene = new Scene(homeParent);
         Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         homeStage.setScene(homeScene);
