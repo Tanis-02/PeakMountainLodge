@@ -32,12 +32,12 @@
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage" text="Back" />
       <DialogPane contentText="Amenities: 1 King bed in master room, 2 queen beds in spare room, 55 inch Smart TV in living area, 46 inch TV's in room, ocean view, full kitchen, toiletries, and blow dryer" headerText="Suite: 2 Bed, 2 Bath" layoutX="652.0" layoutY="126.0" prefHeight="190.0" prefWidth="234.0" />
       <DialogPane contentText="Amenities: 2 queen beds in room, 55 inch Smart TV in living area, 46 inch TV in room, ocean view, full kitchen, toiletries,  and blow dryer" headerText="Suite: 1 Bed, 1 Bath" layoutX="652.0" layoutY="418.0" prefHeight="190.0" prefWidth="234.0" />
-      <Label layoutX="736.0" layoutY="79.0" prefHeight="42.0" prefWidth="66.0" text="\$499">
+      <Label fx:id="price1" layoutX="736.0" layoutY="79.0" prefHeight="42.0" prefWidth="66.0" text="\$499">
         <font>
           <Font size="24.0" />
         </font>
       </Label>
-      <Label layoutX="736.0" layoutY="375.0" prefHeight="42.0" prefWidth="66.0" text="\$419">
+      <Label fx:id="price2" layoutX="736.0" layoutY="375.0" prefHeight="42.0" prefWidth="66.0" text="\$419">
         <font>
           <Font size="24.0" />
         </font>
