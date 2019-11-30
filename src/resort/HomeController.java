@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in the HomeController corresponds to items in the home.fxml file */
+/**
+ * Everything in the HomeController corresponds to items in the home.fxml file
+ */
 public class HomeController {
 
   /**
@@ -59,12 +61,4 @@ public class HomeController {
     managerLoginStage.show();
   }
 
-  @FXML
-  void goToCheckoutPage(MouseEvent event) throws IOException {
-    Parent checkoutParent = FXMLLoader.load(getClass().getResource("fxml_files/checkout.fxml"));
-    Scene checkoutScene = new Scene(checkoutParent);
-    Stage checkoutStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    checkoutStage.setScene(checkoutScene);
-    checkoutStage.show();
-  }
 }

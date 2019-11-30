@@ -10,12 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
 class ConnManager {
+
   private Connection conn;
   private PreparedStatement preparedStatement;
   private ResultSet resultSet;
@@ -144,7 +143,7 @@ class ConnManager {
   }
 
   // Selecting all Customers
-  void selectAllCustomers() {
+  ConnManager selectAllCustomers() {
     try {
       statement = conn.createStatement();
       resultSet = statement.executeQuery("SELECT * FROM customers;");
@@ -159,6 +158,7 @@ class ConnManager {
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
+    return ConnManager.this;
   }
 
   public void selectAllEmployees() {

@@ -11,7 +11,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in the CheckoutController corresponds to items in the checkout.fxml file. */
+/**
+ * Everything in the CheckoutController corresponds to items in the checkout.fxml file.
+ */
 public class CheckoutController {
 
   /**

@@ -6,7 +6,6 @@ package resort;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,19 +17,28 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in the ManagerLoginController corresponds to items on the manager_login.fxml file */
+/**
+ * Everything in the ManagerLoginController corresponds to items on the manager_login.fxml file
+ */
 public class ManagerLoginController {
 
-  /** Text field managerID to get the user's ID to compare against the database records. */
-  @FXML private TextField managerID;
+  /**
+   * Text field managerID to get the user's ID to compare against the database records.
+   */
+  @FXML
+  private TextField managerID;
 
   /**
    * Text field managerPassword to get the user's password to compare against the database records.
    */
-  @FXML private PasswordField managerPassword;
+  @FXML
+  private PasswordField managerPassword;
 
-  /** Label to prompt the user to try again in the event an invalid login attempt is made. */
-  @FXML private Label badManagerInput2;
+  /**
+   * Label to prompt the user to try again in the event an invalid login attempt is made.
+   */
+  @FXML
+  private Label badManagerInput2;
 
   /**
    * Universal goToPreviousPage() function is used to bring the user to the previous page they were

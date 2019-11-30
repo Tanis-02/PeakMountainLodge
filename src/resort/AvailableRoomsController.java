@@ -17,12 +17,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml file.
+ * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml
+ * file.
  */
 public class AvailableRoomsController {
 
-  @FXML private Label largeRoom;
-  @FXML private Label smallRoom;
+  @FXML
+  private Label largeRoom;
+  @FXML
+  private Label smallRoom;
 
   private static boolean holiday;
 
@@ -53,7 +56,8 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
-    Parent createAccountParent = FXMLLoader.load(getClass().getResource("fxml_files/create_account.fxml"));
+    Parent createAccountParent = FXMLLoader
+        .load(getClass().getResource("fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);

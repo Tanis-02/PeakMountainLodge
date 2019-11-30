@@ -1,6 +1,7 @@
 package resort;
 
 public class ManagerDriver {
+
   private int roomRates;
   private int dining;
   private int activities;

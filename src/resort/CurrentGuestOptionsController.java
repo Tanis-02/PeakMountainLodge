@@ -23,8 +23,11 @@ public class CurrentGuestOptionsController {
    */
   private static String familyName;
 
-  /** Label that will be used for greeting the guest once they log in. */
-  @FXML private Label greetGuest;
+  /**
+   * Label that will be used for greeting the guest once they log in.
+   */
+  @FXML
+  private Label greetGuest;
 
   /**
    * The setFamilyName() function is used to display the family's name on the screen once they log
@@ -41,7 +44,8 @@ public class CurrentGuestOptionsController {
     GuestFeedbackController passFamilyController = passFamilyLoader.getController();
     passFamilyController.passFamilyName(familyName);
   }
-  static void setNameStatic(String name) {
+
+  private static void setNameStatic(String name) {
     familyName = name;
   }
 
@@ -108,7 +112,8 @@ public class CurrentGuestOptionsController {
    */
   @FXML
   void goToCheckoutPage(MouseEvent event) throws IOException {
-    Parent guestFeedbackParent = FXMLLoader.load(getClass().getResource("fxml_files/checkout.fxml"));
+    Parent guestFeedbackParent = FXMLLoader
+        .load(getClass().getResource("fxml_files/checkout.fxml"));
     Scene guestFeedbackScene = new Scene(guestFeedbackParent);
     Stage guestFeedbackStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     guestFeedbackStage.setScene(guestFeedbackScene);

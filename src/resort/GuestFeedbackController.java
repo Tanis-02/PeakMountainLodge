@@ -13,11 +13,17 @@ import javafx.stage.Stage;
 
 public class GuestFeedbackController {
 
-  /** Button that submits the guest's typed feedback when pressed. */
-  @FXML private Button btnSubmitFeedback;
+  /**
+   * Button that submits the guest's typed feedback when pressed.
+   */
+  @FXML
+  private Button btnSubmitFeedback;
 
-  /** Text area that allows the guest to type in their feedback. */
-  @FXML private TextArea inputFeedback;
+  /**
+   * Text area that allows the guest to type in their feedback.
+   */
+  @FXML
+  private TextArea inputFeedback;
 
   /**
    * Family name to be accepted from the previous scene and used when recording feedback logs. Must

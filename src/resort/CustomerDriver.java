@@ -2,27 +2,25 @@ package resort;
 
 public class CustomerDriver {
 
-  private String name;
+  private String lastName;
   private String phoneNumber;
   private String roomType;
-  private String last4;
-  private String checkIn;
+  private int last4;
+  private String dates;
 
-  public CustomerDriver(
-      String name, String phoneNumber, String roomType, String last4, String checkIn) {
-    this.name = name;
+  CustomerDriver(String lastName, String phoneNumber, String roomType, int last4) {
+    this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.roomType = roomType;
     this.last4 = last4;
-    this.checkIn = checkIn;
   }
 
-  public void setLastName(String name) {
-    this.name = name;
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 
   public String getLastName() {
-    return name;
+    return lastName;
   }
 
   public void setPhoneNumber(String phoneNumber) {
@@ -41,19 +39,19 @@ public class CustomerDriver {
     return roomType;
   }
 
-  public void setLast4(String last4) {
+  public void setLast4(int last4) {
     this.last4 = last4;
   }
 
-  public String getLast4() {
+  public int getLast4() {
     return last4;
   }
 
-  public void setCheckIn(String checkIn) {
-    this.checkIn = checkIn;
+  public void setDates(String dates) {
+    this.dates = dates;
   }
 
-  public String getCheckIn() {
-    return checkIn;
+  public String getDates() {
+    return dates;
   }
 }

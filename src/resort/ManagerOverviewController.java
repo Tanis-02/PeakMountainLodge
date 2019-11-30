@@ -30,85 +30,143 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** The ManagerOverviewController corresponds to all items on the manager_overview.fxml file */
+/**
+ * The ManagerOverviewController corresponds to all items on the manager_overview.fxml file
+ */
 public class ManagerOverviewController {
 
-  /** Table view financialReportsTableView is used to see all of the financial reports. */
-  @FXML private TableView<ManagerDriver> financialReportsTableView;
+  /**
+   * Table view financialReportsTableView is used to see all of the financial reports.
+   */
+  @FXML
+  private TableView<ManagerDriver> financialReportsTableView;
 
-  /** ChoiceBox sortBy allows the user to sort by a particular field in the financial reports. */
-  @FXML private ChoiceBox<String> sortBy;
+  /**
+   * ChoiceBox sortBy allows the user to sort by a particular field in the financial reports.
+   */
+  @FXML
+  private ChoiceBox<String> sortBy;
 
-  /** DatePicker startDate is used to select a start date for the financial reports table view. */
-  @FXML private DatePicker startDate;
+  /**
+   * DatePicker startDate is used to select a start date for the financial reports table view.
+   */
+  @FXML
+  private DatePicker startDate;
 
-  /** DatePicker endDate is used to select an end date for the financial reports table view. */
-  @FXML private DatePicker endDate;
+  /**
+   * DatePicker endDate is used to select an end date for the financial reports table view.
+   */
+  @FXML
+  private DatePicker endDate;
 
-  /** ChoiceBox previousReports allows the user to select a year to view those reports. */
-  @FXML private ChoiceBox<?> previousReports;
+  /**
+   * ChoiceBox previousReports allows the user to select a year to view those reports.
+   */
+  @FXML
+  private ChoiceBox<?> previousReports;
 
-  /** Table view blackOutDatesTableView is used to view all of the rooms and to select a room. */
-  @FXML private TableView<?> blackOutDatesTableView;
+  /**
+   * Table view blackOutDatesTableView is used to view all of the rooms and to select a room.
+   */
+  @FXML
+  private TableView<?> blackOutDatesTableView;
 
-  /** CheckBox confirmation is used to confirm black out date selection. */
-  @FXML private CheckBox confirmation;
+  /**
+   * CheckBox confirmation is used to confirm black out date selection.
+   */
+  @FXML
+  private CheckBox confirmation;
 
-  /** DatePicker datePicker is used to select the date for blacking out dates. */
-  @FXML private DatePicker datePicker;
+  /**
+   * DatePicker datePicker is used to select the date for blacking out dates.
+   */
+  @FXML
+  private DatePicker datePicker;
 
-  /** Table view promotionsTableView is used to view all of the rooms and to select a room. */
-  @FXML private TableView<?> promotionsTableView;
+  /**
+   * Table view promotionsTableView is used to view all of the rooms and to select a room.
+   */
+  @FXML
+  private TableView<?> promotionsTableView;
 
   /**
    * Table view customerInformationTableView is used to view all of the customers and their related
    * information from the database.
    */
-  @FXML private TableView<ConnManager> customerInformationTableView;
+  @FXML
+  private TableView<CustomerDriver> customerInformationTableView;
 
-  /** Text field to look up the customer by their name from the database. */
-  @FXML private TextField customerName;
+  /**
+   * Text field to look up the customer by their name from the database.
+   */
+  @FXML
+  private TextField customerName;
 
-  /** Text field to look up the customer by their phone number from the database. */
-  @FXML private TextField customerPhone;
+  /**
+   * Text field to look up the customer by their phone number from the database.
+   */
+  @FXML
+  private TextField customerPhone;
 
-  /** Text field to look up the customer by their credit card number from the database. */
-  @FXML private TextField creditCardNumber;
+  /**
+   * Text field to look up the customer by their credit card number from the database.
+   */
+  @FXML
+  private TextField creditCardNumber;
 
-  @FXML private TableColumn<Integer, ManagerDriver> ratesColumn;
+  @FXML
+  private TableColumn<Integer, ManagerDriver> ratesColumn;
 
-  @FXML private TableColumn<Integer, ManagerDriver> diningColumn;
+  @FXML
+  private TableColumn<Integer, ManagerDriver> diningColumn;
 
-  @FXML private TableColumn<Integer, ManagerDriver> activitiesColumn;
+  @FXML
+  private TableColumn<Integer, ManagerDriver> activitiesColumn;
 
-  @FXML private TableColumn<Integer, ManagerDriver> expensesColumn;
+  @FXML
+  private TableColumn<Integer, ManagerDriver> expensesColumn;
 
-  @FXML private TableColumn<Integer, ManagerDriver> revenueColumn;
+  @FXML
+  private TableColumn<Integer, ManagerDriver> revenueColumn;
 
-  @FXML private TableColumn<?, ?> dateColumn;
+  @FXML
+  private TableColumn<?, ?> dateColumn;
 
-  @FXML private TableColumn<?, ?> costColumn;
+  @FXML
+  private TableColumn<?, ?> costColumn;
 
-  @FXML private TableColumn<?, ?> roomNumberColumn;
+  @FXML
+  private TableColumn<?, ?> roomNumberColumn;
 
-  @FXML private TableColumn<?, ?> blackOutDateColumn;
+  @FXML
+  private TableColumn<?, ?> blackOutDateColumn;
 
-  @FXML private TableColumn<?, ?> blackOutCostColumn;
+  @FXML
+  private TableColumn<?, ?> blackOutCostColumn;
 
-  @FXML private TableColumn<?, ?> blackOutRoomTypeColumn;
+  @FXML
+  private TableColumn<?, ?> blackOutRoomTypeColumn;
 
-  @FXML private TableColumn<?, ?> nameColumn;
+  @FXML
+  private TableColumn<?, ?> nameColumn;
 
-  @FXML private TableColumn<?, ?> phoneNumberColumn;
+  @FXML
+  private TableColumn<?, ?> phoneNumberColumn;
 
-  @FXML private TableColumn<?, ?> roomTypeColumn;
+  @FXML
+  private TableColumn<?, ?> roomTypeColumn;
 
-  @FXML private TableColumn<?, ?> last4Column;
+  @FXML
+  private TableColumn<?, ?> last4Column;
 
-  @FXML private TableColumn<?, ?> checkInColumn;
+  @FXML
+  private TableColumn<?, ?> checkInColumn;
 
-  /** Text area to append customer feedback to for managers to view. */
-  @FXML private TextArea feedbackLog;
+  /**
+   * Text area to append customer feedback to for managers to view.
+   */
+  @FXML
+  private TextArea feedbackLog;
 
   private static ArrayList<String> feedbackList = new ArrayList<>();
 
@@ -118,14 +176,19 @@ public class ManagerOverviewController {
    * overview screen.
    */
   public void initialize() throws SQLException {
+    feedbackLog.setEditable(false);
     for (String s : feedbackList) {
       feedbackLog.appendText(s + "\n");
     }
     if (feedbackList.size() == 0) {
       feedbackLog.appendText("No customer feedback to display");
     }
+    ConnManager connManager = new ConnManager();
+    connManager.selectAllCustomers();
     ObservableList<ManagerDriver> financial = FXCollections.observableArrayList();
     ObservableList<ConnManager> customer = FXCollections.observableArrayList();
+    customer.add(connManager.selectAllCustomers());
+    System.out.println(customer.toString());
     ObservableList<String> sort =
         FXCollections.observableArrayList(
             "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
@@ -135,10 +198,10 @@ public class ManagerOverviewController {
     expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
     revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
     nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone number"));
-    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("room type"));
-    last4Column.setCellValueFactory(new PropertyValueFactory<>("last 4 ccn"));
-    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("check in/out dates"));
+    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+    last4Column.setCellValueFactory(new PropertyValueFactory<>("last4"));
+    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("dates"));
     Random random = new Random();
     for (int i = 0; i <= 20; i++) {
       financial.add(
