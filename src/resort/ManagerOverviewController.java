@@ -7,7 +7,10 @@ package resort;
  */
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,7 +67,7 @@ public class ManagerOverviewController {
    * Table view customerInformationTableView is used to view all of the customers and their related
    * information from the database.
    */
-  @FXML private TableView<ConnManager> customerInformationTableView;
+  @FXML private TableView<CustomerDriver> customerInformationTableView;
 
   /** Text field to look up the customer by their name from the database. */
   @FXML private TextField customerName;
@@ -118,14 +121,19 @@ public class ManagerOverviewController {
    * overview screen.
    */
   public void initialize() throws SQLException {
+    feedbackLog.setEditable(false);
     for (String s : feedbackList) {
       feedbackLog.appendText(s + "\n");
     }
     if (feedbackList.size() == 0) {
       feedbackLog.appendText("No customer feedback to display");
     }
+    ConnManager connManager = new ConnManager();
+    connManager.selectAllCustomers();
     ObservableList<ManagerDriver> financial = FXCollections.observableArrayList();
     ObservableList<ConnManager> customer = FXCollections.observableArrayList();
+    customer.add(connManager.selectAllCustomers());
+    System.out.println(customer.toString());
     ObservableList<String> sort =
         FXCollections.observableArrayList(
             "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
@@ -135,10 +143,10 @@ public class ManagerOverviewController {
     expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
     revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
     nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone number"));
-    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("room type"));
-    last4Column.setCellValueFactory(new PropertyValueFactory<>("last 4 ccn"));
-    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("check in/out dates"));
+    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+    last4Column.setCellValueFactory(new PropertyValueFactory<>("last4"));
+    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("dates"));
     Random random = new Random();
     for (int i = 0; i <= 20; i++) {
       financial.add(
