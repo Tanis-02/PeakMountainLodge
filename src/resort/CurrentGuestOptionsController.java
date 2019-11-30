@@ -33,13 +33,16 @@ public class CurrentGuestOptionsController {
    * @param lastName is assigned to familyName and is used to greet the user by name in this scene
    */
   void setFamilyName(String lastName) throws IOException {
-    familyName = lastName;
+    setNameStatic(lastName);
     greetGuest.setText("Hello, " + familyName + " Family");
     FXMLLoader passFamilyLoader = new FXMLLoader(getClass().getResource(
         "fxml_files/guest_feedback.fxml"));
     passFamilyLoader.load();
     GuestFeedbackController passFamilyController = passFamilyLoader.getController();
     passFamilyController.passFamilyName(familyName);
+  }
+  static void setNameStatic(String name) {
+    familyName = name;
   }
 
   /**

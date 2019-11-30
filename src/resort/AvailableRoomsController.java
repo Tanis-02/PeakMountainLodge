@@ -22,8 +22,28 @@ import javafx.stage.Stage;
 public class AvailableRoomsController {
 
   @FXML private Label largeRoom;
-
   @FXML private Label smallRoom;
+
+  private static boolean holiday;
+
+  static void holidayPrices() {
+    holiday = true;
+  }
+
+  static void normalPrices() {
+    holiday = false;
+  }
+
+  @FXML
+  private void initialize() {
+    if (holiday) {
+      largeRoom.setText("$599");
+      smallRoom.setText("$519");
+    } else {
+      largeRoom.setText("$499");
+      smallRoom.setText("$419");
+    }
+  }
 
   /**
    * Once a customer selects a room, they are then asked to create an account before checking out.
@@ -33,8 +53,7 @@ public class AvailableRoomsController {
    */
   @FXML
   void goToCreateAccountPage(MouseEvent event) throws IOException {
-    Parent createAccountParent =
-        FXMLLoader.load(getClass().getResource("fxml_files/create_account.fxml"));
+    Parent createAccountParent = FXMLLoader.load(getClass().getResource("fxml_files/create_account.fxml"));
     Scene createAccountScene = new Scene(createAccountParent);
     Stage createAccountStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     createAccountStage.setScene(createAccountScene);
