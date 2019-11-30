@@ -151,29 +151,36 @@ public class NewGuestController {
         Parent roomsParent = roomsLoader.load();
         AvailableRoomsController roomsController = roomsLoader.getController();
         roomsController.normalPrices();
+
+        ConnManager connManager = new ConnManager();
+        connManager.insertDates(
+            checkIn.getValue(), numberOfGuests.getValue());
+        connManager.insertDates(
+            checkOut.getValue(), numberOfGuests.getValue());
       }
-      Parent availableRoomsParent = FXMLLoader
-          .load(getClass().getResource("fxml_files/available_rooms.fxml"));
-      Scene availableRoomsScene = new Scene(availableRoomsParent);
-      Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      availableRoomsStage.setScene(availableRoomsScene);
-      availableRoomsStage.show();
+        Parent availableRoomsParent = FXMLLoader
+            .load(getClass().getResource("fxml_files/available_rooms.fxml"));
+        Scene availableRoomsScene = new Scene(availableRoomsParent);
+        Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        availableRoomsStage.setScene(availableRoomsScene);
+        availableRoomsStage.show();
+      }
+    }
+
+    /**
+     * Universal goToPreviousPage() function is used to bring the user to the previous page they were
+     * on. It will be used across almost all screens.
+     *
+     * @param event MouseEvent upon clicking the back button
+     * @throws IOException yes, it does
+     */
+    @FXML
+    void goToPreviousPage (MouseEvent event) throws IOException {
+      Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
+      Scene homeScene = new Scene(homeParent);
+      Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      homeStage.setScene(homeScene);
+      homeStage.show();
     }
   }
 
-  /**
-   * Universal goToPreviousPage() function is used to bring the user to the previous page they were
-   * on. It will be used across almost all screens.
-   *
-   * @param event MouseEvent upon clicking the back button
-   * @throws IOException yes, it does
-   */
-  @FXML
-  void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
-    Scene homeScene = new Scene(homeParent);
-    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    homeStage.setScene(homeScene);
-    homeStage.show();
-  }
-}

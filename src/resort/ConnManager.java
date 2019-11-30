@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -196,11 +197,11 @@ class ConnManager {
     }
   }
 
-  void insertActivities(String date, int numberOfGuests) throws SQLException {
+  void insertActivities(String date, Object numberOfGuests) throws SQLException {
     String setActivities = "INSERT INTO RESERVATIONS (ACTIVITIES, ACTIVITIES_DATE) VALUES (?, ?)";
     preparedStatement = conn.prepareStatement(setActivities);
     preparedStatement.setDate(1, java.sql.Date.valueOf(date));
-    preparedStatement.setInt(2, numberOfGuests);
+    preparedStatement.setInt(2, (Integer) numberOfGuests);
   }
 
   boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
@@ -229,5 +230,12 @@ class ConnManager {
 
   private void sqlExceptionHandler(SQLException error) {
     System.out.println("Standard Failure: " + error.getMessage());
+  }
+
+  void insertDates(LocalDate date, Object numberOfGuests) throws SQLException {
+    String setDates = "INSERT INTO RESERVATIONS () VALUES (?, ?)";
+//    preparedStatement = conn.prepareStatement(setDates);
+//    preparedStatement.setDate(1, java.sql.Date.valueOf(date));
+//    preparedStatement.setInt(2, (Integer) numberOfGuests);
   }
 }
