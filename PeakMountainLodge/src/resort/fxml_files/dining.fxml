@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+  prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.221"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.DiningController">
+  <ScrollPane prefHeight="700.0" prefWidth="1000.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="800.0">
+      <ImageView fitHeight="800.0" fitWidth="1000.0" pickOnBounds="true">
+        <Image url="@../images/resort.jpg"/>
+      </ImageView>
+      <ImageView fitHeight="275.0" fitWidth="500.0" layoutX="88.0" layoutY="374.0"
+        pickOnBounds="true">
+        <Image url="@../images/seafood.jpg"/>
+      </ImageView>
+      <Label layoutX="397.0" layoutY="16.0" text="Restaurants">
+        <font>
+          <Font name="Freestyle Script" size="40.0"/>
+        </font>
+      </Label>
+      <ImageView fitHeight="275.0" fitWidth="500.0" layoutX="88.0" layoutY="82.0"
+        pickOnBounds="true">
+        <Image url="@../images/nice.jpg"/>
+      </ImageView>
+      <Button layoutX="800.0" layoutY="323.0" mnemonicParsing="false"
+        onMouseClicked="#goToWaterSideConfirmationPage" text="Book Now"/>
+      <Button layoutX="800.0" layoutY="622.0" mnemonicParsing="false"
+        onMouseClicked="#goToUnderWaterConfirmationPage" text="Book Now"/>
+      <Label layoutX="294.0" layoutY="676.0"
+        text="Disclaimer: For groups larger than 5, please call the front desk."
+        textFill="#ffffff"/>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
+        onMouseClicked="#goToPreviousPage" text="Back"/>
+      <DialogPane
+        contentText="Bring your friends and family to this wonderful family environment. Gather sea side and watch wildlife pass by while you enjoy the bountiful menu. Waterside offers everything that both the kids will love and that the adults will cherish. Come visit us today!"
+        headerText="Waterside" layoutX="668.0" layoutY="82.0" prefHeight="190.0" prefWidth="234.0"/>
+      <DialogPane
+        contentText="Dine amongst the sea life! Friends and family will never forget this amazing opportunity to see wildlife from a rare view. UnderWater offers fresh sushi, catch of the day, and regulars such as Swordfish and Grouper. Ask the server for the daily special. You won't be disappointed!"
+        headerText="UnderWater" layoutX="668.0" layoutY="374.0" prefHeight="190.0"
+        prefWidth="234.0"/>
+      <DatePicker fx:id="watersideDatePicker" layoutX="668.0" layoutY="285.0" prefHeight="25.0"
+        prefWidth="230.0"/>
+      <DatePicker fx:id="underwaterDatePicker" layoutX="668.0" layoutY="575.0" prefHeight="25.0"
+        prefWidth="230.0"/>
+      <ComboBox fx:id="watersideGuests" layoutX="721.0" layoutY="323.0" prefHeight="25.0"
+        prefWidth="65.0"/>
+      <ComboBox fx:id="underwaterGuests" layoutX="721.0" layoutY="622.0" prefHeight="25.0"
+        prefWidth="65.0"/>
+      <Label layoutX="672.0" layoutY="328.0" text="Guests:"/>
+      <Label layoutX="672.0" layoutY="627.0" text="Guests:"/>
+    </AnchorPane>
+  </ScrollPane>
+</AnchorPane>

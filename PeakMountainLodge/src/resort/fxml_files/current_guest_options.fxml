@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+  prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.221"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.CurrentGuestOptionsController">
+  <ImageView fitHeight="700.0" fitWidth="1000.0" pickOnBounds="true">
+    <Image url="@../images/resort.jpg"/>
+  </ImageView>
+  <Label fx:id="greetGuest" layoutX="142.0" layoutY="39.0" maxWidth="Infinity"
+    nodeOrientation="RIGHT_TO_LEFT" prefHeight="96.0" prefWidth="750.0" textFill="#0a0a0a">
+    <font>
+      <Font name="Freestyle Script" size="40.0"/>
+    </font>
+  </Label>
+  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage"
+    text="Back"/>
+  <GridPane layoutX="577.0" layoutY="344.0" prefHeight="129.0" prefWidth="255.0" vgap="5.0">
+    <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.60003662109375" minWidth="10.0"
+        prefWidth="104.800048828125"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.199951171875" minWidth="10.0"
+        prefWidth="151.199951171875"/>
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <Button mnemonicParsing="false" onMouseClicked="#goToActivitiesPage" prefWidth="150.0"
+      text="Resort Activities" GridPane.columnIndex="1"/>
+    <Button mnemonicParsing="false" onMouseClicked="#goToSpecialRequestsPage" prefWidth="150.0"
+      text="Special Requests" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Button mnemonicParsing="false" onMouseClicked="#goToDiningPage" prefHeight="31.0"
+      prefWidth="175.0" text="Dining Reservations" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Button mnemonicParsing="false" onMouseClicked="#goToCheckoutPage" prefWidth="150.0"
+      text="Check Out" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+  </GridPane>
+  <Label layoutX="679.0" layoutY="311.0" text="Choose one of the following:"/>
+</AnchorPane>
