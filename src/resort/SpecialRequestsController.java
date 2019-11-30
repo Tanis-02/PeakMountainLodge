@@ -23,20 +23,35 @@ import javafx.stage.Stage;
  */
 public class SpecialRequestsController {
 
-  /** ComboBox typeOfBedding is the type of bedding that the customer can request. */
-  @FXML private ComboBox<String> typeOfBedding;
+  /**
+   * ComboBox typeOfBedding is the type of bedding that the customer can request.
+   */
+  @FXML
+  private ComboBox<String> typeOfBedding;
 
-  /** ComboBox quantityOfBedding is how much of the type of bedding the customer can request. */
-  @FXML private ComboBox<Integer> quantityOfBedding;
+  /**
+   * ComboBox quantityOfBedding is how much of the type of bedding the customer can request.
+   */
+  @FXML
+  private ComboBox<Integer> quantityOfBedding;
 
-  /** ComboBox typeOfToiletry is the type of toiletry that the customer can request. */
-  @FXML private ComboBox<String> typeOfToiletry;
+  /**
+   * ComboBox typeOfToiletry is the type of toiletry that the customer can request.
+   */
+  @FXML
+  private ComboBox<String> typeOfToiletry;
 
-  /** ComboBox quantityOfToiletry is how much of the type of toiletry the customer can request. */
-  @FXML private ComboBox<Integer> quantityOfToiletry;
+  /**
+   * ComboBox quantityOfToiletry is how much of the type of toiletry the customer can request.
+   */
+  @FXML
+  private ComboBox<Integer> quantityOfToiletry;
 
-  /** TextField message will be used to get the message the guest writes for special requests. */
-  @FXML private TextField message;
+  /**
+   * TextField message will be used to get the message the guest writes for special requests.
+   */
+  @FXML
+  private TextField message;
 
   /**
    * The initialize() function initializes the combo boxes with the values for the quantities of

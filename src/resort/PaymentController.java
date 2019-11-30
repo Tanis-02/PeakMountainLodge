@@ -7,6 +7,7 @@ package resort;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,25 +17,34 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in the PaymentController corresponds to items in the payment.fxml file. */
+/**
+ * Everything in the PaymentController corresponds to items in the payment.fxml file.
+ */
 public class PaymentController {
 
-  @FXML private ComboBox<String> cardType;
+  @FXML
+  private ComboBox<String> cardType;
 
-  @FXML private TextField CCN;
+  @FXML
+  private TextField CCN;
 
-  @FXML private TextField expirationDate;
+  @FXML
+  private TextField expirationDate;
 
-  @FXML private TextField CVCode;
+  @FXML
+  private TextField CVCode;
 
-  @FXML private TextField nameOnCard;
+  @FXML
+  private TextField nameOnCard;
 
-  public PaymentController() {}
+  public PaymentController() {
+  }
 
   public void initialize() {
     ObservableList<String> creditCards =
@@ -68,14 +78,21 @@ public class PaymentController {
       error.show();
     } else {
       Alert confirmation = new Alert(AlertType.CONFIRMATION);
-      confirmation.setContentText(
-          "Welcome to your exclusive vacation! Thank you " + nameOnCard.getText() + ".");
-      confirmation.show();
-      Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
-      Scene homeScene = new Scene(homeParent);
-      Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      homeStage.setScene(homeScene);
-      homeStage.show();
+      Optional<ButtonType> result = confirmation.showAndWait();
+      ButtonType button = result.orElse(ButtonType.CANCEL);
+      if (button == ButtonType.OK) {
+        confirmation.setContentText(
+            "Welcome to your exclusive vacation! Thank you " + nameOnCard.getText() + ".");
+        confirmation.show();
+        Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
+        Scene homeScene = new Scene(homeParent);
+        Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        homeStage.setScene(homeScene);
+        homeStage.show();
+      } else {
+        confirmation.setContentText("Canceling reservation.");
+        confirmation.show();
+      }
     }
   }
 

@@ -23,27 +23,35 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in ActivitiesController corresponds to items in the activities.fxml file. */
+/**
+ * Everything in ActivitiesController corresponds to items in the activities.fxml file.
+ */
 public class ActivitiesController {
 
   /**
    * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental.
    */
-  @FXML private ChoiceBox<Integer> numberOfGuestsRental;
+  @FXML
+  private ChoiceBox<Integer> numberOfGuestsRental;
 
-  /** DatePicker rentalDatePicker is used to select a date during their stay to use the rental. */
-  @FXML private DatePicker rentalDatePicker;
+  /**
+   * DatePicker rentalDatePicker is used to select a date during their stay to use the rental.
+   */
+  @FXML
+  private DatePicker rentalDatePicker;
 
   /**
    * DatePicker snorkelingDatePicker is used to select a date during their stay to go snorkeling.
    */
-  @FXML private DatePicker snorkelingDatePicker;
+  @FXML
+  private DatePicker snorkelingDatePicker;
 
   /**
    * ChoiceBox numberOfGuestsSnorkeling is used to to put how many people are registering for the
    * snorkeling tour.
    */
-  @FXML private ChoiceBox<Integer> numberOfGuestsSnorkeling;
+  @FXML
+  private ChoiceBox<Integer> numberOfGuestsSnorkeling;
 
   /**
    * The initialize() function is used to initialize the number of guests in the rental and

@@ -22,31 +22,57 @@ import javafx.stage.Stage;
  */
 public class CreateAccountController {
 
-  /** Text field to insert the user's first name into the database. */
-  @FXML private TextField firstName;
+  /**
+   * Text field to insert the user's first name into the database.
+   */
+  @FXML
+  private TextField firstName;
 
-  /** Text field to insert the user's last name into the database. */
-  @FXML private TextField lastName;
+  /**
+   * Text field to insert the user's last name into the database.
+   */
+  @FXML
+  private TextField lastName;
 
-  /** Text field to insert the user's phone number into the database. */
-  @FXML private TextField phoneNumber;
+  /**
+   * Text field to insert the user's phone number into the database.
+   */
+  @FXML
+  private TextField phoneNumber;
 
-  /** Text field to insert the user's email into the database. */
-  @FXML private TextField email;
+  /**
+   * Text field to insert the user's email into the database.
+   */
+  @FXML
+  private TextField email;
 
-  /** Combo box to allow the user to choose from which region they are from. */
-  @FXML private ComboBox<String> region;
+  /**
+   * Combo box to allow the user to choose from which region they are from.
+   */
+  @FXML
+  private ComboBox<String> region;
 
-  /** Text field to insert the user's address into the database. */
-  @FXML private TextField address;
+  /**
+   * Text field to insert the user's address into the database.
+   */
+  @FXML
+  private TextField address;
 
-  /** Text field to insert the user's zip code into the database. */
-  @FXML private TextField zipCode;
+  /**
+   * Text field to insert the user's zip code into the database.
+   */
+  @FXML
+  private TextField zipCode;
 
-  /** Text field to insert the user's password into the database. */
-  @FXML private PasswordField password;
+  /**
+   * Text field to insert the user's password into the database.
+   */
+  @FXML
+  private PasswordField password;
 
-  /** Initialize the combo box with values. */
+  /**
+   * Initialize the combo box with values.
+   */
   public void initialize() {
     ObservableList<String> option =
         FXCollections.observableArrayList(

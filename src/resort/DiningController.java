@@ -6,7 +6,6 @@ package resort;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,22 +21,34 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/** Everything in the DiningController corresponds to items on the dining.fxml file. */
+/**
+ * Everything in the DiningController corresponds to items on the dining.fxml file.
+ */
 public class DiningController {
 
-  /** DatePicker watersideDatePicker sets the reservation for the Waterside restaurant. */
-  @FXML private DatePicker watersideDatePicker;
+  /**
+   * DatePicker watersideDatePicker sets the reservation for the Waterside restaurant.
+   */
+  @FXML
+  private DatePicker watersideDatePicker;
 
-  /** DatePicker underwaterDatePicker sets the reservation for the Underwater restaurant. */
-  @FXML private DatePicker underwaterDatePicker;
+  /**
+   * DatePicker underwaterDatePicker sets the reservation for the Underwater restaurant.
+   */
+  @FXML
+  private DatePicker underwaterDatePicker;
 
-  /** Combobox watersideGuests get the number of guests for the Waterside restaurant reservation. */
-  @FXML private ComboBox<?> watersideGuests;
+  /**
+   * Combobox watersideGuests get the number of guests for the Waterside restaurant reservation.
+   */
+  @FXML
+  private ComboBox<?> watersideGuests;
 
   /**
    * Combobox underwaterGuests get the number of guests for the Underwater restaurant reservation.
    */
-  @FXML private ComboBox<?> underwaterGuests;
+  @FXML
+  private ComboBox<?> underwaterGuests;
 
   /**
    * The initialize() function is used to initialize the number of guests in the reservation combo
@@ -107,26 +118,16 @@ return a.compareTo(d) * d.compareTo(b) >= 0;*/
 }*/
 
 
-
   /**
-   public class DisplayDate {
-   public static void main(String args[]) {
-   // Instantiate a objects
-   Date date1 = new Date();
-   Date date2 = new Date();
-
-   if(date1.compareTo(date2)>0){
-   System.out.println("Date1 is after Date2");
-   }else if(date1.compareTo(date2)<0){
-   System.out.println("Date1 is before Date2");
-   }else{
-   System.out.println("Date1 is equal to Date2");
-   }
-
-   }
-   }
-   * The goToUnderWaterConfirmationPage() shows a confirmation message with the date and number of
-   * guests going to the UnderWater restaurant.
+   * public class DisplayDate { public static void main(String args[]) { // Instantiate a objects
+   * Date date1 = new Date(); Date date2 = new Date();
+   * <p>
+   * if(date1.compareTo(date2)>0){ System.out.println("Date1 is after Date2"); }else
+   * if(date1.compareTo(date2)<0){ System.out.println("Date1 is before Date2"); }else{
+   * System.out.println("Date1 is equal to Date2"); }
+   * <p>
+   * } } The goToUnderWaterConfirmationPage() shows a confirmation message with the date and number
+   * of guests going to the UnderWater restaurant.
    */
   @FXML
   void goToUnderWaterConfirmationPage() {
