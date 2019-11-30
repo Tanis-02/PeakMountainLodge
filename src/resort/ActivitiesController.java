@@ -5,7 +5,10 @@ package resort;
 2. Compare number of guests signing up for activity to number of guests in party.
  */
 
+
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ import javafx.stage.Stage;
 /**
  * Everything in ActivitiesController corresponds to items in the activities.fxml file.
  */
-public class ActivitiesController {
+public class ActivitiesController extends NewGuestController {
 
   /**
    * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental.
@@ -82,7 +85,13 @@ public class ActivitiesController {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Please choose an appropriate date.");
       error.show();
-    } else {
+    }
+    else if (numberOfGuestsRental.getValue() == null) {
+      Alert error = new Alert(AlertType.ERROR);
+      error.setContentText("Please select the correct amount of guests.");
+      error.show();
+    }
+    else {
       Alert confirmation = new Alert(AlertType.CONFIRMATION);
       confirmation.setContentText(
           "Your party of "
