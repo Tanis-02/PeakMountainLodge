@@ -141,7 +141,7 @@ public class ManagerOverviewController {
 
   @FXML
   private TableColumn<BlackOutDriver, Integer> blackOutRoomNum;
-  
+
   @FXML
   private Button blackOutBtn;
 
@@ -270,7 +270,7 @@ public class ManagerOverviewController {
     emailColumn.setCellValueFactory(new PropertyValueFactory("emailColumn"));
     last4Column.setCellValueFactory(new PropertyValueFactory("last4"));
     //checkInColumn.setCellValueFactory(new PropertyValueFactory("dates"));
-    addCustomer();
+    //addCustomer();
     customerInformationTableView.setItems(CustomerInfo);
   }
 
@@ -313,14 +313,14 @@ public class ManagerOverviewController {
     blackOut.add(new BlackOutDriver(d17,419.00,216));
   }
 
-  public void addCustomer() throws SQLException {
+  /*public void addCustomer() throws SQLException {
     Connection con = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     CustomerInfo = FXCollections.observableArrayList();
     ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
     while (rs.next()){
       CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
     }
-  }
+  }*/
 
   @FXML
   private void searchCustomer(ActionEvent event) throws SQLException {
