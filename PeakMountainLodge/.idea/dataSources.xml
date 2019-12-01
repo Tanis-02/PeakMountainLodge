@@ -7,5 +7,11 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/resort/Database/productDB</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="productDB.mv.db" uuid="32c1a895-acf1-4897-b2c3-5074da222f88">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/resort/Database/productDB.mv.db</jdbc-url>
+    </data-source>
   </component>
 </project>

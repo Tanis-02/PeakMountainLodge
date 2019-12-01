@@ -7,25 +7,20 @@ package resort;
  */
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -69,7 +64,7 @@ public class ManagerOverviewController {
    * Table view blackOutDatesTableView is used to view all of the rooms and to select a room.
    */
   @FXML
-  private TableView<?> blackOutDatesTableView;
+  private TableView<BlackOutDriver> blackOutDatesTableView;
 
   /**
    * CheckBox confirmation is used to confirm black out date selection.
@@ -139,28 +134,40 @@ public class ManagerOverviewController {
   private TableColumn<?, ?> roomNumberColumn;
 
   @FXML
-  private TableColumn<?, ?> blackOutDateColumn;
+  private TableColumn<BlackOutDriver, Date> blackOutDateColumn;
 
   @FXML
-  private TableColumn<?, ?> blackOutCostColumn;
+  private TableColumn<BlackOutDriver, Double> blackOutCostColumn;
 
   @FXML
-  private TableColumn<?, ?> blackOutRoomTypeColumn;
+  private TableColumn<BlackOutDriver, Integer> blackOutRoomNum;
+  
+  @FXML
+  private Button blackOutBtn;
 
   @FXML
-  private TableColumn<?, ?> nameColumn;
+  private ChoiceBox<?> costBlPicker;
 
   @FXML
-  private TableColumn<?, ?> phoneNumberColumn;
+  private TextField roomNumBlTx;
 
   @FXML
-  private TableColumn<?, ?> roomTypeColumn;
+  private TableColumn<CustomerDriver, String> nameColumn;
 
   @FXML
-  private TableColumn<?, ?> last4Column;
+  private TableColumn<CustomerDriver, String> phoneNumberColumn;
 
   @FXML
-  private TableColumn<?, ?> checkInColumn;
+  private TableColumn<CustomerDriver, String> emailColumn;
+
+  @FXML
+  private TableColumn<CustomerDriver, Integer> last4Column;
+
+  @FXML
+  private TableColumn<CustomerDriver, ?> checkInColumn;
+
+  @FXML
+  private Button searchCustomerBtn;
 
   /**
    * Text area to append customer feedback to for managers to view.
@@ -168,7 +175,26 @@ public class ManagerOverviewController {
   @FXML
   private TextArea feedbackLog;
 
+  @FXML
+  private TableView<?> employeeTableView;
+
+  @FXML
+  private TextField employeeIDTx;
+
+  @FXML
+  private TextField employeeFTX;
+
+  @FXML
+  private TextField employeeLTx;
+
+  @FXML
+  private Button newEmployeeBtn;
+
   private static ArrayList<String> feedbackList = new ArrayList<>();
+
+  private ObservableList<BlackOutDriver> blackOut;
+
+  private ObservableList<CustomerDriver> CustomerInfo;
 
   /**
    * Currently, the initialize method serves the purpose of populating the textarea in the customer
@@ -189,6 +215,7 @@ public class ManagerOverviewController {
     ObservableList<ConnManager> customer = FXCollections.observableArrayList();
     customer.add(connManager.selectAllCustomers());
     System.out.println(customer.toString());
+
     ObservableList<String> sort =
         FXCollections.observableArrayList(
             "Room Rates", "Dining", "Activities", "Expenses", "Total Revenue");
@@ -197,11 +224,6 @@ public class ManagerOverviewController {
     activitiesColumn.setCellValueFactory(new PropertyValueFactory<>("activities"));
     expensesColumn.setCellValueFactory(new PropertyValueFactory<>("expenses"));
     revenueColumn.setCellValueFactory(new PropertyValueFactory<>("revenue"));
-    nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-    roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
-    last4Column.setCellValueFactory(new PropertyValueFactory<>("last4"));
-    revenueColumn.setCellValueFactory(new PropertyValueFactory<>("dates"));
     Random random = new Random();
     for (int i = 0; i <= 20; i++) {
       financial.add(
@@ -224,6 +246,86 @@ public class ManagerOverviewController {
     previousReports.getItems().clear();
     previousReports.setItems(numberList);
     previousReports.getSelectionModel().selectFirst();
+
+    /*
+    for the black out tab
+     */
+
+    blackOut = FXCollections.observableArrayList();
+
+    blackOutDateColumn.setCellValueFactory(new PropertyValueFactory("blackOutDate"));
+    blackOutCostColumn.setCellValueFactory(new PropertyValueFactory("blackOutCost"));
+    blackOutRoomNum.setCellValueFactory(new PropertyValueFactory("blackOutRoomNum"));
+
+    addBlackout();
+    blackOutDatesTableView.setItems(blackOut);
+
+
+    /*
+    for the customer info tab
+     */
+
+    nameColumn.setCellValueFactory(new PropertyValueFactory("lastName"));
+    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
+    emailColumn.setCellValueFactory(new PropertyValueFactory("emailColumn"));
+    last4Column.setCellValueFactory(new PropertyValueFactory("last4"));
+    //checkInColumn.setCellValueFactory(new PropertyValueFactory("dates"));
+    addCustomer();
+    customerInformationTableView.setItems(CustomerInfo);
+  }
+
+  public void addBlackout() {
+    Date d1 = new Date(119,11,20);
+    Date d2 = new Date(119,11,20);
+    Date d3 = new Date(119,11,20);
+    Date d4 = new Date(119,11,20);
+    Date d5 = new Date(119,11,21);
+    Date d6 = new Date(119,11,21);
+    Date d7 = new Date(119,11,21);
+    Date d8 = new Date(119,11,25);
+    Date d9 = new Date(119,11,25);
+    Date d10 = new Date(119,11,25);
+    Date d11 = new Date(119,11,25);
+    Date d12 = new Date(119,11,25);
+    Date d13 = new Date(119,11,29);
+    Date d14 = new Date(119,11,29);
+    Date d15 = new Date(119,11,29);
+    Date d16 = new Date(119,11,29);
+    Date d17 = new Date(119,11,29);
+
+
+
+    blackOut.add(new BlackOutDriver(d1,499.00,110));
+    blackOut.add(new BlackOutDriver(d2,419.00,114));
+    blackOut.add(new BlackOutDriver(d3,419.00,116));
+    blackOut.add(new BlackOutDriver(d4,419.00,214));
+    blackOut.add(new BlackOutDriver(d5,499.00,210));
+    blackOut.add(new BlackOutDriver(d6,499.00,310));
+    blackOut.add(new BlackOutDriver(d7,419.00,314));
+    blackOut.add(new BlackOutDriver(d8,419.00,316));
+    blackOut.add(new BlackOutDriver(d10,419.00,318));
+    blackOut.add(new BlackOutDriver(d11,499.00,210));
+    blackOut.add(new BlackOutDriver(d12,499.00,310));
+    blackOut.add(new BlackOutDriver(d13,419.00,314));
+    blackOut.add(new BlackOutDriver(d14,419.00,316));
+    blackOut.add(new BlackOutDriver(d15,419.00,214));
+    blackOut.add(new BlackOutDriver(d16,419.00,218));
+    blackOut.add(new BlackOutDriver(d17,419.00,216));
+  }
+
+  public void addCustomer() throws SQLException {
+    Connection con = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    CustomerInfo = FXCollections.observableArrayList();
+    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
+    while (rs.next()){
+      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    }
+  }
+
+  @FXML
+  private void searchCustomer(ActionEvent event) throws SQLException {
+    //ConnManager connManager = new ConnManager();
+    //connManager.searchCustomerManageroverview();
   }
 
   void fillFeedbackLog(String guestFeedback, String feedbackFamily) {

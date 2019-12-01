@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ManagerOverviewController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.ManagerOverviewController">
   <Tab text="Financial Reports">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
       <TableView fx:id="financialReportsTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0" prefWidth="780.0">
@@ -52,27 +52,31 @@
   </Tab>
   <Tab text="Black Out Dates">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-      <TableView fx:id="blackOutDatesTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0" prefWidth="780.0">
+      <TableView fx:id="blackOutDatesTableView" layoutX="10.0" layoutY="213.0" prefHeight="343.0" prefWidth="780.0">
         <columns>
-          <TableColumn fx:id="dateColumn" prefWidth="156.0" text="Date" />
-          <TableColumn fx:id="costColumn" prefWidth="156.0" text="Cost" />
-          <TableColumn fx:id="roomNumberColumn" prefWidth="156.0" text="Room Number" />
+          <TableColumn fx:id="blackOutDateColumn" prefWidth="156.0" text="Date" />
+          <TableColumn fx:id="blackOutCostColumn" prefWidth="156.0" text="Cost" />
+          <TableColumn fx:id="blackOutRoomNum" prefWidth="156.0" text="Room Number" />
         </columns>
       </TableView>
-      <CheckBox fx:id="confirmation" layoutX="272.0" layoutY="130.0" mnemonicParsing="false" text="Confirm Selection" />
+      <CheckBox fx:id="confirmation" layoutX="402.0" layoutY="169.0" mnemonicParsing="false" text="Confirm Selection" />
       <TextArea editable="false" layoutX="36.0" layoutY="39.0" prefHeight="100.0" prefWidth="200.0" text="Warning: Blacking out an available date will remove the selected room from being available for booking. Please use this function with proper approval." wrapText="true" />
-      <Button layoutX="494.0" layoutY="101.0" mnemonicParsing="false" text="Black Out Date" />
-      <DatePicker fx:id="datePicker" layoutX="272.0" layoutY="76.0" />
-      <Label layoutX="319.0" layoutY="58.0" text="Choose a Date:" />
+      <Button fx:id="blackOutBtn" layoutX="629.0" layoutY="164.0" mnemonicParsing="false" text="Black Out Date" />
+      <DatePicker fx:id="datePicker" layoutX="400.0" layoutY="24.0" />
+      <Label layoutX="283.0" layoutY="29.0" text="Choose a Date:" />
+         <Label layoutX="350.0" layoutY="129.0" text="Cost:" />
+         <ChoiceBox fx:id="costBlPicker" layoutX="400.0" layoutY="124.0" prefWidth="150.0" />
+         <Label layoutX="281.0" layoutY="79.0" text="Room Number:" />
+         <TextField fx:id="roomNumBlTx" layoutX="400.0" layoutY="74.0" />
     </AnchorPane>
   </Tab>
   <Tab text="Promotional Discounts">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
       <TableView fx:id="promotionsTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0" prefWidth="780.0">
         <columns>
-          <TableColumn fx:id="blackOutDateColumn" prefWidth="156.0" text="Date" />
-          <TableColumn fx:id="blackOutCostColumn" prefWidth="156.0" text="Cost" />
-          <TableColumn fx:id="blackOutRoomTypeColumn" prefWidth="156.0" text="Room Type" />
+          <TableColumn fx:id="dateColumn" prefWidth="156.0" text="Date" />
+          <TableColumn fx:id="costColumn" prefWidth="156.0" text="Cost" />
+          <TableColumn fx:id="roomNumberColumn" prefWidth="156.0" text="Room Type" />
         </columns>
       </TableView>
       <GridPane layoutX="400.0" layoutY="51.0">
@@ -93,9 +97,9 @@
       <TableView fx:id="customerInformationTableView" layoutX="10.0" layoutY="181.0" prefHeight="375.0" prefWidth="780.0">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="156.0" text="Name" />
-          <TableColumn fx:id="phoneNumberColumn" prefWidth="156.0" text="Phone Number" />
-          <TableColumn fx:id="roomTypeColumn" prefWidth="156.0" text="Room Type" />
-          <TableColumn fx:id="last4Column" prefWidth="156.0" text="Last 4 CCN" />
+          <TableColumn fx:id="phoneNumberColumn" prefWidth="137.0" text="Phone Number" />
+          <TableColumn fx:id="emailColumn" prefWidth="243.0" text="Email" />
+          <TableColumn fx:id="last4Column" prefWidth="88.0" text="Last 4 CCN" />
           <TableColumn fx:id="checkInColumn" prefWidth="156.0" text="Check In/Out Dates" />
         </columns>
       </TableView>
@@ -116,7 +120,7 @@
         <TextField fx:id="customerPhone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="creditCardNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </GridPane>
-      <Button layoutX="413.0" layoutY="113.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="searchCustomerBtn" layoutX="413.0" layoutY="113.0" mnemonicParsing="false" onAction="#searchCustomer" text="Search" />
       <Label layoutX="19.0" layoutY="21.0" text="Filter By:" />
     </AnchorPane>
   </Tab>
@@ -126,8 +130,24 @@
       <TextArea fx:id="feedbackLog" layoutX="24.0" layoutY="60.0" prefHeight="489.0" prefWidth="752.0" wrapText="true" />
     </AnchorPane>
   </Tab>
-  <Tab text="Occupancy">
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+  <Tab text="Employee">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <TableView fx:id="employeeTableView" layoutX="29.0" layoutY="202.0" prefHeight="330.0" prefWidth="731.0">
+              <columns>
+                <TableColumn prefWidth="132.0" text="Employee ID" />
+                <TableColumn prefWidth="307.0" text="First Name" />
+                  <TableColumn prefWidth="291.0" text="Last Name" />
+              </columns>
+            </TableView>
+            <TextField fx:id="employeeIDTx" layoutX="160.0" layoutY="29.0" />
+            <Label layoutX="69.0" layoutY="34.0" text="Employee ID: " />
+            <Label layoutX="77.0" layoutY="83.0" text="First Name:" />
+            <Label layoutX="78.0" layoutY="134.0" text="Last Name:" />
+            <TextField fx:id="employeeFTX" layoutX="160.0" layoutY="78.0" />
+            <TextField fx:id="employeeLTx" layoutX="160.0" layoutY="129.0" />
+            <Button fx:id="newEmployeeBtn" layoutX="407.0" layoutY="129.0" mnemonicParsing="false" text="Create New Employee" />
+         </children></AnchorPane>
   </Tab>
   <Tab text="Exit Management">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

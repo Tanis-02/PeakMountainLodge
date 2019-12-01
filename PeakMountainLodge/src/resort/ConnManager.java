@@ -227,7 +227,18 @@ class ConnManager {
     return false;
   }
 
+  public void searchCustomerManageroverview(String lastName, String phoneNumber, Integer lastFourCC) throws SQLException {
+    String getInfo = "SELECT LASTNAME FROM CUSTOMERS WHERE PHONENUMBER = '" + phoneNumber + "'" + "AND LASTFOURCC = '" + lastFourCC + "'";
+    preparedStatement = conn.prepareStatement(getInfo);
+    resultSet = preparedStatement.executeQuery();
+    while (resultSet.next()) {
+        System.out.println(getInfo);
+    }
+  }
+
+
   private void sqlExceptionHandler(SQLException error) {
     System.out.println("Standard Failure: " + error.getMessage());
   }
+
 }
