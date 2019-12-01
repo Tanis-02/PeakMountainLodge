@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,33 +26,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
 /**
  * Everything in the NewGuestController corresponds to items on the new_guest.fxml file
  */
 public class NewGuestController {
 
-  // Variables used to determine if the chosen dates falls on a holiday
-  int yearSelected;
-  LocalDate novYearSelected;
-  LocalDate thanksgiving;
-  LocalDate midHolidays;
-  LocalDate newYears;
-
   DatePicker getCheckIn() {
     return checkIn;
-  }
-
-  public void setCheckIn(DatePicker checkIn) {
-    this.checkIn = checkIn;
-  }
-
-  public void setCheckOut(DatePicker checkOut) {
-    this.checkOut = checkOut;
-  }
-
-  public void setNumberOfGuests(ChoiceBox<?> numberOfGuests) {
-    this.numberOfGuests = numberOfGuests;
   }
 
   public DatePicker getCheckOut() {
@@ -118,17 +97,17 @@ public class NewGuestController {
       error2.setContentText("Check in date must be before check out date.");
       error2.show();
     } else {
-      yearSelected = checkIn.getValue().getYear();
-      novYearSelected = LocalDate.of(yearSelected, 11, 15);
-      thanksgiving = novYearSelected
+      int yearSelected = checkIn.getValue().getYear();
+      LocalDate novYearSelected = LocalDate.of(yearSelected, 11, 15);
+      LocalDate thanksgiving = novYearSelected
           .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
-      midHolidays = LocalDate.of(yearSelected, 12, 27);
-      newYears = LocalDate.of(yearSelected, 1, 1);
+      LocalDate midHolidays = LocalDate.of(yearSelected, 12, 27);
+      LocalDate newYears = LocalDate.of(yearSelected, 1, 1);
       if (thanksgiving.minusDays(2).isBefore(checkOut.getValue()) &&
           thanksgiving.plusDays(2).isAfter(checkIn.getValue())) {
         FXMLLoader roomsLoader = new FXMLLoader(
             getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
+        roomsLoader.load();
         AvailableRoomsController roomsController = roomsLoader.getController();
         roomsController.holidayPrices();
       } else if (midHolidays.minusDays(6).isBefore(checkOut.getValue()) &&
@@ -151,29 +130,36 @@ public class NewGuestController {
         Parent roomsParent = roomsLoader.load();
         AvailableRoomsController roomsController = roomsLoader.getController();
         roomsController.normalPrices();
+
+        ConnManager connManager = new ConnManager();
+        connManager.insertDates(
+            checkIn.getValue(), numberOfGuests.getValue());
+        connManager.insertDates(
+            checkOut.getValue(), numberOfGuests.getValue());
       }
-      Parent availableRoomsParent = FXMLLoader
-          .load(getClass().getResource("fxml_files/available_rooms.fxml"));
-      Scene availableRoomsScene = new Scene(availableRoomsParent);
-      Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      availableRoomsStage.setScene(availableRoomsScene);
-      availableRoomsStage.show();
+        Parent availableRoomsParent = FXMLLoader
+            .load(getClass().getResource("fxml_files/available_rooms.fxml"));
+        Scene availableRoomsScene = new Scene(availableRoomsParent);
+        Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        availableRoomsStage.setScene(availableRoomsScene);
+        availableRoomsStage.show();
+      }
+    }
+
+    /**
+     * Universal goToPreviousPage() function is used to bring the user to the previous page they were
+     * on. It will be used across almost all screens.
+     *
+     * @param event MouseEvent upon clicking the back button
+     * @throws IOException yes, it does
+     */
+    @FXML
+    void goToPreviousPage (MouseEvent event) throws IOException {
+      Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
+      Scene homeScene = new Scene(homeParent);
+      Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      homeStage.setScene(homeScene);
+      homeStage.show();
     }
   }
 
-  /**
-   * Universal goToPreviousPage() function is used to bring the user to the previous page they were
-   * on. It will be used across almost all screens.
-   *
-   * @param event MouseEvent upon clicking the back button
-   * @throws IOException yes, it does
-   */
-  @FXML
-  void goToPreviousPage(MouseEvent event) throws IOException {
-    Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
-    Scene homeScene = new Scene(homeParent);
-    Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    homeStage.setScene(homeScene);
-    homeStage.show();
-  }
-}

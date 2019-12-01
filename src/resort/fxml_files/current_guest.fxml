@@ -17,7 +17,7 @@
   <ImageView fitHeight="700.0" fitWidth="1000.0" pickOnBounds="true">
     <Image url="@../images/resort.jpg"/>
   </ImageView>
-  <Label layoutX="627.0" layoutY="46.0" prefHeight="96.0" prefWidth="282.0"
+  <Label layoutX="643.0" layoutY="63.0" prefHeight="96.0" prefWidth="445.0"
     text="Please log in to continue" textFill="#0a0a0a">
     <font>
       <Font name="Freestyle Script" size="40.0"/>
@@ -46,6 +46,6 @@
     <Label text="Last Name"/>
     <Label text="Phone Number" GridPane.rowIndex="1"/>
   </GridPane>
-  <Button layoutX="841.0" layoutY="401.0" mnemonicParsing="false"
+  <Button layoutX="724.0" layoutY="389.0" mnemonicParsing="false"
     onMouseClicked="#goToCurrentGuestOptionsPage" text="Log In"/>
 </AnchorPane>
