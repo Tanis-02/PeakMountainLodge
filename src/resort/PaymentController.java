@@ -44,6 +44,7 @@ public class PaymentController {
   private TextField nameOnCard;
 
   public PaymentController() {
+
   }
 
   public void initialize() {
@@ -78,6 +79,7 @@ public class PaymentController {
       error.show();
     } else {
       Alert confirmation = new Alert(AlertType.CONFIRMATION);
+      confirmation.setContentText("Confirm your reservation?");
       Optional<ButtonType> result = confirmation.showAndWait();
       ButtonType button = result.orElse(ButtonType.CANCEL);
       if (button == ButtonType.OK) {
