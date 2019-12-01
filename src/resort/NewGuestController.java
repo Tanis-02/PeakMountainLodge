@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,119 +32,119 @@ import javafx.stage.Stage;
  */
 public class NewGuestController {
 
-  DatePicker getCheckIn() {
-    return checkIn;
-  }
-
-  public DatePicker getCheckOut() {
-    return checkOut;
-  }
-
-  public ChoiceBox<?> getNumberOfGuests() {
-    return numberOfGuests;
-  }
-
-  /**
-   * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
-   * database.
-   */
-  @FXML
-  private DatePicker checkIn;
-
-  /**
-   * DatePicker checkOut is used to obtain the check out date of the customer and store it to the
-   * database.
-   */
-  @FXML
-  private DatePicker checkOut;
-
-  /**
-   * ChoiceBox numberOfGuests is used to obtain the number of guests the customer has and will show
-   * appropriate rooms according to the value entered.
-   */
-  @FXML
-  private ChoiceBox<?> numberOfGuests;
-
-  /**
-   * The initialize() function is used to initialize the value in the combo box for the number of
-   * guests going on the trip.
-   */
-  public void initialize() {
-    List<Integer> numbers = new ArrayList<>();
-    for (int i = 1; i <= 10; i++) {
-      numbers.add(i);
+    DatePicker getCheckIn() {
+        return checkIn;
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
-    numberOfGuests.getItems().clear();
-    numberOfGuests.setItems(numberList);
-    numberOfGuests.getSelectionModel().selectFirst();
-  }
 
-  /**
-   * Once a customer chooses their dates and number of guests, they will be shown the available
-   * rooms that meet their criteria.
-   *
-   * @param event goes to the available rooms page
-   * @throws IOException yes, it does
-   */
-  @FXML
-  void goToAvailableRoomsPage(MouseEvent event) throws IOException, SQLException {
-    if (checkIn.getValue() == null || checkOut.getValue() == null) {
-      Alert error = new Alert(AlertType.ERROR);
-      error.setContentText("Both dates must be selected. Please try again.");
-      error.show();
-    } else if (checkIn.getValue().isAfter(checkOut.getValue())) {
-      Alert error2 = new Alert(AlertType.ERROR);
-      error2.setContentText("Check in date must be before check out date.");
-      error2.show();
-    } else {
-      int yearSelected = checkIn.getValue().getYear();
-      LocalDate novYearSelected = LocalDate.of(yearSelected, 11, 15);
-      LocalDate thanksgiving = novYearSelected
-          .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
-      LocalDate midHolidays = LocalDate.of(yearSelected, 12, 27);
-      LocalDate newYears = LocalDate.of(yearSelected, 1, 1);
-      if (thanksgiving.minusDays(2).isBefore(checkOut.getValue()) &&
-          thanksgiving.plusDays(2).isAfter(checkIn.getValue())) {
-        FXMLLoader roomsLoader = new FXMLLoader(
-            getClass().getResource("fxml_files/available_rooms.fxml"));
-        roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
-      } else if (midHolidays.minusDays(6).isBefore(checkOut.getValue()) &&
-          midHolidays.plusDays(6).isAfter(checkIn.getValue())) {
-        FXMLLoader roomsLoader = new FXMLLoader(
-            getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
-      } else if (newYears.minusDays(2).isBefore(checkOut.getValue()) &&
-          newYears.plusDays(2).isAfter(checkIn.getValue())) {
-        FXMLLoader roomsLoader = new FXMLLoader(
-            getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
-      } else {
-        FXMLLoader roomsLoader = new FXMLLoader(
-            getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.normalPrices();
+    public DatePicker getCheckOut() {
+        return checkOut;
+    }
 
-        ConnManager connManager = new ConnManager();
-        connManager.insertDates(
-            checkIn.getValue(), numberOfGuests.getValue());
-        connManager.insertDates(
-            checkOut.getValue(), numberOfGuests.getValue());
-      }
-        Parent availableRoomsParent = FXMLLoader
-            .load(getClass().getResource("fxml_files/available_rooms.fxml"));
-        Scene availableRoomsScene = new Scene(availableRoomsParent);
-        Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        availableRoomsStage.setScene(availableRoomsScene);
-        availableRoomsStage.show();
-      }
+    public ChoiceBox<?> getNumberOfGuests() {
+        return numberOfGuests;
+    }
+
+    /**
+     * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
+     * database.
+     */
+    @FXML
+    private DatePicker checkIn;
+
+    /**
+     * DatePicker checkOut is used to obtain the check out date of the customer and store it to the
+     * database.
+     */
+    @FXML
+    private DatePicker checkOut;
+
+    /**
+     * ChoiceBox numberOfGuests is used to obtain the number of guests the customer has and will show
+     * appropriate rooms according to the value entered.
+     */
+    @FXML
+    private ChoiceBox<?> numberOfGuests;
+
+    /**
+     * The initialize() function is used to initialize the value in the combo box for the number of
+     * guests going on the trip.
+     */
+    public void initialize() {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+        ObservableList numberList = FXCollections.observableList(numbers);
+        numberOfGuests.getItems().clear();
+        numberOfGuests.setItems(numberList);
+        numberOfGuests.getSelectionModel().selectFirst();
+    }
+
+    /**
+     * Once a customer chooses their dates and number of guests, they will be shown the available
+     * rooms that meet their criteria.
+     *
+     * @param event goes to the available rooms page
+     * @throws IOException yes, it does
+     */
+    @FXML
+    void goToAvailableRoomsPage(MouseEvent event) throws IOException, SQLException {
+        if (checkIn.getValue() == null || checkOut.getValue() == null) {
+            Alert error = new Alert(AlertType.ERROR);
+            error.setContentText("Both dates must be selected. Please try again.");
+            error.show();
+        } else if (checkIn.getValue().isAfter(checkOut.getValue())) {
+            Alert error2 = new Alert(AlertType.ERROR);
+            error2.setContentText("Check in date must be before check out date.");
+            error2.show();
+        } else {
+            int yearSelected = checkIn.getValue().getYear();
+            LocalDate novYearSelected = LocalDate.of(yearSelected, 11, 15);
+            LocalDate thanksgiving = novYearSelected
+                    .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
+            LocalDate midHolidays = LocalDate.of(yearSelected, 12, 27);
+            LocalDate newYears = LocalDate.of(yearSelected, 1, 1);
+            if (thanksgiving.minusDays(2).isBefore(checkOut.getValue()) &&
+                    thanksgiving.plusDays(2).isAfter(checkIn.getValue())) {
+                FXMLLoader roomsLoader = new FXMLLoader(
+                        getClass().getResource("fxml_files/available_rooms.fxml"));
+                roomsLoader.load();
+                AvailableRoomsController roomsController = roomsLoader.getController();
+                roomsController.holidayPrices();
+            } else if (midHolidays.minusDays(6).isBefore(checkOut.getValue()) &&
+                    midHolidays.plusDays(6).isAfter(checkIn.getValue())) {
+                FXMLLoader roomsLoader = new FXMLLoader(
+                        getClass().getResource("fxml_files/available_rooms.fxml"));
+                Parent roomsParent = roomsLoader.load();
+                AvailableRoomsController roomsController = roomsLoader.getController();
+                roomsController.holidayPrices();
+            } else if (newYears.minusDays(2).isBefore(checkOut.getValue()) &&
+                    newYears.plusDays(2).isAfter(checkIn.getValue())) {
+                FXMLLoader roomsLoader = new FXMLLoader(
+                        getClass().getResource("fxml_files/available_rooms.fxml"));
+                Parent roomsParent = roomsLoader.load();
+                AvailableRoomsController roomsController = roomsLoader.getController();
+                roomsController.holidayPrices();
+            } else {
+                FXMLLoader roomsLoader = new FXMLLoader(
+                        getClass().getResource("fxml_files/available_rooms.fxml"));
+                Parent roomsParent = roomsLoader.load();
+                AvailableRoomsController roomsController = roomsLoader.getController();
+                roomsController.normalPrices();
+
+                ConnManager connManager = new ConnManager();
+                connManager.insertDates(
+                        checkIn.getValue(), numberOfGuests.getValue());
+                connManager.insertDates(
+                        checkOut.getValue(), numberOfGuests.getValue());
+            }
+            Parent availableRoomsParent = FXMLLoader
+                    .load(getClass().getResource("fxml_files/available_rooms.fxml"));
+            Scene availableRoomsScene = new Scene(availableRoomsParent);
+            Stage availableRoomsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            availableRoomsStage.setScene(availableRoomsScene);
+            availableRoomsStage.show();
+        }
     }
 
     /**
@@ -154,12 +155,12 @@ public class NewGuestController {
      * @throws IOException yes, it does
      */
     @FXML
-    void goToPreviousPage (MouseEvent event) throws IOException {
-      Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
-      Scene homeScene = new Scene(homeParent);
-      Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      homeStage.setScene(homeScene);
-      homeStage.show();
+    void goToPreviousPage(MouseEvent event) throws IOException {
+        Parent homeParent = FXMLLoader.load(getClass().getResource("fxml_files/home.fxml"));
+        Scene homeScene = new Scene(homeParent);
+        Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        homeStage.setScene(homeScene);
+        homeStage.show();
     }
-  }
+}
 
