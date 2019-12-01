@@ -141,7 +141,7 @@ public class ManagerOverviewController {
 
   @FXML
   private TableColumn<BlackOutDriver, Integer> blackOutRoomNum;
-  
+
   @FXML
   private Button blackOutBtn;
 
