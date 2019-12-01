@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.221"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="resort.PaymentController">
+  <ImageView fitHeight="700.0" fitWidth="1000.0" pickOnBounds="true">
+    <Image url="@../images/resort.jpg"/>
+  </ImageView>
+  <AnchorPane prefHeight="700.0" prefWidth="1000.0">
+    <Label layoutX="673.0" layoutY="54.0" text="Payment">
+      <font>
+        <Font name="Freestyle Script" size="40.0"/>
+      </font>
+    </Label>
+    <Label layoutX="640.0" layoutY="196.0" prefHeight="21.0"
+      prefWidth="113.0" text="Payment Details"/>
+    <Label layoutX="642.0" layoutY="251.0" text="Credit Card Number"/>
+    <TextField fx:id="CCN" layoutX="642.0" layoutY="272.0" promptText="Valid Card Number"/>
+    <Label layoutX="640.0" layoutY="310.0" text="Expiration Date"/>
+    <TextField fx:id="expirationDate" layoutX="642.0" layoutY="331.0" promptText="MM / YY"/>
+    <Label layoutX="640.0" layoutY="369.0" text="CVC Code"/>
+    <TextField fx:id="CVCode" layoutX="642.0" layoutY="390.0" promptText="CVC"/>
+    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToPreviousPage"
+      text="Back"/>
+    <ComboBox fx:id="cardType" layoutX="642.0" layoutY="217.0" prefWidth="150.0"
+      promptText="Card Type"/>
+    <TextField fx:id="nameOnCard" layoutX="642.0" layoutY="158.0" promptText="Name"/>
+    <Label layoutX="640.0" layoutY="137.0" text="Name On Card"/>
+    <Button onMouseClicked="#goToHomePage" layoutX="634.0" layoutY="448.0" mnemonicParsing="false"
+      text="Book Your Fantasy Vacation"/>
+  </AnchorPane>
+</AnchorPane>
