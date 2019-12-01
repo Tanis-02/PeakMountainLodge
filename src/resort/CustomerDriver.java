@@ -4,14 +4,14 @@ public class CustomerDriver {
 
   private String lastName;
   private String phoneNumber;
-  private String roomType;
+  private String emailColumn;
   private int last4;
   private String dates;
 
-  CustomerDriver(String lastName, String phoneNumber, String roomType, int last4) {
+  CustomerDriver(String lastName, String phoneNumber, String emailColumn, int last4) {
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
-    this.roomType = roomType;
+    this.emailColumn = emailColumn;
     this.last4 = last4;
   }
 
@@ -31,12 +31,12 @@ public class CustomerDriver {
     return phoneNumber;
   }
 
-  public void setRoomType(String roomType) {
-    this.roomType = roomType;
+  public void setEmailColumn(String emailColumn) {
+    this.emailColumn = emailColumn;
   }
 
-  public String getRoomType() {
-    return roomType;
+  public String getEmailColumn() {
+    return emailColumn;
   }
 
   public void setLast4(int last4) {
