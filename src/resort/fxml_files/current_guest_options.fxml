@@ -33,7 +33,10 @@
     </rowConstraints>
     <Button mnemonicParsing="false" onMouseClicked="#goToActivitiesPage" prefWidth="150.0" text="Resort Activities" GridPane.columnIndex="1" />
     <Button mnemonicParsing="false" onMouseClicked="#goToSpecialRequestsPage" prefWidth="150.0" text="Special Requests" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button mnemonicParsing="false" onMouseClicked="#goToDiningPage" prefHeight="31.0" prefWidth="175.0" text="Dining Reservations" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Button mnemonicParsing="false" onMouseClicked="#goToDiningPage" prefHeight="31.0" prefWidth="175.0" text="Dining Reservations" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
     <Button mnemonicParsing="false" onMouseClicked="#goToCheckoutPage" prefWidth="150.0" text="Check Out" GridPane.columnIndex="1" GridPane.rowIndex="3" />
   </GridPane>
   <Label layoutX="660.0" layoutY="308.0" text="Choose one of the following:" />
