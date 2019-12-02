@@ -179,13 +179,17 @@ public class ManagerOverviewController {
   private TableView<EmployeeDriver> employeeTableView;
 
   @FXML
-  private TableColumn<EmployeeDriver, ?> employeeID;
+  private TableColumn<EmployeeDriver, String> employeeID;
 
   @FXML
-  private TableColumn<EmployeeDriver, ?> firstNameEmpl;
+  private TableColumn<EmployeeDriver, String> firstNameEmpl;
 
   @FXML
-  private TableColumn<EmployeeDriver, ?> lastNameEmpl;
+  private TableColumn<EmployeeDriver, String> lastNameEmpl;
+
+  @FXML
+  private TableColumn<EmployeeDriver, String> accessIDCol;
+
   @FXML
   private TextField employeeIDTx;
 
@@ -194,6 +198,9 @@ public class ManagerOverviewController {
 
   @FXML
   private TextField employeeLTx;
+
+  @FXML
+  private ChoiceBox<String> accessIDBox;
 
   @FXML
   private Button newEmployeeBtn;
@@ -286,10 +293,16 @@ public class ManagerOverviewController {
      /*
     for the employee tab
      */
+    ObservableList<String> accessNum = FXCollections.observableArrayList("1", "2","3");
+    accessIDBox.getItems().clear();
+    accessIDBox.setItems(accessNum);
+    accessIDBox.getSelectionModel().selectFirst();
 
     employeeID.setCellValueFactory(new PropertyValueFactory("employeeID"));
     firstNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeFirst"));
     lastNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeLast"));
+    accessIDCol.setCellValueFactory(new PropertyValueFactory("accessID"));
+
     addEmployee();
     employeeTableView.setItems(Employee);
   }
@@ -340,6 +353,7 @@ public class ManagerOverviewController {
     while (rs.next()){
       CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
     }
+    con.close();
   }
 
   public void addEmployee() throws SQLException {
@@ -347,8 +361,27 @@ public class ManagerOverviewController {
     Employee = FXCollections.observableArrayList();
     ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM EMPLOYEES");
     while (rs.next()){
-      Employee.add(new EmployeeDriver(rs.getInt(1),rs.getString(2),rs.getString(3)));
+      Employee.add(new EmployeeDriver(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4)));
     }
+    conn.close();
+  }
+
+  @FXML
+  void createEmployee(MouseEvent event) throws SQLException {
+    String id = employeeIDTx.getText();
+    String firstName = employeeFTX.getText();
+    String lastName = employeeLTx.getText();
+    String access = accessIDBox.getValue();
+
+    Connection connect = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    Statement state = connect.createStatement();
+    state.executeUpdate("INSERT INTO EMPLOYEES(EMPLOYEEID,FIRSTNAME,LASTNAME,ACCESSID) VALUES ('"+id+"', '"+firstName+"', '"+lastName+"','"+access+"')");
+    connect.close();
+  }
+
+  @FXML
+  void refreshTable(MouseEvent event) {
+    employeeTableView.refresh();
   }
 
   @FXML

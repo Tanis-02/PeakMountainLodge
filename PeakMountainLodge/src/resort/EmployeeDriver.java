@@ -1,15 +1,16 @@
 package resort;
 
 public class EmployeeDriver {
-  private int employeeID;
+  private String employeeID;
   private String employeeFirst;
   private String employeeLast;
+  private String accessID;
 
-  public int getEmployeeID() {
+  public String getEmployeeID() {
     return employeeID;
   }
 
-  public void setEmployeeID(int employeeID) {
+  public void setEmployeeID(String employeeID) {
     this.employeeID = employeeID;
   }
 
@@ -29,10 +30,19 @@ public class EmployeeDriver {
     this.employeeLast = employeeLast;
   }
 
-  EmployeeDriver(int employeeID, String employeeFirst, String employeeLast) {
+  public String getAccessID() {
+    return accessID;
+  }
+
+  public void setAccessID(String accessID) {
+    this.accessID = accessID;
+  }
+
+  EmployeeDriver(String employeeID, String employeeFirst, String employeeLast, String accessID) {
     this.employeeID = employeeID;
     this.employeeFirst = employeeFirst;
     this.employeeLast = employeeLast;
+    this.accessID = accessID;
   }
 
 }
