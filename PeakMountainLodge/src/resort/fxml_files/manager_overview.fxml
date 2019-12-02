@@ -135,9 +135,9 @@
          <children>
             <TableView fx:id="employeeTableView" layoutX="29.0" layoutY="202.0" prefHeight="330.0" prefWidth="731.0">
               <columns>
-                <TableColumn prefWidth="132.0" text="Employee ID" />
-                <TableColumn prefWidth="307.0" text="First Name" />
-                  <TableColumn prefWidth="291.0" text="Last Name" />
+                <TableColumn fx:id="employeeID" prefWidth="132.0" text="Employee ID" />
+                <TableColumn fx:id="firstNameEmpl" prefWidth="307.0" text="First Name" />
+                  <TableColumn fx:id="lastNameEmpl" prefWidth="291.0" text="Last Name" />
               </columns>
             </TableView>
             <TextField fx:id="employeeIDTx" layoutX="160.0" layoutY="29.0" />

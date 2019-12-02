@@ -176,8 +176,16 @@ public class ManagerOverviewController {
   private TextArea feedbackLog;
 
   @FXML
-  private TableView<?> employeeTableView;
+  private TableView<EmployeeDriver> employeeTableView;
 
+  @FXML
+  private TableColumn<EmployeeDriver, ?> employeeID;
+
+  @FXML
+  private TableColumn<EmployeeDriver, ?> firstNameEmpl;
+
+  @FXML
+  private TableColumn<EmployeeDriver, ?> lastNameEmpl;
   @FXML
   private TextField employeeIDTx;
 
@@ -195,6 +203,8 @@ public class ManagerOverviewController {
   private ObservableList<BlackOutDriver> blackOut;
 
   private ObservableList<CustomerDriver> CustomerInfo;
+
+  private ObservableList<EmployeeDriver> Employee;
 
   /**
    * Currently, the initialize method serves the purpose of populating the textarea in the customer
@@ -272,6 +282,16 @@ public class ManagerOverviewController {
     //checkInColumn.setCellValueFactory(new PropertyValueFactory("dates"));
     addCustomer();
     customerInformationTableView.setItems(CustomerInfo);
+
+     /*
+    for the employee tab
+     */
+
+    employeeID.setCellValueFactory(new PropertyValueFactory("employeeID"));
+    firstNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeFirst"));
+    lastNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeLast"));
+    addEmployee();
+    employeeTableView.setItems(Employee);
   }
 
   public void addBlackout() {
@@ -319,6 +339,15 @@ public class ManagerOverviewController {
     ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
     while (rs.next()){
       CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    }
+  }
+
+  public void addEmployee() throws SQLException {
+    Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    Employee = FXCollections.observableArrayList();
+    ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM EMPLOYEES");
+    while (rs.next()){
+      Employee.add(new EmployeeDriver(rs.getInt(1),rs.getString(2),rs.getString(3)));
     }
   }
 
