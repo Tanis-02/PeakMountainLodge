@@ -120,7 +120,7 @@
         <TextField fx:id="customerPhone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="creditCardNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </GridPane>
-      <Button fx:id="searchCustomerBtn" layoutX="413.0" layoutY="113.0" mnemonicParsing="false" onAction="#searchCustomer" text="Search" />
+      <Button fx:id="searchCustomerBtn" layoutX="413.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#searchCustomer" text="Search" />
       <Label layoutX="19.0" layoutY="21.0" text="Filter By:" />
     </AnchorPane>
   </Tab>

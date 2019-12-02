@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -356,6 +355,35 @@ public class ManagerOverviewController {
     con.close();
   }
 
+  @FXML
+  private void searchCustomer(MouseEvent event) throws SQLException {
+    CustomerInfo.clear();
+    String name = customerName.getText();
+    String phoneNum = customerPhone.getText();
+    String cnn = creditCardNumber.getText();
+
+    Connection connection = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    ResultSet rs = connection.createStatement().executeQuery("SELECT LASTNAME, PHONENUMBER, LASTFOURCC FROM CUSTOMERS WHERE LASTNAME = '"+name+"' + PHONENUMBER = '"+phoneNum+"' + LASTFOURCC = '"+cnn+"'");
+    while (rs.next()){
+      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    }
+    connection.close();
+    customerInformationTableView.setItems(CustomerInfo);
+  }
+
+  /*void refreshCustomerTable() throws SQLException {
+    CustomerInfo.clear();
+    CustomerInfo = FXCollections.observableArrayList();
+    Connection con = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
+    while (rs.next()){
+      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    }
+    con.close();
+
+    customerInformationTableView.setItems(CustomerInfo);
+  }*/
+
   public void addEmployee() throws SQLException {
     Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     Employee = FXCollections.observableArrayList();
@@ -378,10 +406,10 @@ public class ManagerOverviewController {
     state.executeUpdate("INSERT INTO EMPLOYEES(EMPLOYEEID,FIRSTNAME,LASTNAME,ACCESSID) VALUES ('"+id+"', '"+firstName+"', '"+lastName+"','"+access+"')");
     connect.close();
 
-    refreshTable();
+    refreshEmployeeTable();
   }
 
-  void refreshTable() throws SQLException {
+  void refreshEmployeeTable() throws SQLException {
     Employee.clear();
     Employee = FXCollections.observableArrayList();
     Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
@@ -392,12 +420,6 @@ public class ManagerOverviewController {
     conn.close();
 
     employeeTableView.setItems(Employee);
-  }
-
-  @FXML
-  private void searchCustomer(ActionEvent event) throws SQLException {
-    //ConnManager connManager = new ConnManager();
-    //connManager.searchCustomerManageroverview();
   }
 
   void fillFeedbackLog(String guestFeedback, String feedbackFamily) {
