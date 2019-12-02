@@ -43,9 +43,6 @@ public class PaymentController {
   @FXML
   private TextField nameOnCard;
 
-  public PaymentController() {
-  }
-
   public void initialize() {
     ObservableList<String> creditCards =
         FXCollections.observableArrayList(

@@ -62,7 +62,7 @@ public class ActivitiesController {
     for (int i = 1; i <= 5; i++) {
       numbers.add(i);
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
+    ObservableList<Integer> numberList = FXCollections.observableList(numbers);
     numberOfGuestsRental.getItems().clear();
     numberOfGuestsRental.setItems(numberList);
     numberOfGuestsRental.getSelectionModel().selectFirst();

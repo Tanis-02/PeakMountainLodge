@@ -25,22 +25,25 @@ class ConnManager {
   }
 
   // Creates a new customer
-  void insertCustomer(String[] insertValues) throws SQLException {
+  void insertCustomer(String[] insertValues, String checkIn, String checkOut) throws SQLException {
     String insertCustomer =
         "INSERT INTO customers ("
-            + "    email,"
-            + "    firstName,"
-            + "    lastName,"
-            + "    phoneNumber,"
-            + "    lastFourCC"
-            + ")"
-            + "VALUES(?,?,?,?,?)";
+            + "EMAIL,"
+            + "FIRSTNAME,"
+            + "LASTNAME,"
+            + "PHONENUMBER,"
+            + "LASTFOURCC,"
+            + "CHECK_IN,"
+            + "CHECK_OUT)"
+            + "VALUES(?, ?, ?, ?, ?, ?, ?)";
     preparedStatement = conn.prepareStatement(insertCustomer);
     preparedStatement.setString(1, insertValues[0]);
     preparedStatement.setString(2, insertValues[1]);
     preparedStatement.setString(3, insertValues[2]);
-    preparedStatement.setInt(4, Integer.parseInt(insertValues[3]));
-    preparedStatement.setInt(5, Integer.parseInt(insertValues[4]));
+    preparedStatement.setString(4, insertValues[3]);
+    preparedStatement.setString(5, insertValues[4]);
+    preparedStatement.setString(6, checkIn);
+    preparedStatement.setString(7, checkOut);
     preparedStatement.executeUpdate();
   }
 
@@ -48,25 +51,17 @@ class ConnManager {
   void insertEmployee(String[] insertValues) throws SQLException {
     String insertEmployee =
         "INSERT INTO employees ("
-            + "    employeeID,"
-            + "    firstName,"
-            + "    lastName,"
-            + "    accessID"
+            + "employeeID,"
+            + "firstName,"
+            + "lastName,"
+            + "accessID"
             + ")"
-            + "VALUES(?,?,?,?)";
+            + "VALUES(?, ?, ?, ?)";
     preparedStatement = conn.prepareStatement(insertEmployee);
     preparedStatement.setInt(1, Integer.parseInt(insertValues[0]));
     preparedStatement.setString(2, insertValues[1]);
     preparedStatement.setString(3, insertValues[2]);
     preparedStatement.setInt(4, Integer.parseInt(insertValues[3]));
-    preparedStatement.executeUpdate();
-  }
-
-  // Creating access levels
-  void insertAccessID(String[] insertValues) throws SQLException {
-    String insertAccessID = "INSERT INTO accessID (" + "    employeeID" + ")" + "VALUES(?)";
-    preparedStatement = conn.prepareStatement(insertAccessID);
-    preparedStatement.setInt(1, Integer.parseInt(insertValues[0]));
     preparedStatement.executeUpdate();
   }
 
@@ -107,7 +102,6 @@ class ConnManager {
     } catch (SQLException e) {
       sqlExceptionHandler(e);
     }
-
     for (int i = 0; i <= diffDays; i++) {
       int newDay = day1.get(Calendar.DATE);
       if (i != 0) {
@@ -123,14 +117,14 @@ class ConnManager {
       System.out.println(dateToAdd);
       String insertReservation =
           "INSERT INTO RESERVATIONS ("
-              + "    resDate,"
-              + "    payCollected,"
-              + "    total,"
-              + "    roomID,"
-              + "    resID,"
-              + "    customerEmail"
+              + "resDate,"
+              + "payCollected,"
+              + "total,"
+              + "roomID,"
+              + "resID,"
+              + "customerEmail"
               + ")"
-              + "VALUES(?,?,?,?,?,?)";
+              + "VALUES(?, ?, ?, ?, ?, ?)";
       preparedStatement = conn.prepareStatement(insertReservation);
       preparedStatement.setDate(1, java.sql.Date.valueOf(dateToAdd));
       preparedStatement.setInt(2, Integer.parseInt(insertValues[0]));
@@ -177,6 +171,15 @@ class ConnManager {
     }
   }
 
+  public void test(String firstName, String lastName, int accessID) throws SQLException {
+    String test = "INSERT INTO EMPLOYEES (FIRSTNAME, LASTNAME, ACCESSID) VALUES(?, ?, ?)";
+    preparedStatement = conn.prepareStatement(test);
+    preparedStatement.setString(1, firstName);
+    preparedStatement.setString(2, lastName);
+    preparedStatement.setInt(3, accessID);
+    preparedStatement.executeUpdate();
+  }
+
   // Selecting all Reservations
   public void selectAllReservations(String reservationDate) {
     try {
@@ -199,8 +202,8 @@ class ConnManager {
   void insertActivities(String date, int numberOfGuests) throws SQLException {
     String setActivities = "INSERT INTO RESERVATIONS (ACTIVITIES, ACTIVITIES_DATE) VALUES (?, ?)";
     preparedStatement = conn.prepareStatement(setActivities);
-    preparedStatement.setDate(1, java.sql.Date.valueOf(date));
-    preparedStatement.setInt(2, numberOfGuests);
+    preparedStatement.setDate(2, java.sql.Date.valueOf(date));
+    preparedStatement.setInt(1, numberOfGuests);
   }
 
   boolean verifyGuestLogin(String lastName, String phoneNumber) throws SQLException {
@@ -230,5 +233,4 @@ class ConnManager {
   private void sqlExceptionHandler(SQLException error) {
     System.out.println("Standard Failure: " + error.getMessage());
   }
-
 }

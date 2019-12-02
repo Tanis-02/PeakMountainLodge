@@ -24,6 +24,7 @@ public class AvailableRoomsController {
 
   @FXML
   private Label largeRoom;
+
   @FXML
   private Label smallRoom;
 
@@ -38,7 +39,8 @@ public class AvailableRoomsController {
   }
 
   @FXML
-  private void initialize() {
+  public void initialize() {
+    System.out.println();
     if (holiday) {
       largeRoom.setText("$599");
       smallRoom.setText("$519");

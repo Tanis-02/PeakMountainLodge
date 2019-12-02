@@ -7,7 +7,11 @@ package resort;
  */
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +23,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -292,7 +303,7 @@ public class ManagerOverviewController {
      /*
     for the employee tab
      */
-    ObservableList<String> accessNum = FXCollections.observableArrayList("1", "2","3");
+    ObservableList<String> accessNum = FXCollections.observableArrayList("1", "2", "3");
     accessIDBox.getItems().clear();
     accessIDBox.setItems(accessNum);
     accessIDBox.getSelectionModel().selectFirst();
@@ -307,50 +318,49 @@ public class ManagerOverviewController {
   }
 
   public void addBlackout() {
-    Date d1 = new Date(119,11,20);
-    Date d2 = new Date(119,11,20);
-    Date d3 = new Date(119,11,20);
-    Date d4 = new Date(119,11,20);
-    Date d5 = new Date(119,11,21);
-    Date d6 = new Date(119,11,21);
-    Date d7 = new Date(119,11,21);
-    Date d8 = new Date(119,11,25);
-    Date d9 = new Date(119,11,25);
-    Date d10 = new Date(119,11,25);
-    Date d11 = new Date(119,11,25);
-    Date d12 = new Date(119,11,25);
-    Date d13 = new Date(119,11,29);
-    Date d14 = new Date(119,11,29);
-    Date d15 = new Date(119,11,29);
-    Date d16 = new Date(119,11,29);
-    Date d17 = new Date(119,11,29);
+    Date d1 = new Date(119, 11, 20);
+    Date d2 = new Date(119, 11, 20);
+    Date d3 = new Date(119, 11, 20);
+    Date d4 = new Date(119, 11, 20);
+    Date d5 = new Date(119, 11, 21);
+    Date d6 = new Date(119, 11, 21);
+    Date d7 = new Date(119, 11, 21);
+    Date d8 = new Date(119, 11, 25);
+    Date d9 = new Date(119, 11, 25);
+    Date d10 = new Date(119, 11, 25);
+    Date d11 = new Date(119, 11, 25);
+    Date d12 = new Date(119, 11, 25);
+    Date d13 = new Date(119, 11, 29);
+    Date d14 = new Date(119, 11, 29);
+    Date d15 = new Date(119, 11, 29);
+    Date d16 = new Date(119, 11, 29);
+    Date d17 = new Date(119, 11, 29);
 
-
-
-    blackOut.add(new BlackOutDriver(d1,499.00,110));
-    blackOut.add(new BlackOutDriver(d2,419.00,114));
-    blackOut.add(new BlackOutDriver(d3,419.00,116));
-    blackOut.add(new BlackOutDriver(d4,419.00,214));
-    blackOut.add(new BlackOutDriver(d5,499.00,210));
-    blackOut.add(new BlackOutDriver(d6,499.00,310));
-    blackOut.add(new BlackOutDriver(d7,419.00,314));
-    blackOut.add(new BlackOutDriver(d8,419.00,316));
-    blackOut.add(new BlackOutDriver(d10,419.00,318));
-    blackOut.add(new BlackOutDriver(d11,499.00,210));
-    blackOut.add(new BlackOutDriver(d12,499.00,310));
-    blackOut.add(new BlackOutDriver(d13,419.00,314));
-    blackOut.add(new BlackOutDriver(d14,419.00,316));
-    blackOut.add(new BlackOutDriver(d15,419.00,214));
-    blackOut.add(new BlackOutDriver(d16,419.00,218));
-    blackOut.add(new BlackOutDriver(d17,419.00,216));
+    blackOut.add(new BlackOutDriver(d1, 499.00, 110));
+    blackOut.add(new BlackOutDriver(d2, 419.00, 114));
+    blackOut.add(new BlackOutDriver(d3, 419.00, 116));
+    blackOut.add(new BlackOutDriver(d4, 419.00, 214));
+    blackOut.add(new BlackOutDriver(d5, 499.00, 210));
+    blackOut.add(new BlackOutDriver(d6, 499.00, 310));
+    blackOut.add(new BlackOutDriver(d7, 419.00, 314));
+    blackOut.add(new BlackOutDriver(d8, 419.00, 316));
+    blackOut.add(new BlackOutDriver(d10, 419.00, 318));
+    blackOut.add(new BlackOutDriver(d11, 499.00, 210));
+    blackOut.add(new BlackOutDriver(d12, 499.00, 310));
+    blackOut.add(new BlackOutDriver(d13, 419.00, 314));
+    blackOut.add(new BlackOutDriver(d14, 419.00, 316));
+    blackOut.add(new BlackOutDriver(d15, 419.00, 214));
+    blackOut.add(new BlackOutDriver(d16, 419.00, 218));
+    blackOut.add(new BlackOutDriver(d17, 419.00, 216));
   }
 
   public void addCustomer() throws SQLException {
     Connection con = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     CustomerInfo = FXCollections.observableArrayList();
     ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
-    while (rs.next()){
-      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    while (rs.next()) {
+      CustomerInfo
+          .add(new CustomerDriver(rs.getString(3), rs.getString(4), rs.getString(1), rs.getInt(5)));
     }
     con.close();
   }
@@ -363,9 +373,12 @@ public class ManagerOverviewController {
     String cnn = creditCardNumber.getText();
 
     Connection connection = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
-    ResultSet rs = connection.createStatement().executeQuery("SELECT LASTNAME, PHONENUMBER, LASTFOURCC FROM CUSTOMERS WHERE LASTNAME = '"+name+"' + PHONENUMBER = '"+phoneNum+"' + LASTFOURCC = '"+cnn+"'");
-    while (rs.next()){
-      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
+    ResultSet rs = connection.createStatement().executeQuery(
+        "SELECT LASTNAME, PHONENUMBER, LASTFOURCC FROM CUSTOMERS WHERE LASTNAME = '" + name
+            + "' + PHONENUMBER = '" + phoneNum + "' + LASTFOURCC = '" + cnn + "'");
+    while (rs.next()) {
+      CustomerInfo
+          .add(new CustomerDriver(rs.getString(3), rs.getString(4), rs.getString(1), rs.getInt(5)));
     }
     connection.close();
     customerInformationTableView.setItems(CustomerInfo);
@@ -388,8 +401,9 @@ public class ManagerOverviewController {
     Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     Employee = FXCollections.observableArrayList();
     ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM EMPLOYEES");
-    while (rs.next()){
-      Employee.add(new EmployeeDriver(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4)));
+    while (rs.next()) {
+      Employee.add(
+          new EmployeeDriver(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
     }
     conn.close();
   }
@@ -403,7 +417,9 @@ public class ManagerOverviewController {
 
     Connection connect = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     Statement state = connect.createStatement();
-    state.executeUpdate("INSERT INTO EMPLOYEES(EMPLOYEEID,FIRSTNAME,LASTNAME,ACCESSID) VALUES ('"+id+"', '"+firstName+"', '"+lastName+"','"+access+"')");
+    state.executeUpdate(
+        "INSERT INTO EMPLOYEES(EMPLOYEEID,FIRSTNAME,LASTNAME,ACCESSID) VALUES ('" + id + "', '"
+            + firstName + "', '" + lastName + "','" + access + "')");
     connect.close();
 
     refreshEmployeeTable();
@@ -414,8 +430,9 @@ public class ManagerOverviewController {
     Employee = FXCollections.observableArrayList();
     Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
     ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM EMPLOYEES");
-    while (rs.next()){
-      Employee.add(new EmployeeDriver(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4)));
+    while (rs.next()) {
+      Employee.add(
+          new EmployeeDriver(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
     }
     conn.close();
 

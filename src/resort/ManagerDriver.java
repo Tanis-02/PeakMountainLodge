@@ -1,7 +1,5 @@
 package resort;
 
-import java.util.Date;
-
 public class ManagerDriver {
 
   private int roomRates;
