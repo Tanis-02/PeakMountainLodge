@@ -377,11 +377,21 @@ public class ManagerOverviewController {
     Statement state = connect.createStatement();
     state.executeUpdate("INSERT INTO EMPLOYEES(EMPLOYEEID,FIRSTNAME,LASTNAME,ACCESSID) VALUES ('"+id+"', '"+firstName+"', '"+lastName+"','"+access+"')");
     connect.close();
+
+    refreshTable();
   }
 
-  @FXML
-  void refreshTable(MouseEvent event) {
-    employeeTableView.refresh();
+  void refreshTable() throws SQLException {
+    Employee.clear();
+    Employee = FXCollections.observableArrayList();
+    Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
+    ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM EMPLOYEES");
+    while (rs.next()){
+      Employee.add(new EmployeeDriver(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4)));
+    }
+    conn.close();
+
+    employeeTableView.setItems(Employee);
   }
 
   @FXML
