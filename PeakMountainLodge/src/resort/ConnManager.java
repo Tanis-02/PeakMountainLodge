@@ -227,14 +227,16 @@ class ConnManager {
     return false;
   }
 
-  public void searchCustomerManageroverview(String lastName, String phoneNumber, Integer lastFourCC) throws SQLException {
+  /*ConnManager searchCustomerManageroverview(String lastName, String phoneNumber, Integer lastFourCC) throws SQLException {
+    statement = conn.createStatement();
     String getInfo = "SELECT LASTNAME FROM CUSTOMERS WHERE PHONENUMBER = '" + phoneNumber + "'" + "AND LASTFOURCC = '" + lastFourCC + "'";
     preparedStatement = conn.prepareStatement(getInfo);
     resultSet = preparedStatement.executeQuery();
     while (resultSet.next()) {
         System.out.println(getInfo);
     }
-  }
+    return ConnManager.this;
+  }*/
 
 
   private void sqlExceptionHandler(SQLException error) {

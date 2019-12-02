@@ -136,8 +136,9 @@
             <TableView fx:id="employeeTableView" layoutX="29.0" layoutY="202.0" prefHeight="330.0" prefWidth="731.0">
               <columns>
                 <TableColumn fx:id="employeeID" prefWidth="132.0" text="Employee ID" />
-                <TableColumn fx:id="firstNameEmpl" prefWidth="307.0" text="First Name" />
-                  <TableColumn fx:id="lastNameEmpl" prefWidth="291.0" text="Last Name" />
+                <TableColumn fx:id="firstNameEmpl" prefWidth="228.0" text="First Name" />
+                  <TableColumn fx:id="lastNameEmpl" prefWidth="225.0" text="Last Name" />
+                  <TableColumn fx:id="accessIDCol" prefWidth="145.0" text="Access ID" />
               </columns>
             </TableView>
             <TextField fx:id="employeeIDTx" layoutX="160.0" layoutY="29.0" />
@@ -146,7 +147,9 @@
             <Label layoutX="78.0" layoutY="134.0" text="Last Name:" />
             <TextField fx:id="employeeFTX" layoutX="160.0" layoutY="78.0" />
             <TextField fx:id="employeeLTx" layoutX="160.0" layoutY="129.0" />
-            <Button fx:id="newEmployeeBtn" layoutX="407.0" layoutY="129.0" mnemonicParsing="false" text="Create New Employee" />
+            <Button fx:id="newEmployeeBtn" layoutX="477.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#createEmployee" onMouseReleased="#refreshTable" text="Create New Employee" />
+            <ChoiceBox fx:id="accessIDBox" layoutX="477.0" layoutY="29.0" prefWidth="150.0" />
+            <Label layoutX="400.0" layoutY="34.0" text="Access ID" />
          </children></AnchorPane>
   </Tab>
   <Tab text="Exit Management">
