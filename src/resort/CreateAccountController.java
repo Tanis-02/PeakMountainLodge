@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 /**
  * Everything in the CreateAccountController corresponds to items on the create_account.fxml file.
  */
-public class CreateAccountController {
+public class CreateAccountController extends NewGuestController {
 
   /**
    * Text field to insert the user's first name into the database.
@@ -79,6 +79,7 @@ public class CreateAccountController {
             "United States", "Canada", "France", "Germany", "United Kingdom");
     region.setItems(option);
     region.getSelectionModel().selectFirst();
+    System.out.println(super.arrival + " " + super.departure);
   }
 
   @FXML
@@ -128,7 +129,8 @@ public class CreateAccountController {
       details[3] = phoneNumber.getText();
       details[4] = "1234";
       ConnManager connManager = new ConnManager();
-      connManager.insertCustomer(details);
+      connManager.insertCustomer(details, super.arrival,
+          super.departure);
     }
   }
 

@@ -6,7 +6,6 @@ package resort;
  */
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
@@ -39,30 +38,6 @@ public class NewGuestController {
   LocalDate midHolidays;
   LocalDate newYears;
 
-  DatePicker getCheckIn() {
-    return checkIn;
-  }
-
-  public void setCheckIn(DatePicker checkIn) {
-    this.checkIn = checkIn;
-  }
-
-  public void setCheckOut(DatePicker checkOut) {
-    this.checkOut = checkOut;
-  }
-
-  public void setNumberOfGuests(ChoiceBox<?> numberOfGuests) {
-    this.numberOfGuests = numberOfGuests;
-  }
-
-  public DatePicker getCheckOut() {
-    return checkOut;
-  }
-
-  public ChoiceBox<?> getNumberOfGuests() {
-    return numberOfGuests;
-  }
-
   /**
    * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
    * database.
@@ -82,7 +57,26 @@ public class NewGuestController {
    * appropriate rooms according to the value entered.
    */
   @FXML
-  private ChoiceBox<?> numberOfGuests;
+  private ChoiceBox<Integer> numberOfGuests;
+
+  public String arrival;
+  public String departure;
+
+  void setArrival() {
+    arrival = checkIn.getValue().toString();
+  }
+
+  public String getArrival() {
+    return arrival;
+  }
+
+  public String getDeparture() {
+    return departure;
+  }
+
+  void setDeparture() {
+    departure = checkOut.getValue().toString();
+  }
 
   /**
    * The initialize() function is used to initialize the value in the combo box for the number of
@@ -93,7 +87,7 @@ public class NewGuestController {
     for (int i = 1; i <= 10; i++) {
       numbers.add(i);
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
+    ObservableList<Integer> numberList = FXCollections.observableList(numbers);
     numberOfGuests.getItems().clear();
     numberOfGuests.setItems(numberList);
     numberOfGuests.getSelectionModel().selectFirst();
@@ -107,7 +101,7 @@ public class NewGuestController {
    * @throws IOException yes, it does
    */
   @FXML
-  void goToAvailableRoomsPage(MouseEvent event) throws IOException, SQLException {
+  void goToAvailableRoomsPage(MouseEvent event) throws IOException {
     if (checkIn.getValue() == null || checkOut.getValue() == null) {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Both dates must be selected. Please try again.");
@@ -117,6 +111,9 @@ public class NewGuestController {
       error2.setContentText("Check in date must be before check out date.");
       error2.show();
     } else {
+      setArrival();
+      setDeparture();
+      System.out.println(arrival + " " + departure);
       yearSelected = checkIn.getValue().getYear();
       novYearSelected = LocalDate.of(yearSelected, 11, 15);
       thanksgiving = novYearSelected
@@ -127,29 +124,29 @@ public class NewGuestController {
           thanksgiving.plusDays(2).isAfter(checkIn.getValue())) {
         FXMLLoader roomsLoader = new FXMLLoader(
             getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
+        roomsLoader.load();
+        roomsLoader.getController();
+        AvailableRoomsController.holidayPrices();
       } else if (midHolidays.minusDays(6).isBefore(checkOut.getValue()) &&
           midHolidays.plusDays(6).isAfter(checkIn.getValue())) {
         FXMLLoader roomsLoader = new FXMLLoader(
             getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
+        roomsLoader.load();
+        roomsLoader.getController();
+        AvailableRoomsController.holidayPrices();
       } else if (newYears.minusDays(2).isBefore(checkOut.getValue()) &&
           newYears.plusDays(2).isAfter(checkIn.getValue())) {
         FXMLLoader roomsLoader = new FXMLLoader(
             getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.holidayPrices();
+        roomsLoader.load();
+        roomsLoader.getController();
+        AvailableRoomsController.holidayPrices();
       } else {
         FXMLLoader roomsLoader = new FXMLLoader(
             getClass().getResource("fxml_files/available_rooms.fxml"));
-        Parent roomsParent = roomsLoader.load();
-        AvailableRoomsController roomsController = roomsLoader.getController();
-        roomsController.normalPrices();
+        roomsLoader.load();
+        roomsLoader.getController();
+        AvailableRoomsController.normalPrices();
       }
       Parent availableRoomsParent = FXMLLoader
           .load(getClass().getResource("fxml_files/available_rooms.fxml"));

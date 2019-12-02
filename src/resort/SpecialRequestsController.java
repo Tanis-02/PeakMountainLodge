@@ -74,7 +74,7 @@ public class SpecialRequestsController {
     for (int i = 1; i <= 5; i++) {
       numbers.add(i);
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
+    ObservableList<Integer> numberList = FXCollections.observableList(numbers);
     quantityOfBedding.getItems().clear();
     quantityOfBedding.setItems(numberList);
     quantityOfBedding.getSelectionModel().selectFirst();

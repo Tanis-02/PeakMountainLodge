@@ -25,22 +25,25 @@ class ConnManager {
   }
 
   // Creates a new customer
-  void insertCustomer(String[] insertValues) throws SQLException {
+  void insertCustomer(String[] insertValues, String checkIn, String checkOut) throws SQLException {
     String insertCustomer =
         "INSERT INTO customers ("
-            + "email,"
-            + "firstName,"
-            + "lastName,"
-            + "phoneNumber,"
-            + "lastFourCC"
-            + ")"
-            + "VALUES(?, ?, ?, ?, ?)";
+            + "EMAIL,"
+            + "FIRSTNAME,"
+            + "LASTNAME,"
+            + "PHONENUMBER,"
+            + "LASTFOURCC,"
+            + "CHECK_IN,"
+            + "CHECK_OUT)"
+            + "VALUES(?, ?, ?, ?, ?, ?, ?)";
     preparedStatement = conn.prepareStatement(insertCustomer);
     preparedStatement.setString(1, insertValues[0]);
     preparedStatement.setString(2, insertValues[1]);
     preparedStatement.setString(3, insertValues[2]);
-    preparedStatement.setInt(4, Integer.parseInt(insertValues[3]));
-    preparedStatement.setInt(5, Integer.parseInt(insertValues[4]));
+    preparedStatement.setString(4, insertValues[3]);
+    preparedStatement.setString(5, insertValues[4]);
+    preparedStatement.setString(6, checkIn);
+    preparedStatement.setString(7, checkOut);
     preparedStatement.executeUpdate();
   }
 
@@ -59,14 +62,6 @@ class ConnManager {
     preparedStatement.setString(2, insertValues[1]);
     preparedStatement.setString(3, insertValues[2]);
     preparedStatement.setInt(4, Integer.parseInt(insertValues[3]));
-    preparedStatement.executeUpdate();
-  }
-
-  // Creating access levels
-  void insertAccessID(String[] insertValues) throws SQLException {
-    String insertAccessID = "INSERT INTO accessID (" + "employeeID" + ")" + "VALUES(?)";
-    preparedStatement = conn.prepareStatement(insertAccessID);
-    preparedStatement.setInt(1, Integer.parseInt(insertValues[0]));
     preparedStatement.executeUpdate();
   }
 

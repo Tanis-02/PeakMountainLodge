@@ -6,19 +6,18 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
   prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE"
-  xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+  xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1"
   fx:controller="resort.ManagerOverviewController">
   <Tab text="Financial Reports">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -149,34 +148,32 @@
   </Tab>
   <Tab text="Employee">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-      <children>
-        <TableView fx:id="employeeTableView" layoutX="29.0" layoutY="202.0" prefHeight="330.0"
-          prefWidth="731.0">
-          <columns>
-            <TableColumn fx:id="employeeID" prefWidth="132.0" text="Employee ID"/>
-            <TableColumn fx:id="firstNameEmpl" prefWidth="228.0" text="First Name"/>
-            <TableColumn fx:id="lastNameEmpl" prefWidth="225.0" text="Last Name"/>
-            <TableColumn fx:id="accessIDCol" prefWidth="145.0" text="Access ID"/>
-          </columns>
-        </TableView>
-        <TextField fx:id="employeeIDTx" layoutX="160.0" layoutY="29.0"/>
-        <Label layoutX="69.0" layoutY="34.0" text="Employee ID: "/>
-        <Label layoutX="77.0" layoutY="83.0" text="First Name:"/>
-        <Label layoutX="78.0" layoutY="134.0" text="Last Name:"/>
-        <TextField fx:id="employeeFTX" layoutX="160.0" layoutY="78.0"/>
-        <TextField fx:id="employeeLTx" layoutX="160.0" layoutY="129.0"/>
-        <Button fx:id="newEmployeeBtn" layoutX="477.0" layoutY="129.0" mnemonicParsing="false"
-          onMouseClicked="#createEmployee" text="Create New Employee"/>
-        <ChoiceBox fx:id="accessIDBox" layoutX="477.0" layoutY="29.0" prefWidth="150.0"/>
-        <Label layoutX="400.0" layoutY="34.0" text="Access ID"/>
-      </children>
+      <TableView fx:id="employeeTableView" layoutX="29.0" layoutY="202.0" prefHeight="330.0"
+        prefWidth="731.0">
+        <columns>
+          <TableColumn fx:id="employeeID" prefWidth="132.0" text="Employee ID"/>
+          <TableColumn fx:id="firstNameEmpl" prefWidth="228.0" text="First Name"/>
+          <TableColumn fx:id="lastNameEmpl" prefWidth="225.0" text="Last Name"/>
+          <TableColumn fx:id="accessIDCol" prefWidth="145.0" text="Access ID"/>
+        </columns>
+      </TableView>
+      <TextField fx:id="employeeIDTx" layoutX="160.0" layoutY="29.0"/>
+      <Label layoutX="69.0" layoutY="34.0" text="Employee ID: "/>
+      <Label layoutX="77.0" layoutY="83.0" text="First Name:"/>
+      <Label layoutX="78.0" layoutY="134.0" text="Last Name:"/>
+      <TextField fx:id="employeeFTX" layoutX="160.0" layoutY="78.0"/>
+      <TextField fx:id="employeeLTx" layoutX="160.0" layoutY="129.0"/>
+      <Button fx:id="newEmployeeBtn" layoutX="477.0" layoutY="129.0" mnemonicParsing="false"
+        onMouseClicked="#createEmployee" text="Create New Employee"/>
+      <ChoiceBox fx:id="accessIDBox" layoutX="477.0" layoutY="29.0" prefWidth="150.0"/>
+      <Label layoutX="400.0" layoutY="34.0" text="Access ID"/>
     </AnchorPane>
   </Tab>
   <Tab text="Exit Management">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-      <Button layoutX="376.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#goToHomePage"
+      <Button layoutX="376.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#goToHomePage"
         text="Exit"/>
-      <TextArea layoutX="293.0" layoutY="203.0" prefHeight="70.0" prefWidth="200.0"
+      <TextArea editable="false" layoutX="293.0" layoutY="203.0" prefHeight="70.0" prefWidth="200.0"
         text="This button will exit from the management screen and return you to the home customer screen."
         wrapText="true"/>
     </AnchorPane>
