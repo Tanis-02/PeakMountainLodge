@@ -147,7 +147,7 @@
             <Label layoutX="78.0" layoutY="134.0" text="Last Name:" />
             <TextField fx:id="employeeFTX" layoutX="160.0" layoutY="78.0" />
             <TextField fx:id="employeeLTx" layoutX="160.0" layoutY="129.0" />
-            <Button fx:id="newEmployeeBtn" layoutX="477.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#createEmployee" onMouseReleased="#refreshTable" text="Create New Employee" />
+            <Button fx:id="newEmployeeBtn" layoutX="477.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#createEmployee" text="Create New Employee" />
             <ChoiceBox fx:id="accessIDBox" layoutX="477.0" layoutY="29.0" prefWidth="150.0" />
             <Label layoutX="400.0" layoutY="34.0" text="Access ID" />
          </children></AnchorPane>
