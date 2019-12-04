@@ -28,7 +28,7 @@
 
 ## Documentation
 
-- The following link will contain all of the [JavaDoc]() for the project.
+- Please use the following link to view the [JavaDoc](https://acavallaro75.github.io/SandyShoresResort/index.html)
 
 ## Diagrams
 
