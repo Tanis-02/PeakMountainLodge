@@ -19,5 +19,14 @@ CEN 3031 Resort Project
 
 - The database also has been implemented with a jar file, so that should aslo work with no problems.
 
+## Documentation
+
+- The following link will contain all of the [JavaDoc]() for the project.
+
+## Diagrams
+
+##### Class Diagram:
+![Class Diagram](src/resort/images/Package resort.png)
+
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
