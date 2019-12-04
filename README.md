@@ -37,3 +37,4 @@ CEN 3031 Resort Project Thursday Group 1
 
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
+- Edited by: Andrew Cavallaro on 12/04/2019
