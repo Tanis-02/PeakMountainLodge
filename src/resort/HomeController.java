@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the HomeController corresponds to items in the home.fxml file
+ * The home controller displays the home page to the user.
  */
 public class HomeController {
 

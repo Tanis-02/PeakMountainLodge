@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SandyShoresResort:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SandyShoresResort_jar</output-path>
+    <root id="archive" name="SandyShoresResort.jar">
+      <element id="module-output" name="SandyShoresResort" />
+      <element id="extracted-dir" path="$APPLICATION_CONFIG_DIR$/jdbc-drivers/H2/1.4.196/h2-1.4.196.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

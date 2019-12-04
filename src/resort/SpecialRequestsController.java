@@ -18,44 +18,44 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the SpecialRequestsController corresponds to items in the special_request.fxml
- * file.
+ * The special requests controller allows the user to request things from the front office.
  */
 public class SpecialRequestsController {
 
   /**
-   * ComboBox typeOfBedding is the type of bedding that the customer can request.
+   * The type of bedding combo box is the type of bedding that the customer can request.
    */
   @FXML
   private ComboBox<String> typeOfBedding;
 
   /**
-   * ComboBox quantityOfBedding is how much of the type of bedding the customer can request.
+   * The quantity of bedding combo box is how much of the type of bedding the customer can request.
    */
   @FXML
   private ComboBox<Integer> quantityOfBedding;
 
   /**
-   * ComboBox typeOfToiletry is the type of toiletry that the customer can request.
+   * The type of toiletry combo box is the type of toiletry that the customer can request.
    */
   @FXML
   private ComboBox<String> typeOfToiletry;
 
   /**
-   * ComboBox quantityOfToiletry is how much of the type of toiletry the customer can request.
+   * The quantity of toiletry combo box is how much of the type of toiletry the customer can
+   * request.
    */
   @FXML
   private ComboBox<Integer> quantityOfToiletry;
 
   /**
-   * TextField message will be used to get the message the guest writes for special requests.
+   * The message text field will be used to get the message the guest writes for special requests.
    */
   @FXML
   private TextField message;
 
   /**
    * The initialize() function initializes the combo boxes with the values for the quantities of
-   * items being requested. Will be added to later to include the actual items being requested.
+   * items and items being requested.
    */
   public void initialize() {
     ObservableList<String> toiletries =

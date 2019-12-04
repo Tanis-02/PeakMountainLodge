@@ -11,24 +11,28 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * The guest feedback controller is used to gather the guest's feedback.
+ */
 public class GuestFeedbackController {
 
   /**
-   * Button that submits the guest's typed feedback when pressed.
+   * The button that submits the guest's typed feedback when pressed.
    */
   @FXML
   private Button btnSubmitFeedback;
 
   /**
-   * Text area that allows the guest to type in their feedback.
+   * The text area that allows the guest to type in their feedback about the resort.
    */
   @FXML
   private TextArea inputFeedback;
 
   /**
-   * Family name to be accepted from the previous scene and used when recording feedback logs. Must
-   * be static because passFamilyName is called through another instance of GuestFeedbackController
-   * than the instance in use when submitFeedback is called through the click of a button.
+   * The family name to be accepted from the previous scene and used when recording feedback logs.
+   * Must be static because passFamilyName is called through another instance of
+   * GuestFeedbackController than the instance in use when submitFeedback is called through the
+   * click of a button.
    */
   private static String familyName;
 
@@ -44,8 +48,8 @@ public class GuestFeedbackController {
   }
 
   /**
-   * passFamilyName takes in the family name variable when a guest logs in so it can send it to
-   * ManagerOverviewController to be used in the feedback logs.
+   * The passFamilyName() method takes in the family name variable when a guest logs in so it can
+   * send it to ManagerOverviewController to be used in the feedback logs.
    *
    * @param familyName is the last name that the guest used to log in with.
    */
@@ -54,9 +58,9 @@ public class GuestFeedbackController {
   }
 
   /**
-   * submitFeedback is called whenever a guest clicks the "Submit Feedback" button. It sends the
-   * text from the corresponding textBox, in addition to the name of the family currently logged in,
-   * to ManagerOverviewController.
+   * The submitFeedback() method is called whenever a guest clicks the "Submit Feedback" button. It
+   * sends the text from the corresponding textBox, in addition to the name of the family currently
+   * logged in, to ManagerOverviewController.
    *
    * @throws IOException is potentially thrown when loading the manager_overview.fxml file
    */

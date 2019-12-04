@@ -1,12 +1,6 @@
 package resort;
 
-/* Needs to be done:
-1. Check functionality
-2. Store the last 4 of the CCN into the database.
- */
-
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,25 +18,47 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the PaymentController corresponds to items in the payment.fxml file.
+ * The payment controller is used to gather the payment information from the guest and confirm their
+ * visit.
  */
 public class PaymentController {
 
+  /**
+   * The card type combo box is used to display the accepted credit cards.
+   */
   @FXML
   private ComboBox<String> cardType;
 
+  /**
+   * The CCN text field is used to gather the credit card number of the guest. It must be 16 digits
+   * in length.
+   */
   @FXML
   private TextField CCN;
 
+  /**
+   * The expiration date text field is used to gather the expiration date of the credit card. It
+   * must be in the following format: xx/xx.
+   */
   @FXML
   private TextField expirationDate;
 
+  /**
+   * The CVC text field is used to gather the CVC number of the credit card. It must be 3 digits in
+   * length.
+   */
   @FXML
   private TextField CVCode;
 
+  /**
+   * The name on card text field gathers the name of the credit card owner.
+   */
   @FXML
   private TextField nameOnCard;
 
+  /**
+   * The initialize() method is used to set the values for the card type combo box.
+   */
   public void initialize() {
     ObservableList<String> creditCards =
         FXCollections.observableArrayList(
@@ -51,8 +67,15 @@ public class PaymentController {
     cardType.getSelectionModel().selectFirst();
   }
 
+  /**
+   * The goToHomePage() directs the customer to the home page after confirmation of their
+   * reservation. All fields must be filled out properly and confirmed before submission.
+   *
+   * @param event mouse click event
+   * @throws IOException yes, it does
+   */
   @FXML
-  void goToHomePage(MouseEvent event) throws IOException, SQLException {
+  void goToHomePage(MouseEvent event) throws IOException {
     if (CCN.getText().equalsIgnoreCase("") || CCN.getLength() < 16 || CCN.getLength() > 16) {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Credit card number must have 16 numbers.");

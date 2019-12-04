@@ -1,11 +1,5 @@
 package resort;
 
-/* Needs to be done:
-1. Update pricing based on the dates selected.
-2. Show different available rooms based on the number of guests.
-3. Show no rooms available for black out dates and no availability (booked up).
- */
-
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,30 +11,49 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the AvailableRoomsController corresponds to items in the available_rooms.fxml
- * file.
+ * The available rooms controller is shown to the user and displays the available rooms for the
+ * dates selected and the prices for those rooms.
  */
 public class AvailableRoomsController {
 
+  /**
+   * The label that shows the price for the large room.
+   */
   @FXML
   private Label largeRoom;
 
+  /**
+   * The label that shows the price for the small room.
+   */
   @FXML
   private Label smallRoom;
 
+  /**
+   * Determines if the date the guest picked is during a holiday time period. If so, the price for
+   * the room will change accordingly.
+   */
   private static boolean holiday;
 
+  /**
+   * Sets the holiday boolean equal to true to display holiday pricing for the rooms.
+   */
   static void holidayPrices() {
     holiday = true;
   }
 
+  /**
+   * Sets the holiday boolean equal to false to display normal pricing for the rooms.
+   */
   static void normalPrices() {
     holiday = false;
   }
 
+  /**
+   * The initialize() method is used to the labels on the screen to display holiday rates or normal
+   * rates for the rooms.
+   */
   @FXML
   public void initialize() {
-    System.out.println();
     if (holiday) {
       largeRoom.setText("$599");
       smallRoom.setText("$519");
