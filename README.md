@@ -115,6 +115,8 @@ The CurrentGuestController and current_guest.fxml files are used to compare the 
 - Used to display all the data to the employee
 - The employee can see financial reports from past and present, make blackout dates, view customer information, view customer feedback, view and create employee access, and exit the manager overview page by clicking the exit button that will bring them to the home page.
 
+## Contributions
+
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
 - Edited by: Andrew Cavallaro on 12/04/2019
