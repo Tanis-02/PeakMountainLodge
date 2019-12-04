@@ -11,7 +11,7 @@ CEN 3031 Resort Project
 
 - You will be prompted with a message asking if you would like to open the project. Select yes to view the project.
 
-- A runnable jar has been made, so you should only need to press run to access the program.
+- A runnable jar has been made, so you should only need to go to the Main class and press run to access the program.
 
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
