@@ -13,24 +13,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the CurrentGuestController corresponds to items on the current_guest.fxml file
+ * The current guest controller allows the user to login with their last name and phone number to
+ * book activities and other things.
  */
 public class CurrentGuestController {
 
   /**
-   * Text field to get the user's last name to compare against the database records.
+   * The text field to gather the user's last name to compare against the database records.
    */
   @FXML
   private TextField lastName;
 
   /**
-   * Text field to get the user's phone number to compare against the database records.
+   * The text field to gather the user's phone number to compare against the database records.
    */
   @FXML
   private TextField phoneNumber;
 
   /**
-   * Label to prompt the user to try again in the event an invalid login attempt is made.
+   * The label to prompt the user to try again in the event an invalid login attempt is made.
    */
   @FXML
   private Label badGuestInput;
@@ -39,8 +40,8 @@ public class CurrentGuestController {
    * The goToCurrentGuestOptionsPage() function is used to check the conditions of the lastName and
    * phoneNumber text fields to the values stored in the database. If either the phone number or
    * last name don't match a record in the database, it will display an error message. If both the
-   * last name and phone are successful, it will open to the current_guest_options page. Guest and
-   * 1234567890 are placeholders for valid name and number combinations pulled from a database.
+   * last name and phone are successful, it will open to the current guest options page. For now,
+   * Cavallaro and 6629984 can be used to gain access as a default.
    */
   @FXML
   void goToCurrentGuestOptionsPage(MouseEvent event) throws IOException, SQLException {

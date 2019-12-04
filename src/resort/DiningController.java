@@ -1,9 +1,5 @@
 package resort;
 
-/* Need to be done:
-1. Compare dates chosen to dates guests are staying at the resort.
- */
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,33 +18,35 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the DiningController corresponds to items on the dining.fxml file.
+ * The dining controller shows the guest the available places to dine at the resort.
  */
 public class DiningController {
 
   /**
-   * DatePicker watersideDatePicker sets the reservation for the Waterside restaurant.
+   * The Waterside date picker sets the reservation for the Waterside restaurant.
    */
   @FXML
   private DatePicker watersideDatePicker;
 
   /**
-   * DatePicker underwaterDatePicker sets the reservation for the Underwater restaurant.
+   * The Underwater date picker sets the reservation for the Underwater restaurant.
    */
   @FXML
   private DatePicker underwaterDatePicker;
 
   /**
-   * Combobox watersideGuests get the number of guests for the Waterside restaurant reservation.
+   * The Waterside guests combo box gets the number of guests being requested for the Waterside
+   * restaurant reservation.
    */
   @FXML
-  private ComboBox<?> watersideGuests;
+  private ComboBox<Integer> watersideGuests;
 
   /**
-   * Combobox underwaterGuests get the number of guests for the Underwater restaurant reservation.
+   * The Underwater guests combo box gets the number of guests being requested  for the Underwater
+   * restaurant reservation.
    */
   @FXML
-  private ComboBox<?> underwaterGuests;
+  private ComboBox<Integer> underwaterGuests;
 
   /**
    * The initialize() function is used to initialize the number of guests in the reservation combo
@@ -59,7 +57,7 @@ public class DiningController {
     for (int i = 1; i <= 5; i++) {
       numbers.add(i);
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
+    ObservableList<Integer> numberList = FXCollections.observableList(numbers);
     watersideGuests.getItems().clear();
     watersideGuests.setItems(numberList);
     watersideGuests.getSelectionModel().selectFirst();
@@ -69,8 +67,9 @@ public class DiningController {
   }
 
   /**
-   * The goToWaterSideConfirmationPage() shows a confirmation message with the date and number of
-   * guests going to the Waterside restaurant.
+   * The goToWaterSideConfirmationPage() method shows a confirmation message with the date and
+   * number of guests going to the Waterside restaurant or an error message if one of the two fields
+   * are left empty.
    */
   @FXML
   void goToWaterSideConfirmationPage() {
@@ -90,44 +89,10 @@ public class DiningController {
     }
   }
 
- /* Date a, b;   // assume these are set to something
-  Date d;      // the date in question
-
-return a.compareTo(d) * d.compareTo(b) > 0;
-  If you want the range to be inclusive
-
-return a.compareTo(d) * d.compareTo(b) >= 0;*/
-
- /* SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-  Date date1 = sdf.parse("2009-12-31");
-  Date date2 = sdf.parse("2010-01-31");
-
-        System.out.println("date1 : " + sdf.format(date1));
-        System.out.println("date2 : " + sdf.format(date2));
-
-        if (date1.compareTo(date2) > 0) {
-    System.out.println("Date1 is after Date2");
-  } else if (date1.compareTo(date2) < 0) {
-    System.out.println("Date1 is before Date2");
-  } else if (date1.compareTo(date2) == 0) {
-    System.out.println("Date1 is equal to Date2");
-  } else {
-    System.out.println("How to get here?");
-  }
-
-}*/
-
-
   /**
-   * public class DisplayDate { public static void main(String args[]) { // Instantiate a objects
-   * Date date1 = new Date(); Date date2 = new Date();
-   * <p>
-   * if(date1.compareTo(date2)>0){ System.out.println("Date1 is after Date2"); }else
-   * if(date1.compareTo(date2)<0){ System.out.println("Date1 is before Date2"); }else{
-   * System.out.println("Date1 is equal to Date2"); }
-   * <p>
-   * } } The goToUnderWaterConfirmationPage() shows a confirmation message with the date and number
-   * of guests going to the UnderWater restaurant.
+   * The goToUnderWaterConfirmationPage() method shows a confirmation message with the date and
+   * number of guests going to the UnderWater restaurant or an error message if one of the two
+   * fields are left empty.
    */
   @FXML
   void goToUnderWaterConfirmationPage() {

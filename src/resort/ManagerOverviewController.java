@@ -158,7 +158,7 @@ public class ManagerOverviewController {
   @FXML
   private ChoiceBox<String> accessIDBox;
 
-  private static ArrayList<String> feedbackList = new ArrayList<>();
+  private static final ArrayList<String> feedbackList = new ArrayList<>();
 
   private ObservableList<BlackOutDriver> blackOut;
 

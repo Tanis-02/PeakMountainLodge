@@ -1,9 +1,5 @@
 package resort;
 
-/* Needs to be done:
-1. Compare values in the database for username and password rather than being hard coded.
- */
-
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
@@ -18,24 +14,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the ManagerLoginController corresponds to items on the manager_login.fxml file
+ * The manager login screen allows the manager to login to the manager view screen.
  */
 public class ManagerLoginController {
 
   /**
-   * Text field managerID to get the user's ID to compare against the database records.
+   * The text field to get the user's ID to compare against the database records.
    */
   @FXML
   private TextField managerID;
 
   /**
-   * Text field managerPassword to get the user's password to compare against the database records.
+   * The text field to get the user's password to compare against the database records.
    */
   @FXML
   private PasswordField managerPassword;
 
   /**
-   * Label to prompt the user to try again in the event an invalid login attempt is made.
+   * The label to prompt the user to try again in the event an invalid login attempt is made.
    */
   @FXML
   private Label badManagerInput2;
@@ -60,7 +56,7 @@ public class ManagerLoginController {
    * The goToManagerOverview() function is used to check the conditions of the managerID and
    * managerPassword text fields to the values stored in the database. If either the ID or password
    * don't match a record in the database, it will display an error message. If both the ID and
-   * password are successful, it will open to the manager overview page. Admin and password are
+   * password are successful, it will open to the manager overview page. Cavallaro and 512560 are
    * placeholders for valid manager ID and password combinations pulled from a database.
    */
   @FXML

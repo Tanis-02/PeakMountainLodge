@@ -19,38 +19,42 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in ActivitiesController corresponds to items in the activities.fxml file.
+ * The activities controller is used by the guest to book activities during their resort stay.
+ * Currently, the only available activities are water rentals and snorkeling.
  */
 public class ActivitiesController {
 
   /**
-   * ChoiceBox numberOfGuestsRental is used to put how many people are registering for the rental.
+   * The number of guests rental choice box is used to select how many guests are registering for a
+   * water rental.
    */
   @FXML
   private ChoiceBox<Integer> numberOfGuestsRental;
 
   /**
-   * DatePicker rentalDatePicker is used to select a date during their stay to use the rental.
+   * The rental date picker is used to select a date during the guest's stay to reserve a water
+   * rental.
    */
   @FXML
   private DatePicker rentalDatePicker;
 
   /**
-   * DatePicker snorkelingDatePicker is used to select a date during their stay to go snorkeling.
+   * The snorkeling date picker is used to select a date during the guest's stay to reserve a
+   * snorkeling tour.
    */
   @FXML
   private DatePicker snorkelingDatePicker;
 
   /**
-   * ChoiceBox numberOfGuestsSnorkeling is used to to put how many people are registering for the
-   * snorkeling tour.
+   * The number of guests snorkeling choice box is used to to select how many guests are registering
+   * for the snorkeling tour.
    */
   @FXML
   private ChoiceBox<Integer> numberOfGuestsSnorkeling;
 
   /**
-   * The initialize() function is used to initialize the number of guests in the rental and
-   * snorkeling combo boxes.
+   * The initialize() method is used to initialize the number of guests in the rental and snorkeling
+   * choice boxes.
    */
   public void initialize() {
     List<Integer> numbers = new ArrayList<>();
@@ -68,8 +72,9 @@ public class ActivitiesController {
 
   /**
    * The goToRentalConfirmationPage() method will go to the confirmation page to confirm the guest's
-   * activity. It must have both the date and number of guests selected and the date must be within
-   * their stay which is checked with the database.
+   * activity.The date picker and choice box must have been selected or an error message will be
+   * shown to the user. If both are selected, the user will be shown a confirmation message
+   * displaying the date, activity, and number of guests.
    */
   @FXML
   void goToRentalConfirmationPage() throws SQLException {
@@ -93,9 +98,10 @@ public class ActivitiesController {
   }
 
   /**
-   * The goToSnorkelingConfirmationPage() method will go to the confirmation page to confirm the
-   * guest's activity. It must have both the date and number of guests selected and the date must be
-   * within their stay which is checked with the database.
+   * The goToSnorkelingPage() method will go to the confirmation page to confirm the guest's
+   * activity.The date picker and choice box must have been selected or an error message will be
+   * shown to the user. If both are selected, the user will be shown a confirmation message
+   * displaying the date, activity, and number of guests.
    */
   @FXML
   void goToSnorkelingConfirmationPage() {

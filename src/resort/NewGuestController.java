@@ -1,10 +1,5 @@
 package resort;
 
-/* Needs to be done:
-1. Create logic to compare value of reservations vs today.
-2. Push dates to database for the reservation (save for future screens)
- */
-
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -27,34 +22,53 @@ import javafx.stage.Stage;
 
 
 /**
- * Everything in the NewGuestController corresponds to items on the new_guest.fxml file
+ * The new guest controller displays the date pickers and number of guests for their reservation.
  */
 public class NewGuestController {
 
-  // Variables used to determine if the chosen dates falls on a holiday
+  /**
+   * The following are variables to determine if the chosen dates fall on a holiday. The first is
+   * the year selected.
+   */
   int yearSelected;
+
+  /**
+   * The second is if the date falls in November.
+   */
   LocalDate novYearSelected;
+
+  /**
+   * The third is if the date falls on Thanksgiving.
+   */
   LocalDate thanksgiving;
+
+  /**
+   * The fourth is if the date falls between Thanksgiving and Christmas.
+   */
   LocalDate midHolidays;
+
+  /**
+   * The final one is if the date falls on New Years.
+   */
   LocalDate newYears;
 
   /**
-   * DatePicker checkIn is used to obtain the check in date of the customer and store it to the
-   * database.
+   * The check in date picker is used to obtain the check in date of the customer and store it to
+   * the database.
    */
   @FXML
   private DatePicker checkIn;
 
   /**
-   * DatePicker checkOut is used to obtain the check out date of the customer and store it to the
-   * database.
+   * The check out date picker is used to obtain the check out date of the customer and store it to
+   * the database.
    */
   @FXML
   private DatePicker checkOut;
 
   /**
-   * ChoiceBox numberOfGuests is used to obtain the number of guests the customer has and will show
-   * appropriate rooms according to the value entered.
+   * The number of guests choice box is used to obtain the number of guests the customer has and
+   * will show appropriate rooms according to the value entered.
    */
   @FXML
   private ChoiceBox<Integer> numberOfGuests;
@@ -76,7 +90,8 @@ public class NewGuestController {
 
   /**
    * Once a customer chooses their dates and number of guests, they will be shown the available
-   * rooms that meet their criteria.
+   * rooms that meet their criteria. The check out date must be after the check in date and both
+   * dates must be selected or an error message will be displayed.
    *
    * @param event goes to the available rooms page
    * @throws IOException yes, it does

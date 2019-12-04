@@ -12,12 +12,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the CheckoutController corresponds to items in the checkout.fxml file.
+ * The checkout controller is where the customer goes to checkout and leave guest feedback for the
+ * resort.
  */
 public class CheckoutController {
 
   /**
-   * Directs the customer to the feedback page.
+   * Directs the customer to the feedback page to allow the customer their chance to leave any
+   * feedback about the resort.
    *
    * @param event upon clicking the feedback button
    * @throws IOException yes, it does
@@ -33,7 +35,7 @@ public class CheckoutController {
   }
 
   /**
-   * Directs the customer to the home page.
+   * Directs the customer to the home page once they have checked out.
    *
    * @param event upon clicking the checkout button
    * @throws IOException yes, it does
@@ -52,9 +54,10 @@ public class CheckoutController {
   }
 
   /**
-   * Directs the customer to the previous page.
+   * Universal goToPreviousPage() function is used to bring the user to the previous page they were
+   * on. It will be used across almost all screens.
    *
-   * @param event upon clicking the back button
+   * @param event MouseEvent upon clicking the back button
    * @throws IOException yes, it does
    */
   @FXML

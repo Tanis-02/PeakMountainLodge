@@ -11,27 +11,26 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the CurrentGuestOptionsController corresponds to items on the
- * current_guest_options.fxml file
+ * The current guest options controller shows the available options to the guest logged in.
  */
 public class CurrentGuestOptionsController {
 
   /**
-   * familyName is the name that the user entered in the last name field, and will be greeted by on
-   * the scene. It must be static so that it retains its value when the user backs out of further
-   * scenes, until a new user logs in.
+   * Field member familyName is the name that the user entered in the last name field, and will be
+   * greeted by on the scene. It must be static so that it retains its value when the user backs out
+   * of further scenes, until a new user logs in.
    */
   private static String familyName;
 
   /**
-   * Label that will be used for greeting the guest once they log in.
+   * The label that will be used for greeting the guest once they log in.
    */
   @FXML
   private Label greetGuest;
 
   /**
-   * The setFamilyName() function is used to display the family's name on the screen once they log
-   * in. Right now, it's initialized to "Guest".
+   * The setFamilyName() method is used to display the family's name on the screen once they log in.
+   * Right now, it's initialized to "Guest".
    *
    * @param lastName is assigned to familyName and is used to greet the user by name in this scene
    */
@@ -45,13 +44,18 @@ public class CurrentGuestOptionsController {
     passFamilyController.passFamilyName(familyName);
   }
 
+  /**
+   * The setNameStatic() method is used to set the family name to static.
+   *
+   * @param name last name of the guest
+   */
   private static void setNameStatic(String name) {
     familyName = name;
   }
 
   /**
    * The initialize() method is used to initialize the name of the family on the screen when the
-   * user opens this scene from anywhere other than CurrentGuest.
+   * user opens this scene from anywhere other than the current guest page.
    */
   @FXML
   private void initialize() {

@@ -18,60 +18,61 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Everything in the CreateAccountController corresponds to items on the create_account.fxml file.
+ * The create account controller gathers the guest's details and plugs them into the customer
+ * database.
  */
 public class CreateAccountController extends CustomerDriver {
 
   /**
-   * Text field to insert the user's first name into the database.
+   * The text field to gather the guest's first name and insert it into the database.
    */
   @FXML
   private TextField firstName;
 
   /**
-   * Text field to insert the user's last name into the database.
+   * The text field to gather the guest's last name and insert it into the database.
    */
   @FXML
   private TextField lastName;
 
   /**
-   * Text field to insert the user's phone number into the database.
+   * The text field to gather the guest's phone number and insert it into the database.
    */
   @FXML
   private TextField phoneNumber;
 
   /**
-   * Text field to insert the user's email into the database.
+   * The text field to gather the guest's email and insert it into the database.
    */
   @FXML
   private TextField email;
 
   /**
-   * Combo box to allow the user to choose from which region they are from.
+   * The region combo box is used to allow the user to choose from which region they are from.
    */
   @FXML
   private ComboBox<String> region;
 
   /**
-   * Text field to insert the user's address into the database.
+   * The text field to gather the guest's address and insert it into the database.
    */
   @FXML
   private TextField address;
 
   /**
-   * Text field to insert the user's zip code into the database.
+   * The text field to gather the guest's zip code and insert it into the database.
    */
   @FXML
   private TextField zipCode;
 
   /**
-   * Text field to insert the user's password into the database.
+   * The text field to gather the guest's password and insert it into the database.
    */
   @FXML
   private PasswordField password;
 
   /**
-   * Initialize the combo box with values.
+   * The initialize() method is used to set the values in the region combo box.
    */
   public void initialize() {
     ObservableList<String> option =
@@ -81,6 +82,16 @@ public class CreateAccountController extends CustomerDriver {
     region.getSelectionModel().selectFirst();
   }
 
+  /**
+   * The goToCheckOutPage() method goes to the payment screen and inserts the customer details into
+   * the database. If all fields are filled out correctly, that is. All fields must be filled out
+   * and in the proper way. The phone number must be in the form of xxxxxxx with no dashes or
+   * spaces. The zip code must also be 5 digits in length.
+   *
+   * @param event mouse click
+   * @throws IOException  yes, it does
+   * @throws SQLException yes, it does
+   */
   @FXML
   void goToCheckoutPage(MouseEvent event) throws IOException, SQLException {
     if (firstName.getText().equalsIgnoreCase("")) {
@@ -128,7 +139,7 @@ public class CreateAccountController extends CustomerDriver {
       details[3] = phoneNumber.getText();
       details[4] = "3456";
       ConnManager connManager = new ConnManager();
-      connManager.insertCustomer(details, "12-25-2019", "12-31-2019");
+      connManager.insertCustomer(details);
     }
   }
 
