@@ -1,7 +1,7 @@
 # Sandy Shores Resort
-CEN 3031 Resort Project Thursday Group 1
 
-#### Group Members:
+#### Group and Group Members:
+- CEN 3031 Resort Project Thursday Group 1
 - Andrew Cavallaro
 - Joseph Cisar
 - Elizabeth Gonzalez
