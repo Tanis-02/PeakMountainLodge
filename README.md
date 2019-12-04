@@ -26,7 +26,7 @@ CEN 3031 Resort Project
 ## Diagrams
 
 ##### Class Diagram:
-![Class Diagram](src/resort/images/Package resort.png)
+![Class Diagram](src/resort/images/class_diagram.png)
 
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
