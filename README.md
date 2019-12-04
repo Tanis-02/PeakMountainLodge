@@ -1,5 +1,12 @@
 # Sandy Shores Resort
-CEN 3031 Resort Project
+CEN 3031 Resort Project Thursday Group 1
+
+##### Group Members:
+- Andrew Cavallaro
+- Joseph Cisar
+- Elizabeth Gonzalez
+- Shawn Hasten
+- Daniel Miller
 
 ## Installation
 
