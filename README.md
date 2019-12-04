@@ -28,7 +28,7 @@
 
 ## Documentation
 
-- Please use the following link to view the [JavaDoc](https://acavallaro75.github.io/SandyShoresResort/index.html)
+- Please use the following link to view the [JavaDoc](https://acavallaro75.github.io/SandyShoresResort/index.html) for this project.
 
 ## Diagrams
 
