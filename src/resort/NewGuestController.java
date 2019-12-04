@@ -59,25 +59,6 @@ public class NewGuestController {
   @FXML
   private ChoiceBox<Integer> numberOfGuests;
 
-  public String arrival;
-  public String departure;
-
-  void setArrival() {
-    arrival = checkIn.getValue().toString();
-  }
-
-  public String getArrival() {
-    return arrival;
-  }
-
-  public String getDeparture() {
-    return departure;
-  }
-
-  void setDeparture() {
-    departure = checkOut.getValue().toString();
-  }
-
   /**
    * The initialize() function is used to initialize the value in the combo box for the number of
    * guests going on the trip.
@@ -101,7 +82,7 @@ public class NewGuestController {
    * @throws IOException yes, it does
    */
   @FXML
-  void goToAvailableRoomsPage(MouseEvent event) throws IOException {
+  public void goToAvailableRoomsPage(MouseEvent event) throws IOException {
     if (checkIn.getValue() == null || checkOut.getValue() == null) {
       Alert error = new Alert(AlertType.ERROR);
       error.setContentText("Both dates must be selected. Please try again.");
@@ -111,9 +92,6 @@ public class NewGuestController {
       error2.setContentText("Check in date must be before check out date.");
       error2.show();
     } else {
-      setArrival();
-      setDeparture();
-      System.out.println(arrival + " " + departure);
       yearSelected = checkIn.getValue().getYear();
       novYearSelected = LocalDate.of(yearSelected, 11, 15);
       thanksgiving = novYearSelected

@@ -1,11 +1,5 @@
 package resort;
 
-/* Needs to be done:
-1. Update pricing based on the dates selected.
-2. Show different available rooms based on the number of guests.
-3. Show no rooms available for black out dates and no availability (booked up).
- */
-
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +16,9 @@ import javafx.stage.Stage;
  */
 public class AvailableRoomsController {
 
+  /**
+   * The label that shows the price for the large room.
+   */
   @FXML
   private Label largeRoom;
 
@@ -40,7 +37,6 @@ public class AvailableRoomsController {
 
   @FXML
   public void initialize() {
-    System.out.println();
     if (holiday) {
       largeRoom.setText("$599");
       smallRoom.setText("$519");

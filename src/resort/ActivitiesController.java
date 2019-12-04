@@ -1,10 +1,5 @@
 package resort;
 
-/* Needs to be done:
-1. Compare dates chosen to dates guests are staying at the resort.
-2. Compare number of guests signing up for activity to number of guests in party.
- */
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;

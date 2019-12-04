@@ -23,10 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -53,46 +50,16 @@ public class ManagerOverviewController {
   private ChoiceBox<String> sortBy;
 
   /**
-   * DatePicker startDate is used to select a start date for the financial reports table view.
-   */
-  @FXML
-  private DatePicker startDate;
-
-  /**
-   * DatePicker endDate is used to select an end date for the financial reports table view.
-   */
-  @FXML
-  private DatePicker endDate;
-
-  /**
    * ChoiceBox previousReports allows the user to select a year to view those reports.
    */
   @FXML
-  private ChoiceBox<?> previousReports;
+  private ChoiceBox<Integer> previousReports;
 
   /**
    * Table view blackOutDatesTableView is used to view all of the rooms and to select a room.
    */
   @FXML
   private TableView<BlackOutDriver> blackOutDatesTableView;
-
-  /**
-   * CheckBox confirmation is used to confirm black out date selection.
-   */
-  @FXML
-  private CheckBox confirmation;
-
-  /**
-   * DatePicker datePicker is used to select the date for blacking out dates.
-   */
-  @FXML
-  private DatePicker datePicker;
-
-  /**
-   * Table view promotionsTableView is used to view all of the rooms and to select a room.
-   */
-  @FXML
-  private TableView<?> promotionsTableView;
 
   /**
    * Table view customerInformationTableView is used to view all of the customers and their related
@@ -135,15 +102,6 @@ public class ManagerOverviewController {
   private TableColumn<Integer, ManagerDriver> revenueColumn;
 
   @FXML
-  private TableColumn<?, ?> dateColumn;
-
-  @FXML
-  private TableColumn<?, ?> costColumn;
-
-  @FXML
-  private TableColumn<?, ?> roomNumberColumn;
-
-  @FXML
   private TableColumn<BlackOutDriver, Date> blackOutDateColumn;
 
   @FXML
@@ -151,15 +109,6 @@ public class ManagerOverviewController {
 
   @FXML
   private TableColumn<BlackOutDriver, Integer> blackOutRoomNum;
-
-  @FXML
-  private Button blackOutBtn;
-
-  @FXML
-  private ChoiceBox<?> costBlPicker;
-
-  @FXML
-  private TextField roomNumBlTx;
 
   @FXML
   private TableColumn<CustomerDriver, String> nameColumn;
@@ -177,11 +126,8 @@ public class ManagerOverviewController {
   private TableColumn<CustomerDriver, ?> checkInColumn;
 
   @FXML
-  private Button searchCustomerBtn;
+  private TableColumn<CustomerDriver, ?> checkOutColumn;
 
-  /**
-   * Text area to append customer feedback to for managers to view.
-   */
   @FXML
   private TextArea feedbackLog;
 
@@ -212,9 +158,6 @@ public class ManagerOverviewController {
   @FXML
   private ChoiceBox<String> accessIDBox;
 
-  @FXML
-  private Button newEmployeeBtn;
-
   private static ArrayList<String> feedbackList = new ArrayList<>();
 
   private ObservableList<BlackOutDriver> blackOut;
@@ -241,7 +184,6 @@ public class ManagerOverviewController {
     ObservableList<ManagerDriver> financial = FXCollections.observableArrayList();
     ObservableList<ConnManager> customer = FXCollections.observableArrayList();
     customer.add(connManager.selectAllCustomers());
-    System.out.println(customer.toString());
 
     ObservableList<String> sort =
         FXCollections.observableArrayList(
@@ -269,50 +211,35 @@ public class ManagerOverviewController {
     for (int i = 2018; i >= 2005; i--) {
       numbers.add(i);
     }
-    ObservableList numberList = FXCollections.observableList(numbers);
+    ObservableList<Integer> numberList = FXCollections.observableList(numbers);
     previousReports.getItems().clear();
     previousReports.setItems(numberList);
     previousReports.getSelectionModel().selectFirst();
 
-    /*
-    for the black out tab
-     */
-
     blackOut = FXCollections.observableArrayList();
-
-    blackOutDateColumn.setCellValueFactory(new PropertyValueFactory("blackOutDate"));
-    blackOutCostColumn.setCellValueFactory(new PropertyValueFactory("blackOutCost"));
-    blackOutRoomNum.setCellValueFactory(new PropertyValueFactory("blackOutRoomNum"));
-
+    blackOutDateColumn.setCellValueFactory(new PropertyValueFactory<>("blackOutDate"));
+    blackOutCostColumn.setCellValueFactory(new PropertyValueFactory<>("blackOutCost"));
+    blackOutRoomNum.setCellValueFactory(new PropertyValueFactory<>("blackOutRoomNum"));
     addBlackout();
     blackOutDatesTableView.setItems(blackOut);
 
-
-    /*
-    for the customer info tab
-     */
-
-    nameColumn.setCellValueFactory(new PropertyValueFactory("lastName"));
-    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
-    emailColumn.setCellValueFactory(new PropertyValueFactory("emailColumn"));
-    last4Column.setCellValueFactory(new PropertyValueFactory("last4"));
-    //checkInColumn.setCellValueFactory(new PropertyValueFactory("dates"));
+    nameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+    emailColumn.setCellValueFactory(new PropertyValueFactory<>("emailColumn"));
+    last4Column.setCellValueFactory(new PropertyValueFactory<>("last4"));
+    checkInColumn.setCellValueFactory(new PropertyValueFactory<>("checkIn"));
+    checkOutColumn.setCellValueFactory(new PropertyValueFactory<>("checkOut"));
     addCustomer();
     customerInformationTableView.setItems(CustomerInfo);
 
-     /*
-    for the employee tab
-     */
     ObservableList<String> accessNum = FXCollections.observableArrayList("1", "2", "3");
     accessIDBox.getItems().clear();
     accessIDBox.setItems(accessNum);
     accessIDBox.getSelectionModel().selectFirst();
-
-    employeeID.setCellValueFactory(new PropertyValueFactory("employeeID"));
-    firstNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeFirst"));
-    lastNameEmpl.setCellValueFactory(new PropertyValueFactory("employeeLast"));
-    accessIDCol.setCellValueFactory(new PropertyValueFactory("accessID"));
-
+    employeeID.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+    firstNameEmpl.setCellValueFactory(new PropertyValueFactory<>("employeeFirst"));
+    lastNameEmpl.setCellValueFactory(new PropertyValueFactory<>("employeeLast"));
+    accessIDCol.setCellValueFactory(new PropertyValueFactory<>("accessID"));
     addEmployee();
     employeeTableView.setItems(Employee);
   }
@@ -360,42 +287,12 @@ public class ManagerOverviewController {
     ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
     while (rs.next()) {
       CustomerInfo
-          .add(new CustomerDriver(rs.getString(3), rs.getString(4), rs.getString(1), rs.getInt(5)));
+          .add(new CustomerDriver(rs.getString(3), rs.getString("phoneNumber"),
+              rs.getString("email"), rs.getString("lastFourCC"), rs.getString("check_in"),
+              rs.getString("check_out")));
     }
     con.close();
   }
-
-  @FXML
-  private void searchCustomer(MouseEvent event) throws SQLException {
-    CustomerInfo.clear();
-    String name = customerName.getText();
-    String phoneNum = customerPhone.getText();
-    String cnn = creditCardNumber.getText();
-
-    Connection connection = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
-    ResultSet rs = connection.createStatement().executeQuery(
-        "SELECT LASTNAME, PHONENUMBER, LASTFOURCC FROM CUSTOMERS WHERE LASTNAME = '" + name
-            + "' + PHONENUMBER = '" + phoneNum + "' + LASTFOURCC = '" + cnn + "'");
-    while (rs.next()) {
-      CustomerInfo
-          .add(new CustomerDriver(rs.getString(3), rs.getString(4), rs.getString(1), rs.getInt(5)));
-    }
-    connection.close();
-    customerInformationTableView.setItems(CustomerInfo);
-  }
-
-  /*void refreshCustomerTable() throws SQLException {
-    CustomerInfo.clear();
-    CustomerInfo = FXCollections.observableArrayList();
-    Connection con = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
-    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM CUSTOMERS");
-    while (rs.next()){
-      CustomerInfo.add(new CustomerDriver(rs.getString(3),rs.getString(4),rs.getString(1),rs.getInt(5)));
-    }
-    con.close();
-
-    customerInformationTableView.setItems(CustomerInfo);
-  }*/
 
   public void addEmployee() throws SQLException {
     Connection conn = DriverManager.getConnection("jdbc:h2:./src/resort/Database/productDB");
@@ -409,7 +306,7 @@ public class ManagerOverviewController {
   }
 
   @FXML
-  void createEmployee(MouseEvent event) throws SQLException {
+  void createEmployee() throws SQLException {
     String id = employeeIDTx.getText();
     String firstName = employeeFTX.getText();
     String lastName = employeeLTx.getText();

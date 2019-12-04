@@ -5,14 +5,34 @@ public class CustomerDriver {
   private String lastName;
   private String phoneNumber;
   private String emailColumn;
-  private int last4;
-  private String dates;
+  private String last4;
+  public String checkIn;
+  public String checkOut;
 
-  CustomerDriver(String lastName, String phoneNumber, String emailColumn, int last4) {
+  CustomerDriver(String lastName, String phoneNumber, String emailColumn, String last4) {
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.emailColumn = emailColumn;
     this.last4 = last4;
+  }
+
+  CustomerDriver(String lastName, String phoneNumber, String emailColumn, String last4,
+      String checkIn, String checkOut) {
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.emailColumn = emailColumn;
+    this.last4 = last4;
+    this.checkIn = checkIn;
+    this.checkOut = checkOut;
+  }
+
+  CustomerDriver() {
+  }
+
+  CustomerDriver(String checkIn,
+      String checkOut) {
+    this.checkIn = checkIn;
+    this.checkOut = checkOut;
   }
 
   public void setLastName(String lastName) {
@@ -39,19 +59,27 @@ public class CustomerDriver {
     return emailColumn;
   }
 
-  public void setLast4(int last4) {
+  public void setLast4(String last4) {
     this.last4 = last4;
   }
 
-  public int getLast4() {
+  public String getLast4() {
     return last4;
   }
 
-  public void setDates(String dates) {
-    this.dates = dates;
+  public void setCheckIn(String checkIn) {
+    this.checkIn = checkIn;
   }
 
-  public String getDates() {
-    return dates;
+  public String getCheckIn() {
+    return checkIn;
+  }
+
+  public void setCheckOut(String checkOut) {
+    this.checkOut = checkOut;
+  }
+
+  public String getCheckOut() {
+    return checkOut;
   }
 }

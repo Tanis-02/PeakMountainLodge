@@ -142,12 +142,12 @@ class ConnManager {
       statement = conn.createStatement();
       resultSet = statement.executeQuery("SELECT * FROM customers;");
       while (resultSet.next()) {
-        System.out.printf("email = %s%n", resultSet.getString("email"));
+        /*System.out.printf("email = %s%n", resultSet.getString("email"));
         System.out.printf("FirstName = %s%n", resultSet.getString("firstName"));
         System.out.printf("LastName = %s%n", resultSet.getString("lastName"));
         System.out.printf("PhoneNumber = %d%n", resultSet.getInt("phoneNumber"));
         System.out.printf("Last 4 = %s%n", resultSet.getString("lastFourCC"));
-        System.out.println("\n");
+        System.out.println("\n");*/
       }
     } catch (SQLException e) {
       sqlExceptionHandler(e);
@@ -218,12 +218,13 @@ class ConnManager {
     return false;
   }
 
-  boolean verifyManagerLogin(String userName, String accessID) throws SQLException {
-    String getPhoneNumber = "SELECT ACCESSID FROM EMPLOYEES WHERE LASTNAME = '" + userName + "'";
+  boolean verifyManagerLogin(String userName, String employeeID) throws SQLException {
+    String getPhoneNumber = "SELECT EMPLOYEEID FROM EMPLOYEES WHERE LASTNAME = '" + userName + "'";
     preparedStatement = conn.prepareStatement(getPhoneNumber);
     resultSet = preparedStatement.executeQuery();
     while (resultSet.next()) {
-      if (resultSet.getString(1) != null && resultSet.getString(1).equals(accessID)) {
+      if (resultSet.getString("EMPLOYEEID") != null && resultSet.getString("EMPLOYEEID")
+          .equals(employeeID)) {
         return true;
       }
     }
