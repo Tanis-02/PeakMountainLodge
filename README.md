@@ -11,7 +11,13 @@ CEN 3031 Resort Project
 
 - You will be prompted with a message asking if you would like to open the project. Select yes to view the project.
 
-- A runnable jar has been made, so you should only need to press run to access the program.
+## Running the Program
+
+- A runnable jar has been made, so you should only need to go to the Main class in the resort package and press run to access the program.
+
+- On the left side of the Main class select the green triangle and select "Run 'Main.main()'" and the program should run.
+
+- The database also has been implemented with a jar file, so that should aslo work with no problems.
 
 - Edited by: Andrew Cavallaro on 10/20/2019
 - Edited by: Joseph Cisar on 11/30/2019
