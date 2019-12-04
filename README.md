@@ -110,7 +110,7 @@ The CurrentGuestController and current_guest.fxml files are used to compare the 
 - If correct, the user will be granted access to the manager overview page
 - The default values currently are Cavallaro and 512560 for username and password
 
-## Manager Overview Page
+##### Manager Overview Page
 
 - Used to display all the data to the employee
 - The employee can see financial reports from past and present, make blackout dates, view customer information, view customer feedback, view and create employee access, and exit the manager overview page by clicking the exit button that will bring them to the home page.
