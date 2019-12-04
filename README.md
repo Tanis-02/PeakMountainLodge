@@ -1,7 +1,7 @@
 # Sandy Shores Resort
 CEN 3031 Resort Project Thursday Group 1
 
-### Group Members:
+#### Group Members:
 - Andrew Cavallaro
 - Joseph Cisar
 - Elizabeth Gonzalez
@@ -32,25 +32,25 @@ CEN 3031 Resort Project Thursday Group 1
 
 ## Diagrams
 
-##### Class Diagram:
+#### Class Diagram:
 ![Class Diagram](src/resort/images/class_diagram.png)
 
 
 ## Functionality:
 
-##### Home Page:
+#### Home Page:
 
 - Used to create the first page that a user sees
 - The user can choose one of three options: book now, current guest, and manager login
 
-### New Guest Page:
+#### New Guest Page:
 
 - Used to gather the check in and check out dates from the user as well as the number of guests that will be coming on the trip
 - Error handling to check if the dates are null or if the checkout date is before the checkin date
 - The prices will fluctuate based on the dates the user has chosen
 - The submit button will display the available rooms to the user
 
-### Available Rooms Page:
+#### Available Rooms Page:
 
 - Used to display the rooms that are available to the user for their requested stay
 - Displays the appropriate price, amenities, and a photo of the room
